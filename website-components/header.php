@@ -6,10 +6,10 @@
             <?php 
             // Define navigation links
             $navLinks = [
-                'Home' => 'index.php',
-                'Over Ons' => 'over-ons.php',
-                'Producten en Diensten' => 'producten.php',
-                'Contact' => 'contact.php'
+                __('nav_home') => 'index.php',
+                __('nav_about') => 'over-ons.php',
+                __('nav_products') => 'producten.php',
+                __('nav_contact') => 'contact.php'
             ];
 
             // Render navigation links
@@ -22,7 +22,7 @@
     <!-- Language switcher -->
     <div class="language-switcher">
         <?php foreach ($available_languages as $code => $name): ?>
-            <a href="?lang=<?= $code ?>" class="lang-option <?= $current_language === $code ? 'active' : '' ?>">
+            <a href="?lang=<?= $code ?>" class="lang-option <?= $current_language === $code ? 'active' : '' ?>" title="<?= $name ?>">
                 <?= $code ?>
             </a>
         <?php endforeach; ?>
