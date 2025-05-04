@@ -3,7 +3,7 @@
     <p>
         &copy; <span id="copyrightYear">
             <script>document.getElementById('copyrightYear').textContent = new Date().getFullYear();</script>
-        </span> Plug & Play. Alle rechten voorbehouden.
+        </span> Plug & Play. <?= __('copyright') ?>.
     </p>
     <div class="social-icons">
         <?php 
