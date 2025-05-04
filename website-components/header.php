@@ -18,4 +18,13 @@
             <?php endforeach; ?>
         </ul>
     </nav>
+    
+    <!-- Language switcher -->
+    <div class="language-switcher">
+        <?php foreach ($available_languages as $code => $name): ?>
+            <a href="?lang=<?= $code ?>" class="lang-option <?= $current_language === $code ? 'active' : '' ?>">
+                <?= $code ?>
+            </a>
+        <?php endforeach; ?>
+    </div>
 </header>
