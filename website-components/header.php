@@ -3,7 +3,7 @@
     <img class="header-logo" src="./images/header/logo.png" alt="Logo Plug & Play">
     <nav class="header-links">
         <ul>
-            <?php 
+            <?php
             // Define navigation links
             $navLinks = [
                 __('nav_home') => 'index.php',
@@ -16,15 +16,15 @@
             foreach ($navLinks as $label => $url): ?>
                 <li><a href="<?= $url ?>" aria-label="<?= strtolower($label) ?>"><?= $label ?></a></li>
             <?php endforeach; ?>
+
+            <!-- Language switcher -->
+            <div class="language-switcher">
+                <?php foreach ($available_languages as $code => $name): ?>
+                    <a href="?lang=<?= $code ?>" class="lang-option <?= $current_language === $code ? 'active' : '' ?>" title="<?= $name ?>">
+                        <?= $code ?>
+                    </a>
+                <?php endforeach; ?>
+            </div>
         </ul>
     </nav>
-    
-    <!-- Language switcher -->
-    <div class="language-switcher">
-        <?php foreach ($available_languages as $code => $name): ?>
-            <a href="?lang=<?= $code ?>" class="lang-option <?= $current_language === $code ? 'active' : '' ?>" title="<?= $name ?>">
-                <?= $code ?>
-            </a>
-        <?php endforeach; ?>
-    </div>
 </header>
