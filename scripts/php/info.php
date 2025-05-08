@@ -2,54 +2,58 @@
 
     function validateContactInfoFields() {
 
+        // Prevent the function running at first load
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             return false;
         }
 
-        $count = 0;
-        $contactValues = [$_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['phonenumber'], $_POST['subject'], $_POST['message']];
-        for ($i = 0; $i < count($contactValues); $i++) { 
-            
-            if (empty($contactValues[$i]) && isset($contactValues[$i])) {
-                $count++;
-            }
+        // Test if all fields are not empty
+        $requiredFields = ['firstname', 'lastname', 'email', 'phonenumber', 'subject', 'message'];
+        foreach ($requiredFields as $field) {
 
-            if ($i == count($contactValues) -1 && $count > 0 && $count <= count($contactValues)) {
+            if (empty($_POST[$field])) {
                 return "Niet alle velden zijn ingevuld";
             }
 
         }
 
-        if (!preg_match("/^[a-zA-Z0-9\s]+$/", $_POST['firstname'])) {
-            return "Voer een geldige voornaam in";
-        }
-
-        if (!preg_match("/^[a-zA-Z0-9\s]+$/", $_POST['lastname'])) {
-            return "Voer een geldige achternaam in";
-        }
-
+        // Validate if the email is valid
         if (!filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) {
             return "Je e-mailadres is ongeldig";
         }
 
-        if (!preg_match("/^[\d\s\-\+]{0,}$/", $_POST['phonenumber'])) {
-            return "Je telefoonnummer is ongeldig";
-        }
+        // Checks and the error messages if the check did not pass
+        $validations = [
+            'firstname' => [
+                'pattern' => "/^[a-zA-Z0-9\s]+$/",
+                'message' => "Voer een geldige voornaam in"
+            ],
+            'lastname' => [
+                'pattern' => "/^[a-zA-Z0-9\s]+$/",
+                'message' => "Voer een geldige achternaam in"
+            ],
+            'phonenumber' => [
+                'pattern' => "/^[\d\s\-\+]{6,18}$/",
+                'message' => "Je telefoonnummer is ongeldig"
+            ],
+            'subject' => [
+                'minLength' => 5,
+                'message' => "Beschrijf je onderwerp duidelijker of verwijder de karakters",
+                'pattern' => "/^[a-zA-Z0-9\s]+$/",
+            ],
+            'message' => [
+                'minLength' => 20,
+                'message' => "Voeg meer informatie toe aan je bericht"
+            ]
+        ];
 
-        if (strlen($_POST['phonenumber']) < 6) {
-            return "Het ingevoerde telefoonnummer is te kort";
-        }
+        // Iterate through the validations and return the error message if the check did not pass
+        foreach ($validations as $inputName => $validationCheck) {
 
-        if (strlen($_POST['phonenumber']) > 18) {
-            return "Het ingevoerde telefoonnummer is te lang";
-        }
+            if ( ( isset($validationCheck['minLength']) && strlen($_POST[$inputName]) < $validationCheck['minLength'] ) || ( isset($validationCheck['pattern']) && !preg_match($validationCheck['pattern'], $_POST[$inputName]) ) ) {
+                return $validationCheck['message'];
+            }
 
-        if (strlen($_POST['subject']) < 5) {
-            return "Beschrijf je onderwerp duidelijker";
-        }
-
-        if (strlen($_POST['message']) < 20) {
-            return "Voeg meer informatie toe aan je bericht";
         }
 
         return true;
