@@ -1,7 +1,3 @@
-<head>
-<link href='<?php $_SERVER['DOCUMENT_ROOT'] ?>/css/main.css' rel='stylesheet'>
-</head>
-
 <footer>
     <!-- Footer: Add copyright message and social links -->
     <p>
