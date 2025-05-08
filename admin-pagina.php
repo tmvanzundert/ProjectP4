@@ -1,5 +1,10 @@
-<?php require 'website-components/handlers.php'; ?>
+<?php require 'website-components/handlers.php'; // Import the handlers.php file
+require_once 'connector.php'; // Import the connector.php file
 
+// Initialize the database connection
+$db = new Database('localhost', 'dbuser', 'LkC9STj5n6bztQ', 'plugandplay');
+$connection = $db->connect();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -10,8 +15,6 @@
     <?php include 'website-components/header.php'; ?>
 
     <div Class="csv-upload">
-        <h2>Import CSV File</h2>
-        <p>Import CSV file to save data in the database.</p>
         <form action="" method="post" name="frmCSVImport" id="frmCSVImport"
             enctype="multipart/form-data" onsubmit="return validateFile()">
             <div Class="input-row">
