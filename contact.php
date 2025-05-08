@@ -33,12 +33,12 @@
 
     <form action="" method="post" class="contact-form">
 
-        <input type="text" placeholder="Voornaam" name="firstname" >
-        <input type="text" placeholder="Achternaam" name="lastname" >
-        <input type="email" placeholder="E-mail" name="email" >
-        <input type="text" placeholder="Telefoonnummer" name="phonenumber" >
-        <input type="text" placeholder="Onderwerp" name="subject" >
-        <textarea placeholder="Bericht" name="message" ></textarea>
+        <input type="text" placeholder="Voornaam" name="firstname" value="<?php echo $_POST['firstname'] ?>" >
+        <input type="text" placeholder="Achternaam" name="lastname" value="<?php echo $_POST['lastname'] ?>" >
+        <input type="email" placeholder="E-mail" name="email" value="<?php echo $_POST['email'] ?>" >
+        <input type="text" placeholder="Telefoonnummer" name="phonenumber" value="<?php echo $_POST['phonenumber'] ?>" >
+        <input type="text" placeholder="Onderwerp" name="subject" value="<?php echo $_POST['subject'] ?>" >
+        <textarea placeholder="Bericht" name="message" ><?php echo $_POST['message'] ?></textarea>
         <input type="submit" name="submit" class="submit-button">
         
     </form>
