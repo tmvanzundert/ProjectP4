@@ -740,23 +740,14 @@ img.fade-out {
 */
 
 .csv-upload {
-    /* font-family: Arial;
-	width: 550px;
+    font-family: Arial;
+	width: 35vw;
 	font-size: 0.9em;
 	margin: 60px auto;
-    text-align: center; */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 10vh;
-    margin-bottom: 1rem;
-    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
+    text-align: center;
 }
 
-
-
-/* .heading {
+.heading {
 	text-align: center;
 }
 
@@ -772,13 +763,12 @@ img.fade-out {
 .input-row {
 	margin-top: 0px;
 	margin-bottom: 20px;
-    border: solid red 5px;
 }
 
 .btn-submit {
 	background: #efefef;
 	border: #d3d3d3 1px solid;
-	width: 100%;
+	width: 70%;
 	border-radius: 20px;
 	cursor: pointer;
 	padding: 12px;
@@ -833,9 +823,9 @@ img.fade-out {
 	padding: 10px;
 	border-radius: 20px;
 	color: #171919;
-	width: 100%;
+	width: 70%;
 	margin-bottom: 20px;
-} */
+}
 
 
 /*
