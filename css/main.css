@@ -732,7 +732,116 @@ img.fade-out {
 /*
     ///////////////>
     //>
-    //> SECTION 7:      Mobile
+    //> SECTION 7:      Admin
+    //> DESCRIPTION:    
+    //> CONTENTS:       
+    //>
+    ///////////////>
+*/
+
+.csv-upload {
+    /* font-family: Arial;
+	width: 550px;
+	font-size: 0.9em;
+	margin: 60px auto;
+    text-align: center; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10vh;
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
+}
+
+
+
+/* .heading {
+	text-align: center;
+}
+
+.form-container {
+	border: #e0dfdf 1px solid;
+	padding: 30px 30px 10px 30px;
+	border-radius: 15px;
+	margin: 10px auto;
+	width: 350px;
+	text-align: center;
+}
+
+.input-row {
+	margin-top: 0px;
+	margin-bottom: 20px;
+    border: solid red 5px;
+}
+
+.btn-submit {
+	background: #efefef;
+	border: #d3d3d3 1px solid;
+	width: 100%;
+	border-radius: 20px;
+	cursor: pointer;
+	padding: 12px;
+}
+
+.btn-submit:hover {
+	background: #d9d8d8;
+	border: #c3c1c1 1px solid;
+}
+
+.outer-container table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.outer-container th {
+	border-top: 2px solid #dddddd;
+	background: #f9f9f9;
+	padding: 8px;
+	text-align: left;
+	font-weight: normal;
+}
+
+.outer-container td {
+	border-top: 1px solid #dddddd;
+	padding: 8px;
+	text-align: left;
+}
+
+.outer-container label {
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
+#response {
+	padding: 10px;
+	border-radius: 15px;
+}
+
+.success {
+	background: #c7efd9;
+	border: #bbe2cd 1px solid;
+}
+
+.error {
+	background: #fbcfcf;
+	border: #f3c6c7 1px solid;
+}
+
+.file {
+	border: 1px solid #cfcdcd;
+	padding: 10px;
+	border-radius: 20px;
+	color: #171919;
+	width: 100%;
+	margin-bottom: 20px;
+} */
+
+
+/*
+    ///////////////>
+    //>
+    //> SECTION 8:      Mobile
     //> DESCRIPTION:    Media Queries mobile devices
     //> CONTENTS:       
     //>

@@ -9,7 +9,8 @@
                 'Home' => 'index.php',
                 'Over Ons' => 'over-ons.php',
                 'Producten en Diensten' => 'producten.php',
-                'Contact' => 'contact.php'
+                'Contact' => 'contact.php',
+                'Admin' => 'admin-pagina.php'
             ];
 
             // Render navigation links
