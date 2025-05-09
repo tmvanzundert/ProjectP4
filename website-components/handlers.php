@@ -48,10 +48,11 @@ function importCSV($filename) {
           </script>";
 }
 
-// Example of a secure getConnection() function
+// Database connection function
+// Ik wil dit aanpassen dat er nog een locale gebruiker connectie maakt met de database of een specifieke gebruiker die enkel toegang heeft tot import rechten
 function getConnection(): mysqli {
-    $servername = $_ENV["DB_HOST"] ?? "localhost"; // Default to localhost if not set
-    $username = $_ENV["DB_USER"] ?? "dbuser";   // Provide reasonable defaults
+    $servername = $_ENV["DB_HOST"] ?? "localhost"; 
+    $username = $_ENV["DB_USER"] ?? "dbuser";               
     $password = $_ENV["DB_PASSWORD"] ?? "LkC9STj5n6bztQ";
     $dbname = $_ENV["DB_NAME"] ?? "plugandplay";
     try {
