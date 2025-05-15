@@ -1,7 +1,5 @@
 <?php
 
-    session_start();
-
     require_once 'website-components/handlers.php';
     require_once 'scripts/php/info.php';
     $contactFieldsValid = validateContactInfoFields();

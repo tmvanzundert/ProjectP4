@@ -9,7 +9,6 @@ $available_languages = [
 $default_language = 'nl';
 
 // Initialize language from session or set default
-session_start();
 if (!isset($_SESSION['language'])) {
     $_SESSION['language'] = $default_language;
 }
