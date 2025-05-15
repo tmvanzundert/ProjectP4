@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 // Include the language configuration
 require_once 'website-components/languages.php';
 
