@@ -38,7 +38,7 @@
             ],
             'subject' => [
                 'minLength' => 3,
-                'message' => "Voer een onderwerp van meer dan 5 karakters in",
+                'message' => "Voer een onderwerp van meer dan 3 karakters in",
             ],
             'message' => [
                 'minLength' => 20,
