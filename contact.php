@@ -2,8 +2,8 @@
 
     session_start();
 
-    require 'website-components/handlers.php';
-    require 'scripts/php/info.php';
+    require_once 'website-components/handlers.php';
+    require_once 'scripts/php/info.php';
     $contactFieldsValid = validateContactInfoFields();
     if ($contactFieldsValid === true) {
 
@@ -16,9 +16,6 @@
         }
 
     }
-
-    /* var_dump($_POST);
-    echo $_POST['submit'];unset($_REQUEST); */
 
 ?>
 
