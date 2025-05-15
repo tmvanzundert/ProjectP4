@@ -46,7 +46,7 @@
         <div class="error-message">
             <p><?php echo $contactFieldsValid; ?></p>
         </div>
-    <?php elseif ($_SESSION['sendSuccessfully']) : ?>
+    <?php elseif (isset($_SESSION['sendSuccessfully']) && $_SESSION['sendSuccessfully']) : ?>
         <div class="success-message">
             <p>Je bericht is succesvol verzonden!</p>
         </div>
