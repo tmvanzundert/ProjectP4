@@ -35,7 +35,7 @@
 
         <input type="text" placeholder="Voornaam" name="firstname" value="<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : ''; ?>" >
         <input type="text" placeholder="Achternaam" name="lastname" value="<?php echo isset($_POST['lastname']) ? $_POST['lastname'] : ''; ?>" >
-        <input type="email" placeholder="E-mail" name="email" value="<?php echo $isset($_POST['email']) ? $_POST['email'] : ''; ?>" >
+        <input type="email" placeholder="E-mail" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" >
         <input type="text" placeholder="Telefoonnummer" name="phonenumber" value="<?php echo isset($_POST['phonenumber']) ? $_POST['phonenumber'] : ''; ?>" >
         <input type="text" placeholder="Onderwerp" name="subject" value="<?php echo isset($_POST['subject']) ? $_POST['subject'] : ''; ?>" >
         <textarea placeholder="Bericht" name="message" ><?php echo isset($_POST['message']) ? $_POST['message'] : ''; ?></textarea>
