@@ -6,7 +6,6 @@
 
     <!-- Import the Style and JavaScript functions -->
     <link rel="stylesheet" href="css/main.css">
-    <script src="Javascript/function.js" defer></script>
 
     <!-- Set the title of the page automatically -->
     <script>setMainTitle(" - Plug & Play");</script>
