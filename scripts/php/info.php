@@ -38,12 +38,12 @@
             ],
             'subject' => [
                 'minLength' => 5,
-                'message' => "Beschrijf je onderwerp duidelijker of verwijder de karakters",
+                'message' => "Voer een onderwerp van meer dan 5 karakters in en zonder speciale tekens",
                 'pattern' => "/^[a-zA-Z0-9\s]+$/",
             ],
             'message' => [
                 'minLength' => 20,
-                'message' => "Voeg meer informatie toe aan je bericht"
+                'message' => "Voeg meer informatie toe aan je bericht zodat je bericht meer dan 20 karakters lang is",
             ]
         ];
 
