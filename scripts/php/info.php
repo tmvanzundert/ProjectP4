@@ -37,9 +37,8 @@
                 'message' => "Je telefoonnummer is ongeldig"
             ],
             'subject' => [
-                'minLength' => 5,
-                'message' => "Voer een onderwerp van meer dan 5 karakters in en zonder speciale tekens",
-                'pattern' => "/^[a-zA-Z0-9\s]+$/",
+                'minLength' => 3,
+                'message' => "Voer een onderwerp van meer dan 5 karakters in",
             ],
             'message' => [
                 'minLength' => 20,
