@@ -9,7 +9,8 @@
                 __('nav_home') => 'index.php',
                 __('nav_about') => 'over-ons.php',
                 __('nav_products') => 'producten.php',
-                __('nav_contact') => 'contact.php'
+                __('nav_contact') => 'contact.php',
+                __('Admin') => 'admin-pagina.php'
             ];
 
             // Render navigation links
