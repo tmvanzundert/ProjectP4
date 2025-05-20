@@ -25,26 +25,22 @@ function __($key) {
     return $key;
 }
 
-
+// Function to handle CSV import
 function importCSV($filename) {
     // Get a secure database connection
     $conn = getConnection();
-    
     // Open the CSV file
     $file = fopen($filename, "r");
-    
     // Skip the header row (if it exists)
     fgetcsv($file, 10000, ",");
-    
     // Prepare the SQL query
     $sql = "INSERT INTO Product (ProductName, Availability) VALUES (?, 1)
             ON DUPLICATE KEY UPDATE Availability = Availability + 1";
     $stmt = $conn->prepare($sql);
-    
+    // Error handling for prepare statement
     if ($stmt === false) {
-        die("Error preparing statement: " . $conn->error); // Handle prepare error
+        die("Error preparing statement: " . $conn->error); 
     }
-    
     // Bind parameters
     $stmt->bind_param("s", $productName);
     
