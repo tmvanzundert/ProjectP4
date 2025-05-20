@@ -26,7 +26,6 @@ if ($contactFieldsValid === true) {
 
     <?php include 'website-components/header.php'; ?>
 
-
     <section class="contact-banner">
         <div>
             <h1>Contact</h1>
@@ -36,18 +35,23 @@ if ($contactFieldsValid === true) {
     <section class="contact-info">
         <form class="info-form" action="" method="post" class="contact-form">
 
-            <input type="text" placeholder="Voornaam" name="firstname"
-                value="<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : ''; ?>">
-            <input type="text" placeholder="Achternaam" name="lastname"
-                value="<?php echo isset($_POST['lastname']) ? $_POST['lastname'] : ''; ?>">
-            <input type="email" placeholder="E-mail" name="email"
-                value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>">
-            <input type="text" placeholder="Telefoonnummer" name="phonenumber"
-                value="<?php echo isset($_POST['phonenumber']) ? $_POST['phonenumber'] : ''; ?>">
-            <input type="text" placeholder="Onderwerp" name="subject"
-                value="<?php echo isset($_POST['subject']) ? $_POST['subject'] : ''; ?>">
-            <textarea placeholder="Bericht"
-                name="message"><?php echo isset($_POST['message']) ? $_POST['message'] : ''; ?></textarea>
+            <input id="firstname" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['firstname'] == "" ? "textbox-error" : ''; ?>"
+                type="text" placeholder="Voornaam" name="firstname" value="<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : ''; ?>"
+                oninput="setErrorEmptyInputbox('firstname')">
+            <input id="lastname" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['lastname'] == "" ? "textbox-error" : ''; ?>"
+                type="text" placeholder="Achternaam" name="lastname" value="<?php echo isset($_POST['lastname']) ? $_POST['lastname'] : ''; ?>"
+                oninput="setErrorEmptyInputbox('lastname')">
+            <input id="email" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['email'] == "" ? "textbox-error" : ''; ?>"
+                type="email" placeholder="E-mail" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>"
+                oninput="setErrorEmptyInputbox('email')">
+            <input id="phonenumber" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['phonenumber'] == "" ? "textbox-error" : ''; ?>"
+                type="text" placeholder="Telefoonnummer" name="phonenumber" value="<?php echo isset($_POST['phonenumber']) ? $_POST['phonenumber'] : ''; ?>"
+                oninput="setErrorEmptyInputbox('phonenumber')">
+            <input id="subject" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['subject'] == "" ? "textbox-error" : ''; ?>"
+                type="text" placeholder="Onderwerp" name="subject" value="<?php echo isset($_POST['subject']) ? $_POST['subject'] : ''; ?>"
+                oninput="setErrorEmptyInputbox('subject')">
+            <textarea id="message" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['message'] == "" ? "textbox-error" : ''; ?>"
+                placeholder="Bericht" name="message" oninput="setErrorEmptyInputbox('message')"><?php echo isset($_POST['message']) ? $_POST['message'] : ''; ?></textarea>
             <button type="submit">Verstuur</button>
             <!-- <input type="submit" name="submit" class="submit-button"> -->
             <p>

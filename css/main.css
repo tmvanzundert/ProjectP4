@@ -93,6 +93,8 @@ nav a {
     text-decoration: none;
     transition: all 0.3s ease 0s;
     border-bottom: 1px solid #D4AF37;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 nav a:hover {
@@ -720,14 +722,17 @@ img.fade-out {
     margin: 10px 0 5px;
 }
 
-.info-form input,
-.info-form textarea {
+.textbox {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     width: 100%;
+}
+
+.textbox-error {
+    border: 1px solid red;
 }
 
 .info-form button {
