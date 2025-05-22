@@ -29,42 +29,36 @@ function __($key) {
 function importCSV($filename) {
     // Get a secure database connection
     $conn = getConnection();
-    // Open the CSV file
+
+    // Open the CSV file and skip the first line
     $file = fopen($filename, "r");
-    // Skip the header row (if it exists)
     fgetcsv($file, 10000, ",");
+
     // Prepare the SQL query
     $sql = "INSERT INTO Product (ProductName, Availability) VALUES (?, 1)
             ON DUPLICATE KEY UPDATE Availability = Availability + 1";
     $stmt = $conn->prepare($sql);
-    // Error handling for prepare statement
-    if ($stmt === false) {
-        die("Error preparing statement: " . $conn->error); 
-    }
-    // Bind parameters
+    // check if statement was prepared successfully
     $stmt->bind_param("s", $productName);
-    
-    while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
-        // Validate data (example validation)
-        if (count($getData) < 1) {
-            error_log("Invalid CSV row: " . implode(",", $getData));
-            continue; // Skip to the next row
-        }
-        
-        // Assign values
-        $productName = $getData[0]; // Assuming the first column contains the product name
-        
-        // Execute the query
-        if (!$stmt->execute()) {
-            error_log("Error inserting/updating row: " . $stmt->error);
+    // Loop through each row in the CSV and execute the statement
+    while (($row = fgetcsv($file, 10000, ",")) !== false) {
+        $productName = $row[0];
+        $stmt->execute();
+        if ($stmt->error) {
+            echo "<script type=\"text/javascript\">
+                    alert(\"Error importing data: " . $stmt->error . "\");
+                    window.location = \"../admin-pagina.php\"
+                  </script>";
+            return;
         }
     }
-    
+
     // Close the statement and connection
     $stmt->close();
     fclose($file);
     $conn->close();
     
+    // Echo success message
     echo "<script type=\"text/javascript\">
             alert(\"CSV File has been successfully Imported.\");
             window.location = \"../admin-pagina.php\"
@@ -85,8 +79,9 @@ function getConnection(): mysqli {
         }
         return $conn;
     } catch (Exception $e) {
-        error_log("Database connection error: " . $e->getMessage()); // Log the error
-        die("Failed to connect to the database. Check your configuration."); // Fatal error, stop execution
+        echo "<script type=\"text/javascript\">alert(\"Failed to connect to the database. Check your configuration.\");
+              window.location = \"../admin-pagina.php\"
+              </script>";
     }
 }
 
