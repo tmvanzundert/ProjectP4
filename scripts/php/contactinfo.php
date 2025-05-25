@@ -110,35 +110,35 @@
 
             // Test if all fields are not empty
             if ($this->isVariableEmpty() === false) {
-                throw new LengthException("Niet alle velden zijn ingevuld");
+                throw new LengthException(__('contactvalidations_empty'));
             }
 
             // Validate if the email is valid
             if (!filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) {
-                throw new InvalidArgumentException("Je e-mailadres is ongeldig");
+                throw new InvalidArgumentException(__('contactvalidations_invalidemail'));
             }
 
             // Checks and the error messages if the check did not pass
             $validations = [
                 'firstname' => [
                     'pattern' => "/^[a-zA-Z0-9\s]+$/",
-                    'message' => "Voer een geldige voornaam in"
+                    'message' => __('contactvalidations_invalidfirstname')
                 ],
                 'lastname' => [
                     'pattern' => "/^[a-zA-Z0-9\s]+$/",
-                    'message' => "Voer een geldige achternaam in"
+                    'message' => __('contactvalidations_invalidlastname')
                 ],
                 'phonenumber' => [
                     'pattern' => "/^[\d\s\-\+]{6,18}$/",
-                    'message' => "Je telefoonnummer is ongeldig"
+                    'message' => __('contactvalidations_invalidphonenumber')
                 ],
                 'subject' => [
                     'minLength' => 3,
-                    'message' => "Voer een onderwerp van meer dan 3 karakters in",
+                    'message' => __('contactvalidations_invalidsubject')
                 ],
                 'message' => [
                     'minLength' => 20,
-                    'message' => "Voeg meer informatie toe aan je bericht zodat je bericht meer dan 20 karakters lang is",
+                    'message' => __('contactvalidations_invalidmessage')
                 ]
             ];
 

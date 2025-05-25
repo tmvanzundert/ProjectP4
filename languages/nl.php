@@ -24,7 +24,9 @@ $translations = [
     'contact_possibilities' => "Ben je benieuwd naar de mogelijkheden om met ons samen te werken?\nNeem dan contact met ons op. We vertellen je er graag meer over in een persoonlijk gesprek. Je vindt ons in Breda, Brabant. We zorgen dat de koffie klaar staat!",
     'contact_credentialstitle' => 'Je kunt ons bereiken op:',
     'contact_map' => 'Bekijk ons op de kaart',
+    'contact_send' => 'Verstuur',
 
+    'contactvalidations_success' => 'Je bericht is met succes verzonden!',
     'contactvalidations_empty' => 'Niet alle velden zijn ingevuld',
     'contactvalidations_invalidemail' => 'Je e-mailadres is ongeldig',
     'contactvalidations_invalidfirstname' => 'Voer een geldige voornaam in',
