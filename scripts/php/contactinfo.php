@@ -101,7 +101,7 @@
         }
 
         // Validates the contact info fields
-        function validateContactInfoFields() {
+        function validateContactInfoFields(): bool {
 
             // Prevent the function running at first load
             if ($this->isSubmitted() === false) {
@@ -110,12 +110,12 @@
 
             // Test if all fields are not empty
             if ($this->isVariableEmpty() === false) {
-                return "Niet alle velden zijn ingevuld";
+                throw new LengthException("Niet alle velden zijn ingevuld");
             }
 
             // Validate if the email is valid
             if (!filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) {
-                return "Je e-mailadres is ongeldig";
+                throw new InvalidArgumentException("Je e-mailadres is ongeldig");
             }
 
             // Checks and the error messages if the check did not pass
@@ -144,8 +144,8 @@
 
             // Iterate through the validations and return the error message if the check did not pass
             foreach ($validations as $inputName => $validationCheck) {
-                if ( ( isset($validationCheck['minLength']) && strlen($_POST[$inputName]) < $validationCheck['minLength'] ) || ( isset($validationCheck['pattern']) && !preg_match($validationCheck['pattern'], $_POST[$inputName]) ) ) {
-                    return $validationCheck['message'];
+                if ( ( isset($validationCheck['minLength']) && strlen($this->setObjectValues()[$inputName]) < $validationCheck['minLength'] ) || ( isset($validationCheck['pattern']) && !preg_match($validationCheck['pattern'], $this->setObjectValues()[$inputName]) ) ) {
+                    throw new InvalidArgumentException($validationCheck['message']);
                 }
             }
 
