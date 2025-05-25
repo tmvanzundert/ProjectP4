@@ -1,30 +1,38 @@
-<?php
-
-require_once 'website-components/handlers.php';
-require_once 'scripts/php/info.php';
-$contactFieldsValid = validateContactInfoFields();
-if ($contactFieldsValid === true) {
-
-    $_SESSION['sendSuccessfully'] = true;
-
-    // Empty POST array
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit;
-    }
-
-}
-
-?>
+<?php require_once 'website-components/handlers.php'; ?>
 
 <!DOCTYPE html>
 <html>
 
+<!-- Load the head in -->
 <?php include 'website-components/head.php'; ?>
 
 <body>
 
+    <!-- Load the header in -->
     <?php include 'website-components/header.php'; ?>
+
+    <?php
+
+        require_once 'scripts/php/contactinfo.php';
+
+        // Create the ContactInfo object
+        $contactInfo = new ContactInfo(
+            $_POST['firstname'] ?? '',
+            $_POST['lastname'] ?? '',
+            $_POST['email'] ?? '',
+            $_POST['phonenumber'] ?? '',
+            $_POST['subject'] ?? '',
+            $_POST['message'] ?? ''
+        );
+
+        // Run checks to check if the submitted data is valid
+        $contactFieldsValid = $contactInfo->validateContactInfoFields();
+        if ($contactFieldsValid === true) {
+            $_SESSION['sendSuccessfully'] = true;
+            $contactInfo->setPostToNull();
+        }
+
+    ?>
 
     <section class="contact-banner">
         <div>
@@ -35,40 +43,52 @@ if ($contactFieldsValid === true) {
     <section class="contact-info">
         <form class="info-form" action="" method="post" class="contact-form">
 
-            <input id="firstname" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['firstname'] == "" ? "textbox-error" : ''; ?>"
-                type="text" placeholder="Voornaam" name="firstname" value="<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : ''; ?>"
-                oninput="setErrorEmptyInputbox('firstname')">
-            <input id="lastname" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['lastname'] == "" ? "textbox-error" : ''; ?>"
-                type="text" placeholder="Achternaam" name="lastname" value="<?php echo isset($_POST['lastname']) ? $_POST['lastname'] : ''; ?>"
-                oninput="setErrorEmptyInputbox('lastname')">
-            <input id="email" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['email'] == "" ? "textbox-error" : ''; ?>"
-                type="email" placeholder="E-mail" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>"
-                oninput="setErrorEmptyInputbox('email')">
-            <input id="phonenumber" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['phonenumber'] == "" ? "textbox-error" : ''; ?>"
-                type="text" placeholder="Telefoonnummer" name="phonenumber" value="<?php echo isset($_POST['phonenumber']) ? $_POST['phonenumber'] : ''; ?>"
-                oninput="setErrorEmptyInputbox('phonenumber')">
-            <input id="subject" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['subject'] == "" ? "textbox-error" : ''; ?>"
-                type="text" placeholder="Onderwerp" name="subject" value="<?php echo isset($_POST['subject']) ? $_POST['subject'] : ''; ?>"
-                oninput="setErrorEmptyInputbox('subject')">
-            <textarea id="message" class="textbox <?php echo $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['message'] == "" ? "textbox-error" : ''; ?>"
-                placeholder="Bericht" name="message" oninput="setErrorEmptyInputbox('message')"><?php echo isset($_POST['message']) ? $_POST['message'] : ''; ?></textarea>
+            <!-- First name textbox -->
+            <input id="firstname" class="<?php echo $contactInfo->getTextboxClass('firstname'); ?>" type="text"
+                   placeholder="Voornaam" name="firstname" value="<?php echo $contactInfo->getFirstName(); ?>"
+                   oninput="setErrorEmptyInputbox('firstname')">
+
+            <!-- Last name textbox -->
+            <input id="lastname" class="<?php echo $contactInfo->getTextboxClass('lastname'); ?>" type="text"
+                   placeholder="Achternaam" name="lastname" value="<?php echo $contactInfo->getLastName(); ?>"
+                   oninput="setErrorEmptyInputbox('lastname')">
+            
+            <!-- Email textbox -->
+            <input id="email" class="<?php echo $contactInfo->getTextboxClass('email'); ?>" type="email"
+                   placeholder="E-mail" name="email" value="<?php echo $contactInfo->getEmail(); ?>"
+                   oninput="setErrorEmptyInputbox('email')">
+
+            <!-- Phonenumber textbox -->
+            <input id="phonenumber" class="<?php echo $contactInfo->getTextboxClass('phonenumber'); ?>" type="text"
+                   placeholder="Telefoonnummer" name="phonenumber" value="<?php echo $contactInfo->getPhonenumber(); ?>"
+                   oninput="setErrorEmptyInputbox('phonenumber')">
+
+            <!-- Subject textbox -->
+            <input id="subject" class="<?php echo $contactInfo->getTextboxClass('subject'); ?>" type="text"
+                   placeholder="Onderwerp" name="subject" value="<?php echo $contactInfo->getSubject(); ?>"
+                   oninput="setErrorEmptyInputbox('subject')">
+
+            <!-- Message textbox -->
+            <textarea id="message" class="<?php echo $contactInfo->getTextboxClass('message'); ?>"placeholder="Bericht"
+                      name="message" oninput="setErrorEmptyInputbox('message')"><?php echo $contactInfo->getMessage(); ?></textarea>
+
+            <!-- Send the form -->
             <button type="submit">Verstuur</button>
-            <!-- <input type="submit" name="submit" class="submit-button"> -->
             <p>
+                <!-- Display an error message if an error has been returned -->
                 <?php if ($contactFieldsValid !== true && $contactFieldsValid !== false): ?>
                     <div class="error-message">
                         <p><?php echo $contactFieldsValid; ?></p>
                     </div>
+                <!-- Display a success message if all the checks passed -->
                 <?php elseif (isset($_SESSION['sendSuccessfully']) && $_SESSION['sendSuccessfully']): ?>
                     <div class="success-message">
-                        <p>Je bericht is succesvol verzonden!</p>
+                        <p>Je bericht is met succes verzonden!</p>
                     </div>
                     <?php unset($_SESSION['sendSuccessfully']); ?>
                 <?php endif; ?>
             </p>
         </form>
-
-            
 
         <div class="info-text">
 
@@ -102,8 +122,7 @@ if ($contactFieldsValid === true) {
 
     </section>
 
-    
-
+    <!-- Load the footer in -->
     <?php include 'website-components/footer.php'; ?>
 
 </body>
