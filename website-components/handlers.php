@@ -65,25 +65,28 @@ function importCSV($filename) {
           </script>";
 }
 
+
+
 // Database connection function
 // Ik wil dit aanpassen dat er nog een locale gebruiker connectie maakt met de database of een specifieke gebruiker die enkel toegang heeft tot import rechten
-function getConnection(): mysqli {
-    $servername = $_ENV["DB_HOST"] ?? "localhost"; 
-    $username = $_ENV["DB_USER"] ?? "dbuser";               
-    $password = $_ENV["DB_PASSWORD"] ?? "LkC9STj5n6bztQ";
-    $dbname = $_ENV["DB_NAME"] ?? "plugandplay";
-    try {
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            throw new Exception("Connection failed: " . $conn->connect_error);
-        }
-        return $conn;
-    } catch (Exception $e) {
-        echo "<script type=\"text/javascript\">alert(\"Failed to connect to the database. Check your configuration.\");
-              window.location = \"../admin-pagina.php\"
-              </script>";
-    }
-}
+// function getConnection(): mysqli {
+//     $servername = $_ENV["DB_HOST"] ?? "localhost"; 
+//     $username = $_ENV["DB_USER"] ?? "dbuser";               
+//     $password = $_ENV["DB_PASSWORD"] ?? "LkC9STj5n6bztQ";
+//     $dbname = $_ENV["DB_NAME"] ?? "plugandplay";
+//     try {
+//         $conn = new mysqli($servername, $username, $password, $dbname);
+//         if ($conn->connect_error) {
+//             throw new Exception("Connection failed: " . $conn->connect_error);
+//         }
+//         return $conn;
+//     } catch (Exception $e) {
+//         echo "<script type=\"text/javascript\">alert(\"Failed to connect to the database. Check your configuration.\");
+//               window.location = \"../admin-pagina.php\"
+//               </script>";
+//     }
+// }
+
 
 // Handle the form submission
 if (isset($_POST["import"])) {
