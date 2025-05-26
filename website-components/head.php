@@ -9,4 +9,5 @@
 
     <!-- Set the title of the page automatically -->
     <script>setMainTitle(" - Plug & Play");</script>
+    <script src="../scripts/js/info.js"></script>
 </head>
