@@ -48,6 +48,49 @@ footer {
     margin-top: auto;
 }
 
+/* Source: https://codepen.io/shidhincr/pen/kaPPXN */
+.search, .search button[type="reset"] {
+	position: relative;
+	padding: 10px;
+}
+.search {
+
+}
+.search input[type="search"] {
+
+}
+
+.search button[type="reset"] {
+	border:1px solid transparent;
+	background-color: transparent;
+	display: inline-block;
+	vertical-align: middle;
+    cursor: pointer;
+}
+.search button[type="reset"]:after {
+	content: "X";
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	background-color: rgba(82, 81, 81, 0.5);
+	right: 35px;
+	top: 1px;
+	bottom: 0;
+	margin: auto;
+	padding: 2px;
+	border-radius: 50%;
+	color: white;
+	font-weight: normal;
+	font-size: 11px;
+	cursor: pointer;
+}
+.search input[type="search"]:not(:valid) ~ button[type="reset"] {
+    display: none;
+}
+
 /*
     ///////////////>
     //>
@@ -489,43 +532,57 @@ img.fade-out {
     ///////////////>
 */
 
-.ProductContainer {
+.product-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-items: center;
+    justify-content: start;
     padding: 1%;
 }
 
-.Product {
+#product {
+    display: flex;
     background-color: rgba(82, 81, 81, 0.5);
     flex-direction: column;
-    width: 48%;
-    margin: 1% auto;
+    width: 23%;
+    margin: 1%;
     border-radius: 0.5rem;
     min-width: 250px;
     display: flex;
     transition: transform 0.6s;
 }
 
-.Product:hover {
+#product:hover {
     transform: scale(1.03);
     transition: transform 0.6s;
 }
 
-.ProductImage {
-    margin: 5%;
-    border-radius: 2rem;
+#product a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
 }
 
-.ProductTitle {
+#product img {
+    margin: 5%;
+    border-radius: 10px;
+    height: 200px;
+    object-fit: contain;
+    width: 90%;
+    background-color: white;
+}
+
+#product h2 {
     color: white;
     text-align: center;
     font-weight: bold;
     font-size: 25px;
 }
 
-.ProductPrice {
+#product span {
     color: #000000;
     text-align: center;
     font-weight: bold;
@@ -536,7 +593,11 @@ img.fade-out {
     margin: 0 auto;
 }
 
-.ProductText {
+#product div {
+    max-height: 140px;
+    overflow: hidden;
+    box-shadow: inset 0px -8px 10px -10px rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
     margin-top: 5%;
     margin-left: 5%;
     margin-bottom: 5%;
@@ -544,7 +605,7 @@ img.fade-out {
     color: white;
 }
 
-.ProductButton {
+#product button {
     margin: 5%;
     border-radius: 5rem;
     height: 60px;
@@ -555,11 +616,83 @@ img.fade-out {
     border-style: none;
     font-size: 18px;
     color: white;
+    background-color: rgb(255, 206, 47);
     cursor: pointer;
     text-align: center;
+    bottom: 0;
+    margin-top: auto;
 }
 
-.ProductButton:hover {
+#product button:hover {
+    background-color: #5e9cee;
+}
+
+#product-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 10%;
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
+}
+
+#product-page h1 {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+#product-page img {
+    border-radius: 10px;
+    height: 500px;
+    object-fit: contain;
+    width: 50%;
+    background-color: white;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#product-page span {
+    color: #000000;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgb(255, 206, 47);
+    border-radius: 1.5rem;
+    width: 150px;
+    margin: 0 auto;
+}
+
+#product-page div {
+    border-radius: 2px;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    margin-right: 5%;
+    color: white;
+}
+
+#product-page button {
+    margin: 5%;
+    border-radius: 5rem;
+    height: 60px;
+    width: 35%;
+    min-width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: none;
+    font-size: 18px;
+    color: white;
+    background-color: rgb(255, 206, 47);
+    cursor: pointer;
+    text-align: center;
+    bottom: 0;
+    margin-top: auto;
+}
+
+#product-page button:hover {
     background-color: #5e9cee;
 }
 
