@@ -1,4 +1,10 @@
-<?php require 'website-components/handlers.php'; ?>
+<?php   
+    require 'website-components/handlers.php';
+    require_once 'scripts/php/databaseconnection.php';
+    require_once 'scripts/php/importCSV.php';
+    $importCSV = new importcsv("localhost", "dbuser", "LkC9STj5n6bztQ", "plugandplay");
+    $importCSV->formsubmission();
+?>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +16,7 @@
     <?php include 'website-components/header.php'; ?>
 
     <div Class="csv-upload">
-    <form action="website-components/handlers.php" method="post" name="frmCSVImport" id="frmCSVImport"
+    <form action="" method="post" name="frmCSVImport" id="frmCSVImport"
         enctype="multipart/form-data" onsubmit="return validateFile()">
         <div Class="input-row">
             <label>Choose your file. <a href="website-components/import-template.csv" download>Download
