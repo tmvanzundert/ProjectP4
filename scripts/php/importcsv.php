@@ -5,18 +5,25 @@ class importcsv extends DatabaseConnection
 
 
     // Function to handle CSV import
-    public function importCSV($filename)
+    public function importCSV($filename): string
     {
 
         // Get a secure database connection
         // Set database connection parameters before connecting
-        $conn = $this->connect();
+        try {
+            $conn = $this->connect();
+        } 
+        catch (Exception $e) {
+            return "Connection failed";
+        }
+
 
         // Open the CSV file and skip the first line
         $file = fopen($filename, "r");
         fgetcsv($file, 10000, ",");
 
         // Prepare the SQL query
+        // !!Zal nog verplaatst worden naar databaseconnection.php voor herbruikbaarheid!!
         $sql = "INSERT INTO Product (ProductName, Availability) VALUES (?, 1)
             ON DUPLICATE KEY UPDATE Availability = Availability + 1";
         $stmt = $conn->prepare($sql);
@@ -25,24 +32,14 @@ class importcsv extends DatabaseConnection
         while (($row = fgetcsv($file, 10000, ",")) !== false) {
             $productName = $row[0];
             if (!$stmt->execute([$productName])) {
-                $errorInfo = $stmt->errorInfo();
-                echo "<script type=\"text/javascript\">
-                    alert(\"Error importing data: " . addslashes($errorInfo[2]) . "\");
-                    window.location = \"admin-pagina.php\"
-                    </script>";
                 fclose($file);
-                return;
+                return "Error importing data: "  . addslashes($stmt->errorInfo()[2]);
             }
         }
 
         // Close the file
         fclose($file);
-
-        // Echo success message
-        echo "<script type=\"text/javascript\">
-            alert(\"CSV File has been successfully Imported.\");
-            window.location = \"admin-pagina.php\"
-            </script>";
+        return "CSV File has been successfully Imported.";
     }
     
     // Handle the form submission
@@ -52,13 +49,17 @@ class importcsv extends DatabaseConnection
         if ($this->isSubmitted() && isset($_POST["import"])) {
             if (isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
                 $filename = $_FILES["file"]["tmp_name"];
-                $this->importCSV($filename);
-            } else {
-                echo "<script type=\"text/javascript\">
-                        alert(\"Please upload a valid CSV file.\");
+                $importCSV = $this->importCSV($filename);
+                
+            } 
+            else {
+                $importCSV = "Please upload a valid CSV file.";
+            }
+
+            echo "<script type=\"text/javascript\">
+                        alert(\"$importCSV\");
                         window.location = \"admin-pagina.php\"
                     </script>";
-            }
         }
 
     }

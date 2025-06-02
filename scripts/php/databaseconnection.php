@@ -25,9 +25,13 @@ class DatabaseConnection
             $connection = new PDO($dsn, $this->Username, $this->Password);
             $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $connection;
-        } catch (PDOException $e) {
+        } catch (Exception $e) {
             throw new Exception("Connection failed: " . $e->getMessage());
         }
+    }
+
+    public function update($table, $fields, $where) {
+        
     }
 
 
