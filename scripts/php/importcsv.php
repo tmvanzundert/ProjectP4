@@ -28,8 +28,8 @@ class importcsv extends DatabaseConnection
                 $errorInfo = $stmt->errorInfo();
                 echo "<script type=\"text/javascript\">
                     alert(\"Error importing data: " . addslashes($errorInfo[2]) . "\");
-                    window.location = \"../admin-pagina.php\"
-                  </script>";
+                    window.location = \"admin-pagina.php\"
+                    </script>";
                 fclose($file);
                 return;
             }
@@ -41,11 +41,11 @@ class importcsv extends DatabaseConnection
         // Echo success message
         echo "<script type=\"text/javascript\">
             alert(\"CSV File has been successfully Imported.\");
-            window.location = \"../admin-pagina.php\"
-          </script>";
+            window.location = \"admin-pagina.php\"
+            </script>";
     }
     
-     // Handle the form submission
+    // Handle the form submission
     public function formsubmission(): void
     {
 
@@ -56,7 +56,7 @@ class importcsv extends DatabaseConnection
             } else {
                 echo "<script type=\"text/javascript\">
                         alert(\"Please upload a valid CSV file.\");
-                        window.location = \"../admin-pagina.php\"
+                        window.location = \"admin-pagina.php\"
                     </script>";
             }
         }
@@ -64,7 +64,8 @@ class importcsv extends DatabaseConnection
     }
 
     // Checks if the form is submitted
-    public function isSubmitted(): bool {
+    public function isSubmitted(): bool
+    {
         return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 }
