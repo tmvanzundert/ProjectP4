@@ -44,6 +44,7 @@ class importcsv extends DatabaseConnection
             window.location = \"../admin-pagina.php\"
           </script>";
     }
+    
      // Handle the form submission
     public function formsubmission(): void
     {
