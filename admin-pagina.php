@@ -1,9 +1,4 @@
-<?php   
-    require_once 'website-components/handlers.php';
-    require_once 'scripts/php/importcsv.php';
-    $importCSV = new importcsv("localhost", "dbuser", "LkC9STj5n6bztQ", "plugandplay");
-    $importCSV->formsubmission();
-?>
+<?php require_once 'website-components/handlers.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -13,6 +8,16 @@
 <body>
 
     <?php include_once 'website-components/header.php'; ?>
+
+    <?php
+
+        // Create a new instance of the importcsv class and call the formsubmission method
+        require_once 'scripts/php/importcsv.php';
+        $env = parse_ini_file('.env');
+        $importCSV = new importcsv($env['db_servername'], $env['db_username'], $env['db_password'], $env['db_name']);
+        $importCSV->formsubmission();
+
+    ?>
 
     <div Class="csv-upload">
     <form action="" method="post" name="frmCSVImport" id="frmCSVImport"
