@@ -10,7 +10,7 @@
                 __('nav_about') => 'over-ons.php',
                 __('nav_products') => 'producten.php',
                 __('nav_contact') => 'contact.php',
-                __('nav_Admin') => 'admin-pagina.php',
+                __('nav_admin') => 'admin-pagina.php',
                 __('nav_login') => 'login.php'
             ];
 

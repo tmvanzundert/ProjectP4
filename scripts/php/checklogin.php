@@ -35,6 +35,5 @@ class CheckLogin extends DatabaseConnection
     public function getPassword(): string {
         return htmlspecialchars($this->password);
     }
-
-    public function 
+    
 }
