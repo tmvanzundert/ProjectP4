@@ -3,7 +3,7 @@
 session_start();
 
 // Include the language configuration
-require_once 'website-components/languages.php';
+require_once 'languages.php';
 
 // Load language file
 $lang_file = "languages/{$current_language}.php";
@@ -24,4 +24,5 @@ function __($key) {
     // Return the key if translation is not found
     return $key;
 }
+
 ?>

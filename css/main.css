@@ -371,7 +371,7 @@ img.fade-out {
 
 .visie-banner {
     position: relative;
-    background-image: url(../images/home/banner.png);
+    background-image: url(../images/over-ons/banner.png);
     background-size: cover;
     background-repeat: no-repeat;
     padding: 100px;
@@ -934,7 +934,174 @@ img.fade-out {
 /*
     ///////////////>
     //>
-    //> SECTION 7:      Mobile
+    //> SECTION 7:      Admin
+    //> DESCRIPTION:    
+    //> CONTENTS:       
+    //>
+    ///////////////>
+*/
+
+.csv-upload {
+    font-family: Arial;
+	width: 35vw;
+	font-size: 0.9em;
+	margin: 60px auto;
+    text-align: center;
+}
+
+.heading {
+	text-align: center;
+}
+
+.form-container {
+	border: #e0dfdf 1px solid;
+	padding: 30px 30px 10px 30px;
+	border-radius: 15px;
+	margin: 10px auto;
+	width: 350px;
+	text-align: center;
+}
+
+.input-row {
+	margin-top: 0px;
+	margin-bottom: 20px;
+}
+
+.btn-submit {
+	background: #efefef;
+	border: #d3d3d3 1px solid;
+	width: 70%;
+	border-radius: 20px;
+	cursor: pointer;
+	padding: 12px;
+}
+
+.btn-submit:hover {
+	background: #d9d8d8;
+	border: #c3c1c1 1px solid;
+}
+
+.outer-container table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.outer-container th {
+	border-top: 2px solid #dddddd;
+	background: #f9f9f9;
+	padding: 8px;
+	text-align: left;
+	font-weight: normal;
+}
+
+.outer-container td {
+	border-top: 1px solid #dddddd;
+	padding: 8px;
+	text-align: left;
+}
+
+.outer-container label {
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
+#response {
+	padding: 10px;
+	border-radius: 15px;
+}
+
+.success {
+	background: #c7efd9;
+	border: #bbe2cd 1px solid;
+}
+
+.error {
+	background: #fbcfcf;
+	border: #f3c6c7 1px solid;
+}
+
+.file {
+	border: 1px solid #cfcdcd;
+	padding: 10px;
+	border-radius: 20px;
+	color: #171919;
+	width: 70%;
+	margin-bottom: 20px;
+}
+
+/*
+    ///////////////>
+    //>
+    //> SECTION 8:      Login & Registratie
+    //> DESCRIPTION:    login en registratie page
+    //> CONTENTS:       
+    //>
+    ///////////////>
+*/
+
+.inloggen-banner {
+        position: relative;
+        background-image: url(../images/home/banner.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 0% 30%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.inloggen-banner h1 {
+    color:#ffffff;
+    font-size: 5rem;
+    text-shadow:  #535353 0px 0px 10px;    
+}
+
+.inlog-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10vh;
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
+}
+
+.inlog-info-form {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.registration-banner {
+    position: relative;
+    background-image: url(../images/home/banner.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0% 30%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10vh;
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
+}
+
+
+/*
+    ///////////////>
+    //>
+    //> SECTION 9:      Mobile
     //> DESCRIPTION:    Media Queries mobile devices
     //> CONTENTS:       
     //>
@@ -1025,43 +1192,4 @@ img.fade-out {
     .info-map iframe {
         height: 300px;
     }
-}
-/* Inloggen box */
-.inloggen-banner {
-        position: relative;
-        background-image: url(../images/home/banner.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: 0% 30%;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-}
-
-/* Style for the banner */
-.inloggen-banner h1 {
-    color:#ffffff;
-    font-size: 5rem;
-    text-shadow:  #535353 0px 0px 10px;    
-}
-
-/* Center and color the background */
-.inlog-form {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 10vh;
-    margin-bottom: 1rem;
-    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
-}
-
-/* Center the text and input boxes */
-.inlog-info-form {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
 }
