@@ -1,7 +1,6 @@
 <?php   
-    require 'website-components/handlers.php';
-    require_once 'scripts/php/databaseconnection.php';
-    require_once 'scripts/php/importCSV.php';
+    require_once 'website-components/handlers.php';
+    require_once 'scripts/php/importcsv.php';
     $importCSV = new importcsv("localhost", "dbuser", "LkC9STj5n6bztQ", "plugandplay");
     $importCSV->formsubmission();
 ?>
@@ -9,11 +8,11 @@
 <!DOCTYPE html>
 <html>
 
-<?php include 'website-components/head.php'; ?>
+<?php include_once 'website-components/head.php'; ?>
 
 <body>
 
-    <?php include 'website-components/header.php'; ?>
+    <?php include_once 'website-components/header.php'; ?>
 
     <div Class="csv-upload">
     <form action="" method="post" name="frmCSVImport" id="frmCSVImport"
@@ -31,7 +30,7 @@
     </div>
 
 
-    <?php include 'website-components/footer.php'; ?>
+    <?php include_once 'website-components/footer.php'; ?>
 
 </body>
 
