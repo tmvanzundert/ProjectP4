@@ -18,6 +18,8 @@ $translations = [
     'introduction_text3' => 'Welkom bij Plug & Play. Wij bieden snelle en duurzame oplaadoplossingen altijd binnen handbereik. Onze powerbanks zijn gemakkelijk binnen 1 klik te huren. Je kan ze op verschillende locaties ophalen zoals winkelcentra, evenementen en parkeerplaatsen. Of het nu gaat om je smartphone, je tablet of zelfs een jumpstart voor je voertuig, Plug & Play zorgt ervoor dat jij nooit zonder stroom zit.',
     'introduction_text4' => 'Kies Plug & Play voor gebruiksgemak en betrouwbaarheid en laad je apparaten op met een groene voetafdruk.',
 
+    'introduction_image_alt' => 'Achtergrond met powerbank',
+
     'salespitch_heading1' => 'Altijd Opgeladen',
     'salespitch_text1' => 'Blijf verbonden waar je ook ben. Met de powerbanks van Plug & Play sta je nooit meer met een lege batterij, waar jij je ook bevind.',
     'salespitch_heading2' => 'Duurzaam en Betrouwbaar',
@@ -33,6 +35,8 @@ $translations = [
 
     'duurzaamheid_heading' => 'Duurzaamheid',
     'duurzaamheid_text1' => 'Bij Plug & Play hechten we veel waarde aan duurzaamheid. De powerbanks worden allereerst opgeladen doormiddel van groene stroom die uit zonne-energie komt. Onze powerbanks zijn daarnaast niet alleen ontworpen om aan de behoeften van onze klanten te voldoen, maar we zorgen er ook voor dat ze op een milieuvriendelijke manier worden gerecycled en hergebruikt. We werken samen met veilige instanties die verantwoordelijk zijn voor het recyclen van de batterijen, zodat we bijdragen aan een circulaire economie. Dit betekent dat we ons inzetten om afval te minimaliseren en duurzame oplossingen te bieden voor een wereld waarin mobiele apparaten essentieel zijn in het dagelijks leven. Zo draag je met elk gebruik van onze producten bij aan een groenere toekomst.',
+
+    'duurzaamheid_image_alt' => 'Achtergrond van een kubus die staat voor duurzaamheid',
 
     'oprichters_heading' => 'Ontmoet de Oprichters',
     'oprichters_text1' => 'Het verhaal van Plug & Play begon met een passie voor innovatie en een wens om een positieve impact te maken.',
@@ -76,8 +80,6 @@ $translations = [
     'diensten_text1' => 'Organiseer jij een evenement of heb jij een ruimte in jou kantoor waar je graag powerbanks aan wilt bieden?',
     'diensten_text2' => 'Leer hoe onze plaatsingsdienst jou kan helpen en vraag eenvoudig een offerte aan. Binnen 3 werkdagen ontvang je de offerte en wordt er telefonisch contact met je opgenomen om je aanvraag te bespreken. Heb je andere vragen, stel deze via het contactformulier.',
 
-    // Add more translations as needed
-
     // Contact page
     'contact_firstname' => 'Voornaam',
     'contact_lastname' => 'Achternaam',
@@ -98,5 +100,24 @@ $translations = [
     'contactvalidations_invalidphonenumber' => 'Je telefoonnummer is ongeldig',
     'contactvalidations_invalidsubject' => 'Voer een onderwerp van 3 karakters of meer in',
     'contactvalidations_invalidmessage' => 'Voeg meer informatie toe aan je bericht zodat je bericht meer dan 20 karakters lang is',
+
+
+    // Admin page
+
+
+    // Login page
+    'login_heading' => 'Log in op je account',
+    'username_label' => 'Gebruikersnaam',
+    'password_label' => 'Wachtwoord',
+    'login_button' => 'Inloggen',
+    'no_account_text' => 'Heb je nog geen account?',
+    'register_link' => 'Registreer hier',
+
+    // Registration page
+    'registration_heading' => 'Maak een account aan',
+    'email_label' => 'E-mailadres',
+    'already_have_account_text' => 'Heb je al een account?',
+    'login_link' => 'Log hier in',
+    'register_button' => 'Registreren',
 ];
 ?>

@@ -18,6 +18,9 @@ $translations = [
     'introduction_text3' => 'Welcome to Plug & Play. We offer fast and sustainable charging solutions always within reach. Our powerbanks are easy to rent with just 1 click. You can pick them up at various locations such as shopping centers, events, and parking lots. Whether it\'s for your smartphone, tablet, or even a jumpstart for your vehicle, Plug & Play ensures you\'re never without power.',
     'introduction_text4' => 'Choose Plug & Play for convenience and reliability and charge your devices with a green footprint.',
 
+    'introduction_image_alt' => 'Background with powerbank',
+
+
     'salespitch_heading1' => 'Always Charged',
     'salespitch_text1' => 'Stay connected wherever you are. With Plug & Play powerbanks, you\'ll never be stuck with an empty battery, no matter where you are.',
     'salespitch_heading2' => 'Sustainable and Reliable',
@@ -33,6 +36,8 @@ $translations = [
 
     'duurzaamheid_heading' => 'Sustainability',
     'duurzaamheid_text1' => 'At Plug & Play, we value sustainability greatly. Our powerbanks are first and foremost charged using green electricity from solar energy. Additionally, our powerbanks are not only designed to meet the needs of our customers, but we also ensure they are recycled and reused in an environmentally friendly way. We work with reliable institutions responsible for recycling the batteries, contributing to a circular economy. This means we are committed to minimizing waste and providing sustainable solutions for a world in which mobile devices are essential in everyday life. With each use of our products, you contribute to a greener future.',
+
+    'duurzaamheid_image_alt' => 'Background of a cube that symbolizes sustainability',
 
     'oprichters_heading' => 'Meet the Founders',
     'oprichters_text1' => 'The story of Plug & Play began with a passion for innovation and a desire to make a positive impact.',
@@ -76,8 +81,6 @@ $translations = [
     'diensten_text1' => 'Are you organizing an event or do you have a space in your office where you would like to offer powerbanks?',
     'diensten_text2' => 'Learn how our placement service can help you and easily request a quote. Within 3 working days, you will receive the quote and be contacted by phone to discuss your request. Do you have other questions? Ask them through the contact form.',
 
-    // Add more translations as needed
-
     // Contact page
     'contact_firstname' => 'First name',
     'contact_lastname' => 'Last name',
@@ -98,5 +101,22 @@ $translations = [
     'contactvalidations_invalidphonenumber' => 'Your phone number is invalid',
     'contactvalidations_invalidsubject' => 'Please enter a subject of 3 characters or more',
     'contactvalidations_invalidmessage' => 'Please more information to your message so your message contains more than 20 characters',
+    
+    // Admin page
+    
+    // Login page
+    'login_heading' => 'Login to your account',
+    'username_label' => 'Username',
+    'password_label' => 'Password',
+    'login_button' => 'Login',
+    'no_account_text' => 'Don\'t have an account yet?',
+    'register_link' => 'Register here',
+
+    // Registration page
+    'registration_heading' => 'Create an account',
+    'email_label' => 'Email',
+    'already_have_account_text' => 'Already have an account?',
+    'login_link' => 'Login here',
+    'register_button' => 'Register',
 ];
 ?>
