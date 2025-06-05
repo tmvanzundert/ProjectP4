@@ -1,13 +1,13 @@
-<?php require 'website-components/handlers.php'; ?>
+<?php require_once 'website-components/handlers.php'; ?>
 
 <!DOCTYPE html>
 <html>
 
-<?php include 'website-components/head.php'; ?>
+<?php include_once 'website-components/head.php'; ?>
 
 <body>
 
-    <?php include 'website-components/header.php'; ?>
+    <?php include_once 'website-components/header.php'; ?>
 
     <?php
             
@@ -19,7 +19,7 @@
 
     ?>
 
-    <?php include 'website-components/footer.php'; ?>
+    <?php include_once 'website-components/footer.php'; ?>
 
 </body>
 

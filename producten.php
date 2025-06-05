@@ -1,6 +1,8 @@
 <?php
 
-    require 'website-components/handlers.php';
+use PhpParser\Node\Expr\Include_;
+
+    require_once 'website-components/handlers.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['search'] == "" ) ) {
         header("Location: " . $_SERVER['PHP_SELF']);
@@ -12,19 +14,19 @@
 <!DOCTYPE html>
 <html>
 
-<?php include 'website-components/head.php'; ?>
+<?php include_once 'website-components/head.php'; ?>
 
 <body>
 
-    <?php include 'website-components/header.php'; ?>
-    <form class="search-form" action="" method="post">
+    <?php include_once 'website-components/header.php'; ?>
+    <div class="search-form" action="" method="post">
         <div class="search">
             <input required type="search" name="search" placeholder="Search..." oninput="setErrorEmptyInputbox('search')">
             <button type="reset"></button>
             <a href="producten.php" class="reset-button" onclick="document.getElementsByName('search')[0].value = '';">Reset</a>
         </div>
         <button type="submit">Search</button>
-    </form>
+    </div>
     <section class="section-producten">
         <div class="product-container">
             <?php
@@ -44,7 +46,7 @@
         </div>
     </section>
 
-    <?php include 'website-components/footer.php'; ?>
+    <?php include_once 'website-components/footer.php'; ?>
 
 </body>
 
