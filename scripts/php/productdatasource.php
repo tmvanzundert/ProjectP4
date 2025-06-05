@@ -2,7 +2,7 @@
 
     class ProductDataSource {
 
-        public static function defineProducts() {
+        public function defineProducts(): array {
             return [
                 'playgreen_1' => new Product(
                     'PlayGreen 1',
@@ -65,7 +65,7 @@
             ];
         }
         
-        public function getProducts(bool $FullPage = false) {
+        public function getProducts(bool $FullPage = false): void {
         
             $products = self::defineProducts();
             foreach ($products as $product) {
@@ -73,7 +73,7 @@
             }
         }
 
-        public function searchProducts(string $Search) {
+        public function searchProducts(string $Search): void {
             $products = self::defineProducts();
             foreach ($products as $product) {
                 if (strpos($product->getSearchableName(), strtolower($Search)) !== false) {

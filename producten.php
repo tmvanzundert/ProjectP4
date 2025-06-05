@@ -2,7 +2,7 @@
 
     require 'website-components/handlers.php';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['search'] == "") {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['search'] == "" ) ) {
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
@@ -21,6 +21,7 @@
         <div class="search">
             <input required type="search" name="search" placeholder="Search..." oninput="setErrorEmptyInputbox('search')">
             <button type="reset"></button>
+            <a href="producten.php" class="reset-button" onclick="document.getElementsByName('search')[0].value = '';">Reset</a>
         </div>
         <button type="submit">Search</button>
     </form>
