@@ -1,7 +1,5 @@
 <?php
 
-use PhpParser\Node\Expr\Include_;
-
     require_once 'website-components/handlers.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['search'] == "" ) ) {
@@ -19,14 +17,14 @@ use PhpParser\Node\Expr\Include_;
 <body>
 
     <?php include_once 'website-components/header.php'; ?>
-    <div class="search-form" action="" method="post">
+    <form class="search-form" action="" method="post">
         <div class="search">
             <input required type="search" name="search" placeholder="Search..." oninput="setErrorEmptyInputbox('search')">
             <button type="reset"></button>
             <a href="producten.php" class="reset-button" onclick="document.getElementsByName('search')[0].value = '';">Reset</a>
         </div>
         <button type="submit">Search</button>
-    </div>
+    </form>
     <section class="section-producten">
         <div class="product-container">
             <?php
