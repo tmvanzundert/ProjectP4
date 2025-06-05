@@ -1,8 +1,12 @@
 <?php 
     require_once 'website-components/handlers.php';
     require_once 'scripts/php/checklogin.php'; 
-    function checkLogin() {
-    return true;
+
+    // check if the user is already logged in
+    session_start();
+    if (isset($_SESSION['account_loggedin'])) {
+    header('Location: home.php');
+    exit;
 }
 ?>
 

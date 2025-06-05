@@ -1,6 +1,6 @@
 <?php require_once 'databaseconnection.php';
 
-class Checklogin extends DatabaseConnection
+class CheckLogin extends DatabaseConnection
 {
 
     private string $username;
@@ -13,10 +13,17 @@ class Checklogin extends DatabaseConnection
 
     // Returns an array with the object values
     public function checkLogin(): array {
-        return [
+        try {
+            return [
             'username' => $this->getUsername(),
             'password' => $this->getPassword()
         ];
+        } 
+        catch (Exception $e) {
+            return [
+                'error' => 'An error occurred while checking login: ' . $e->getMessage()
+            ];
+        }
     }
 
     // Get the username from the object
@@ -28,4 +35,6 @@ class Checklogin extends DatabaseConnection
     public function getPassword(): string {
         return htmlspecialchars($this->password);
     }
+
+    public function 
 }
