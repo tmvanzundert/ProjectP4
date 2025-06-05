@@ -76,8 +76,6 @@ $translations = [
     'diensten_text1' => 'Are you organizing an event or do you have a space in your office where you would like to offer powerbanks?',
     'diensten_text2' => 'Learn how our placement service can help you and easily request a quote. Within 3 working days, you will receive the quote and be contacted by phone to discuss your request. Do you have other questions? Ask them through the contact form.',
 
-    // Add more translations as needed
-
     // Contact page
     'contact_firstname' => 'First name',
     'contact_lastname' => 'Last name',
@@ -98,5 +96,22 @@ $translations = [
     'contactvalidations_invalidphonenumber' => 'Your phone number is invalid',
     'contactvalidations_invalidsubject' => 'Please enter a subject of 3 characters or more',
     'contactvalidations_invalidmessage' => 'Please more information to your message so your message contains more than 20 characters',
+    
+    // Admin page
+    
+    // Login page
+    'login_heading' => 'Login to your account',
+    'username_label' => 'Username',
+    'password_label' => 'Password',
+    'login_button' => 'Login',
+    'no_account_text' => 'Don\'t have an account yet?',
+    'register_link' => 'Register here',
+
+    // Registration page
+    'registration_heading' => 'Create an account',
+    'email_label' => 'Email',
+    'already_have_account_text' => 'Already have an account?',
+    'login_link' => 'Login here',
+    'register_button' => 'Register',
 ];
 ?>

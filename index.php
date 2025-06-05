@@ -23,7 +23,7 @@
                 <p><?php echo __('introduction_text1'); ?></p>
                 <p><?php echo __('introduction_text2'); ?></p>
                 <p><?php echo __('introduction_text3'); ?></p>
-                <P><?php echo __('introduction_text4'); ?></p>
+                <p><?php echo __('introduction_text4'); ?></p>
             </div>
             <div class="introduction-img" id="Slideshow">
                 <img id="introImage" src="Images/Home/Powerbank2.png" alt="Achtergrond met powerbank">

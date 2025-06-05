@@ -25,11 +25,4 @@ function __($key) {
     return $key;
 }
 
-
-// require_once 'scripts\php\importcsv.php';
-
-// PDO Database connection
-// require_once 'scripts/php/databaseconnection.php';
-// $connection = new DatabaseConnection("localhost", "dbuser", "LkC9STj5n6bztQ", "plugandplay");
-// $conn = $connection->connect();
 ?>

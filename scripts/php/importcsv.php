@@ -23,9 +23,7 @@ class importcsv extends DatabaseConnection
         fgetcsv($file, 10000, ",");
 
         // Prepare the SQL query
-        // !!Zal nog verplaatst worden naar databaseconnection.php voor herbruikbaarheid!!
-        $sql = "INSERT INTO Product (ProductName, Availability) VALUES (?, 1)
-            ON DUPLICATE KEY UPDATE Availability = Availability + 1";
+        $sql = "UPDATE Product SET Availability = Availability + 1 WHERE ProductName = ?";
         $stmt = $conn->prepare($sql);
 
         // Loop through each row in the CSV and execute the statement

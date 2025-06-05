@@ -76,8 +76,6 @@ $translations = [
     'diensten_text1' => 'Organiseer jij een evenement of heb jij een ruimte in jou kantoor waar je graag powerbanks aan wilt bieden?',
     'diensten_text2' => 'Leer hoe onze plaatsingsdienst jou kan helpen en vraag eenvoudig een offerte aan. Binnen 3 werkdagen ontvang je de offerte en wordt er telefonisch contact met je opgenomen om je aanvraag te bespreken. Heb je andere vragen, stel deze via het contactformulier.',
 
-    // Add more translations as needed
-
     // Contact page
     'contact_firstname' => 'Voornaam',
     'contact_lastname' => 'Achternaam',
@@ -98,5 +96,24 @@ $translations = [
     'contactvalidations_invalidphonenumber' => 'Je telefoonnummer is ongeldig',
     'contactvalidations_invalidsubject' => 'Voer een onderwerp van 3 karakters of meer in',
     'contactvalidations_invalidmessage' => 'Voeg meer informatie toe aan je bericht zodat je bericht meer dan 20 karakters lang is',
+
+
+    // Admin page
+
+
+    // Login page
+    'login_heading' => 'Log in op je account',
+    'username_label' => 'Gebruikersnaam',
+    'password_label' => 'Wachtwoord',
+    'login_button' => 'Inloggen',
+    'no_account_text' => 'Heb je nog geen account?',
+    'register_link' => 'Registreer hier',
+
+    // Registration page
+    'registration_heading' => 'Maak een account aan',
+    'email_label' => 'E-mailadres',
+    'already_have_account_text' => 'Heb je al een account?',
+    'login_link' => 'Log hier in',
+    'register_button' => 'Registreren',
 ];
 ?>
