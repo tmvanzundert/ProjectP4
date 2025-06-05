@@ -26,7 +26,7 @@
                 <p><?php echo __('introduction_text4'); ?></p>
             </div>
             <div class="introduction-img" id="Slideshow">
-                <img id="introImage" src="Images/Home/Powerbank2.png" alt="Achtergrond met powerbank">
+                <img id="introImage" src="images/home/powerbank2.png" alt="<?php echo __('introduction_image_alt'); ?>">
             </div>
         </section>
 

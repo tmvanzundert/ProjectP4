@@ -1,13 +1,13 @@
-<?php require 'website-components/handlers.php'; ?>
+<?php require_once 'website-components/handlers.php'; ?>
 
 <!DOCTYPE html>
 <html>
 
-<?php include 'website-components/head.php'; ?>
+<?php include_once 'website-components/head.php'; ?>
 
 <body>
 
-    <?php include 'website-components/header.php'; ?>
+    <?php include_once 'website-components/header.php'; ?>
 
     <main>
 
@@ -26,7 +26,7 @@
                 <p><?php echo __('duurzaamheid_text1'); ?></p>
             </div>
             <div class="duurzaamheid-img">
-                <img src="Images/Over-Ons/cube.png" alt="Achtergrond van een kubus die staat voor duurzaamheid">
+                <img src="images/over-ons/cube.png" alt="<?php echo __('duurzaamheid_image_alt'); ?>">
             </div>
         </section>
 
@@ -38,22 +38,22 @@
             </div>
 
             <div class="oprichters-img">
-                <img src="Images/Over-Ons/Person1.png">
+                <img src="images/over-ons/person1.png">
                 <h2><?php echo __('lucas_heading'); ?></h2>
                 <p><?php echo __('lucas_text1'); ?></p>
             </div>
             <div class="oprichters-img">
-                <img src="Images/Over-Ons/Person2.png">
+                <img src="images/over-ons/person2.png">
                 <h2><?php echo __('peter_heading'); ?></h2>
                 <p><?php echo __('peter_text1'); ?></p>
             </div>
             <div class="oprichters-img">
-                <img src="Images/Over-Ons/Person3.png">
+                <img src="images/over-ons/person3.png">
                 <h2><?php echo __('tom_heading'); ?></h2>
                 <p><?php echo __('tom_text1'); ?></p>
             </div>
             <div class="oprichters-img">
-                <img src="Images/Over-Ons/Person4.png">
+                <img src="images/over-ons/person4.png">
                 <h2><?php echo __('joris_heading'); ?></h2>
                 <p><?php echo __('joris_text1'); ?></p>
             </div>
@@ -61,7 +61,7 @@
 
     </main>
 
-    <?php include 'website-components/footer.php'; ?>
+    <?php include_once 'website-components/footer.php'; ?>
 
 </body>
 
