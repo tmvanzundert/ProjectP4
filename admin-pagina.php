@@ -1,4 +1,10 @@
-<?php require_once 'website-components/handlers.php'; ?>
+<?php 
+require_once 'website-components/handlers.php';
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit();
+}
+ ?>
 
 <!DOCTYPE html>
 <html>

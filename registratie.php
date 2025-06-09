@@ -5,17 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $register = new RegisterAccount($_POST['username'], $_POST['password'], $_POST['email'], $_POST['address']);
     if ($register->registerAccount()) {
         $message = "Account is succesvol aangemaakt. Ga terug naar het login scherm om in te loggen";
-        echo "<script type=\"text/javascript\"> 
-        alert(\"$message\"); 
-        window.location = \"login.php\" 
-        </script>";
+        echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"login.php\" </script>";
     } else {
-        $message = "Server Error, Probeer het later nog eens";
-        echo "<script type=\"text/javascript\"> 
-        alert(\"$message\"); 
-        window.location = \"registratie.php\" 
-        </script>";
-
+    $message = "Server Error, Probeer het later nog eens";
+    echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"registratie.php\" </script>";
     }
 
 }

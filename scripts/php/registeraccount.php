@@ -18,14 +18,15 @@ Class RegisterAccount Extends DatabaseConnection
     public function registerAccount(): bool
     {
         $env = parse_ini_file('./.env');
-        $dbconnection = new DatabaseConnection($env['db_servername'], $env['db_username'], $env['db_password'], $env['db_name']);
-        $conn = $dbconnection->connect();
-        $sql = "INSERT INTO User (Username, Password, EmailAddress, Address) VALUES ('$this->username', '$this->password', '$this->email', '$this->address');";
+        $dbConnection = new DatabaseConnection($env['db_servername'], $env['db_username'], $env['db_password'], $env['db_name']);
+        $conn = $dbConnection->connect();
+        $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO User (Username, Password, EmailAddress, Address) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         if (!$stmt) {
             return False;
         }
-        $stmt->execute();
+        $stmt->execute([$this->username, $hashedPassword, $this->email, $this->address]);
         return True;
     }
 }

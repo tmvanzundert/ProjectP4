@@ -3,16 +3,15 @@ require_once 'website-components/handlers.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once 'scripts/php/checklogin.php';
-    $env = parse_ini_file('./.env');
-    $login = new CheckLogin($env['db_servername'], $_POST['username'], $_POST['password'], $env['db_name']);
+    $login = new CheckLogin($_POST['username'], $_POST['password']);
     if ($login->checkLogin()) {
-        header('Location: admin-pagina.php');
-        exit();
+        $_SESSION['username'] = $_POST['username'];
     } else {
-        $error = "Could not log in. Please check your username and password.";
+    $message = "Server Error, Probeer het later nog eens";
+    echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"login.php\"</script>";
     }
+    
 }
-
 ?>
 
 
