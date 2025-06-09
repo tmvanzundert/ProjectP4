@@ -19,9 +19,6 @@ if (session_status() === PHP_SESSION_NONE) {
             if (isset($_SESSION['username'])) {
                 $navLinks[__('nav_admin')] = 'admin-pagina.php';
             }
-            if (!isset($_SESSION['username'])) {
-                $navLinks[__('nav_login')] = 'login.php';
-            }
             foreach ($navLinks as $label => $url): ?>
                 <li><a href="<?= $url ?>" aria-label="<?= strtolower($label) ?>"><?= $label ?></a></li>
             <?php endforeach; ?>
@@ -36,7 +33,9 @@ if (session_status() === PHP_SESSION_NONE) {
             </a>
         <?php endforeach; ?>
         <?php if (isset($_SESSION['username'])): ?>
-            <a href="logout.php">Logout</a>
+            <a class="log-btn" href="logout.php">Logout</a>
+        <?php else: ?>
+            <a class="log-btn" href="login.php"><?php echo __('nav_login'); ?></a>
         <?php endif; ?>
     </div>
 </header>

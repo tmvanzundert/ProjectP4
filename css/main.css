@@ -53,9 +53,9 @@ footer {
 	position: relative;
 	padding: 10px;
 }
-.search {
+/* .search {
 
-}
+} */
 
 .search input[type="search"] {
     width: 40px;
@@ -226,6 +226,35 @@ nav a:hover {
 .lang-option.active {
     background-color: #D4AF37;
     color: #525151;
+}
+
+/* 
+    ///////////////>
+    //>
+    //> SECTION 2.4:    Global: Logout button
+    //> DESCRIPTION:    Styling for the logout button
+    //> CONTENTS:       
+    //>
+    ///////////////>
+*/
+
+.log-btn {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: rgba(82, 81, 81, 0.5);
+    transition: all 0.3s ease;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.log-btn:hover {
+    background-color: rgba(243, 65, 65, 0.8); /* red hover for logout */
+    color: #fff;
 }
 
 /*
