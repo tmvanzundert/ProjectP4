@@ -73,15 +73,15 @@
                 <div id='$productId'>
                     " . ($FullPage === false ? "<a href='product.php?product=$simpleName'>" : "") . "
                         " . ($FullPage === true ? "<a href='producten.php' class='back-button'>Terug</a>" : "") . "
-                        <h2 id='ProductTitle'>$this->Name</h2>
-                        <img id='ProductImage' src='$this->ImagePath' alt='$this->Name'>
-                        <span class='ProductPrice'>€" . number_format($this->Price, 2, ',', '.') . "</span>
+                        <h2>$this->Name</h2>
+                        <img src='$this->ImagePath' alt='$this->Name'>
+                        <span>€" . number_format($this->Price, 2, ',', '.') . "</span>
                         <div>
                             <p>$this->Description</p>
                             $extraDescription
                         </div>
                     " . ($FullPage === false ? "</a>" : "") . "
-                    <button class='ProductButton' onclick='window.location.href=\"bestellen.php?product=$simpleName\"'>Huur Nu</button>
+                    <button onclick='window.location.href=\"bestellen.php?product=$simpleName\"'>Huur Nu</button>
                 </div>
             ";
         }

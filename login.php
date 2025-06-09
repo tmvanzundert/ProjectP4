@@ -1,14 +1,20 @@
-<?php 
-    require_once 'website-components/handlers.php';
-    require_once 'scripts/php/checklogin.php'; 
+<?php
+require_once 'website-components/handlers.php';
 
-    // check if the user is already logged in
-    session_start();
-    if (isset($_SESSION['account_loggedin'])) {
-    header('Location: home.php');
-    exit;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once 'scripts/php/checklogin.php';
+    $env = parse_ini_file('./.env');
+    $login = new CheckLogin($env['db_servername'], $_POST['username'], $_POST['password'], $env['db_name']);
+    if ($login->checkLogin()) {
+        header('Location: admin-pagina.php');
+        exit();
+    } else {
+        $error = "Could not log in. Please check your username and password.";
+    }
 }
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -24,8 +30,8 @@
             <h1><?php echo __('login_heading'); ?></h1>
         </section>
 
-        <section class="login-form">
-            <form action="scripts/php/checklogin.php" method="post" onsubmit="return checkLogin()">
+        <section class="inlog-form">
+            <form id="loginWindow" action="" method="post">
                 <label for="username"><?php echo __('username_label'); ?></label>
                 <input type="text" id="username" name="username" required>
 

@@ -5,6 +5,8 @@ $translations = [
     'nav_about' => 'About Us',
     'nav_products' => 'Products and Services',
     'nav_contact' => 'Contact',
+    'nav_admin' => 'Admin',
+    'nav_login' => 'Login',
     
     // Common elements
     'copyright' => 'All rights reserved',
