@@ -1,21 +1,12 @@
-<?php 
-    require_once 'website-components/handlers.php';
-    require_once 'scripts/php/checklogin.php'; 
-    function checkLogin() {
-    return true;
-}
-?>
+<?php
+require_once 'scripts/php/checklogin.php';
 
-<!DOCTYPE html>
-<html>
+class Login extends View
+{
 
-<?php include 'website-components/head.php'; ?>
-
-<body>
-
-    <?php include 'website-components/header.php'; ?>
-
-    <main>
+    public function show()
+    {
+        ?>
         <section class="inloggen-banner">
             <h1><?php echo __('login_heading'); ?></h1>
         </section>
@@ -32,11 +23,12 @@
             </form>
             <p><?php echo __('no_account_text'); ?> <a href="registratie.php"><?php echo __('register_link'); ?></a></p>
         </section>
+        <?php
+    }
+    function checkLogin()
+    {
+        return true;
+    }
+}
 
-    </main>
-
-    <?php include 'website-components/footer.php'; ?>
-
-</body>
-
-</html>
+new Login();

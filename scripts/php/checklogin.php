@@ -1,6 +1,6 @@
-<?php require_once 'databaseconnection.php';
+<?php require_once 'framework/connector.php';
 
-class Checklogin extends DatabaseConnection
+class Checklogin extends Connector
 {
 
     private string $username;
@@ -29,3 +29,5 @@ class Checklogin extends DatabaseConnection
         return htmlspecialchars($this->password);
     }
 }
+
+new CheckLogin();

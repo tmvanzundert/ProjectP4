@@ -1,8 +1,6 @@
 <?php
 
-require_once 'databaseconnection.php';
-
-class importcsv extends DatabaseConnection
+class importcsv extends Connector
 {
 
 

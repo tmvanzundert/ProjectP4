@@ -1,15 +1,11 @@
-<?php require 'website-components/handlers.php'; ?>
+<?php
 
-<!DOCTYPE html>
-<html>
+class Registratie extends View
+{
 
-<?php include 'website-components/head.php'; ?>
-
-<body>
-
-    <?php include 'website-components/header.php'; ?>
-    
-    <main>
+    public function show()
+    {
+        ?>
         <section class="registration-banner">
             <h1><?php echo __('registration_heading'); ?></h1>
         </section>
@@ -27,11 +23,11 @@
 
                 <button type="submit"><?php echo __('register_button'); ?></button>
             </form>
-            <p><?php echo __('already_have_account_text'); ?> <a href="login.php"><?php echo __('login_link'); ?></a></p>
+            <p><?php echo __('already_have_account_text'); ?> <a href="login.php"><?php echo __('login_link'); ?></a>
+            </p>
         </section>
-    </main>
-    <?php include 'website-components/footer.php'; ?>
+        <?php
+    }
+}
 
-</body>
-
-</html>
+new Registratie();
