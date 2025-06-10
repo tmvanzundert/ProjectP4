@@ -1,14 +1,19 @@
-<?php 
-    require_once 'website-components/handlers.php';
-    require_once 'scripts/php/checklogin.php'; 
+<?php
+require_once 'website-components/handlers.php';
 
-    // check if the user is already logged in
-    session_start();
-    if (isset($_SESSION['account_loggedin'])) {
-    header('Location: home.php');
-    exit;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once 'scripts/php/checklogin.php';
+    $login = new CheckLogin($_POST['username'], $_POST['password']);
+    if ($login->checkLogin()) {
+        $_SESSION['username'] = $_POST['username'];
+    } else {
+    $message = "Server Error, Probeer het later nog eens";
+    echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"login.php\"</script>";
+    }
+    
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -24,8 +29,8 @@
             <h1><?php echo __('login_heading'); ?></h1>
         </section>
 
-        <section class="login-form">
-            <form action="scripts/php/checklogin.php" method="post" onsubmit="return checkLogin()">
+        <section class="inlog-form">
+            <form id="loginWindow" action="" method="post">
                 <label for="username"><?php echo __('username_label'); ?></label>
                 <input type="text" id="username" name="username" required>
 

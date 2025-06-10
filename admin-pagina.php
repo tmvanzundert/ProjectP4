@@ -1,4 +1,10 @@
-<?php require_once 'website-components/handlers.php'; ?>
+<?php 
+require_once 'website-components/handlers.php';
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit();
+}
+ ?>
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +19,7 @@
 
         // Create a new instance of the importcsv class and call the formsubmission method
         require_once 'scripts/php/importcsv.php';
-        $env = parse_ini_file('.env');
+        $env = parse_ini_file('./.env');
         $importCSV = new importcsv($env['db_servername'], $env['db_username'], $env['db_password'], $env['db_name']);
         $importCSV->formsubmission();
 

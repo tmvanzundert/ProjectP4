@@ -1,39 +1,31 @@
-<?php require_once 'databaseconnection.php';
+<?php
+require_once 'databaseconnection.php';
 
 class CheckLogin extends DatabaseConnection
 {
+    // Checks the credentials against the database
+    private $inputUsername;
+    private $inputPassword;
 
-    private string $username;
-    private string $password;
-
-    public function __construct(string $username, string $password) {
-        $this->username = $username;
-        $this->password = $password;
+    public function __construct($inputUsername, $inputPassword) {
+        $this->inputUsername = $inputUsername;
+        $this->inputPassword = $inputPassword;
     }
-
-    // Returns an array with the object values
-    public function checkLogin(): array {
-        try {
-            return [
-            'username' => $this->getUsername(),
-            'password' => $this->getPassword()
-        ];
-        } 
-        catch (Exception $e) {
-            return [
-                'error' => 'An error occurred while checking login: ' . $e->getMessage()
-            ];
+    public function checkLogin(): bool {
+        
+        $env = parse_ini_file('./.env');
+        $dbConnection = new DatabaseConnection($env['db_servername'], $env['db_username'], $env['db_password'], $env['db_name']);
+        $conn = $dbConnection->connect();
+        $sql = "SELECT password FROM User WHERE username = ?";
+        $stmt = $conn->prepare($sql);
+        if (!$stmt) {
+            return false;
         }
+        $stmt->execute([$this->inputUsername]);
+        $hashedPassword = $stmt->fetchColumn();
+        if ($hashedPassword && password_verify($this->inputPassword, $hashedPassword)) {
+            return true;
+        }
+        return false;
     }
-
-    // Get the username from the object
-    public function getUsername(): string {
-        return htmlspecialchars($this->username);
-    }
-
-    // Get the password from the object
-    public function getPassword(): string {
-        return htmlspecialchars($this->password);
-    }
-    
 }
