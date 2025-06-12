@@ -6,8 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $login = new CheckLogin($_POST['username'], $_POST['password']);
     if ($login->checkLogin()) {
         $_SESSION['username'] = $_POST['username'];
-        $message = "Login succesvol, Welkom " . $_SESSION['username'];
-        echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"index.php\" </script>";
+        header("Location: index.php");
     } else {
     $message = "Server Error, Probeer het later nog eens";
     echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"login.php\"</script>";
