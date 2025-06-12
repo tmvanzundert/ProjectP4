@@ -1,4 +1,18 @@
-<?php
+<?php require 'website-components/handlers.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once 'scripts/php/User.php';
+    $register = new User($_POST['username'], $_POST['password'], $_POST['email'], $_POST['address']);
+    if ($register->registerAccount()) {
+        $message = "Account is succesvol aangemaakt. Ga terug naar het login scherm om in te loggen";
+        echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"login.php\" </script>";
+    } else {
+    $message = "Server Error, Probeer het later nog eens";
+    echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"registratie.php\" </script>";
+    }
+
+}
+?>
 
 class Registratie extends View
 {
@@ -11,7 +25,7 @@ class Registratie extends View
         </section>
 
         <section class="registration-form">
-            <form action="scripts/php/registration.php" method="post">
+            <form action="" method="post">
                 <label for="username"><?php echo __('username_label'); ?></label>
                 <input type="text" id="username" name="username" required>
 
@@ -20,6 +34,9 @@ class Registratie extends View
 
                 <label for="password"><?php echo __('password_label'); ?></label>
                 <input type="password" id="password" name="password" required>
+
+                <label for="address">Address</label>
+                <input type="address" id="address" name="address" required>
 
                 <button type="submit"><?php echo __('register_button'); ?></button>
             </form>
