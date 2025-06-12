@@ -1,18 +1,11 @@
 <?php
 require_once 'website-components/handlers.php';
+require_once 'scripts/php/User.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once 'scripts/php/checklogin.php';
-    $login = new CheckLogin($_POST['username'], $_POST['password']);
-    if ($login->checkLogin()) {
-        $_SESSION['username'] = $_POST['username'];
-        header("Location: index.php");
-    } else {
-    $message = "Server Error, Probeer het later nog eens";
-    echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"login.php\"</script>";
-    }
-    
-}
+$username = isset($_POST['username']) ? $_POST['username'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
+$login = new User($username, $password, null, null);
+$login->login()
 ?>
 
 

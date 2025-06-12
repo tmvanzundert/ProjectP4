@@ -1,8 +1,8 @@
 <?php require 'website-components/handlers.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once 'scripts/php/registeraccount.php';
-    $register = new RegisterAccount($_POST['username'], $_POST['password'], $_POST['email'], $_POST['address']);
+    require_once 'scripts/php/User.php';
+    $register = new User($_POST['username'], $_POST['password'], $_POST['email'], $_POST['address']);
     if ($register->registerAccount()) {
         $message = "Account is succesvol aangemaakt. Ga terug naar het login scherm om in te loggen";
         echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"login.php\" </script>";
