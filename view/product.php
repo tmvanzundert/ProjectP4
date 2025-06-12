@@ -9,7 +9,7 @@ class ProductPage extends View
         require_once 'scripts/php/productdatasource.php';
 
         $products = new ProductDataSource();
-        echo $products->defineProducts()[$_GET['product']]->createProduct(true);
+        echo $products->defineProducts()[$_GET['product']]->createProductView(true);
 
     }
 }
