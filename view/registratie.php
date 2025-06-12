@@ -14,18 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+class Registratie extends View
+{
 
-
-<!DOCTYPE html>
-<html>
-
-<?php include 'website-components/head.php'; ?>
-
-<body>
-
-    <?php include 'website-components/header.php'; ?>
-
-    <main>
+    public function show()
+    {
+        ?>
         <section class="registration-banner">
             <h1><?php echo __('registration_heading'); ?></h1>
         </section>
@@ -49,9 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p><?php echo __('already_have_account_text'); ?> <a href="login.php"><?php echo __('login_link'); ?></a>
             </p>
         </section>
-    </main>
-    <?php include 'website-components/footer.php'; ?>
+        <?php
+    }
+}
 
-</body>
-
-</html>
+new Registratie();

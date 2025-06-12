@@ -78,6 +78,8 @@ $translations = [
     'playgreen3_kenmerken' => 'USB-C, Adjustable size, Lasts multiple days, 27,000 mAh',
     'playgreen3_kosten' => 'Available for rent at 8 euros! You can keep the powerbank for four days at this price. After this, a fee of 2 euros per day applies for extra time. Is your powerbank empty and you want a full one? This is possible for an extra 2 euros. Return within a maximum of 30 days!! After this, the powerbank must be purchased.',
 
+    'product_button' => 'Rent Now',
+
     // Services
     'diensten_heading' => 'Our Services',
     'diensten_text1' => 'Are you organizing an event or do you have a space in your office where you would like to offer powerbanks?',
@@ -95,7 +97,7 @@ $translations = [
     'contact_map' => 'View us on the map',
     'contact_send' => 'Send',
 
-    'contactvalidations_success' => 'Your message has been sent successfully!',
+    'contactvalidations_success' => 'Your message has been sent!',
     'contactvalidations_empty' => 'Not all fields are filled in',
     'contactvalidations_invalidemail' => 'Your email address is invalid',
     'contactvalidations_invalidfirstname' => 'Please enter a valid first name',
