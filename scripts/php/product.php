@@ -19,23 +19,7 @@
             $this->Costs = $Costs;
         }
 
-        public function getName(): string {
-            return $this->Name;
-        }
-
-        public function getDescription(): string {
-            return $this->Description;
-        }
-
-        public function getPrice(): float {
-            return $this->Price;
-        }
-
-        public function getImagePath(): string {
-            return $this->ImagePath;
-        }
-
-        public function getSimpleName(): string {
+        private function getSimpleName(): string {
             return strtolower(str_replace(' ', '_', $this->Name));
         }
 
@@ -43,7 +27,7 @@
             return strtolower($this->Name);
         }
 
-        public function createProduct(bool $FullPage = false): string {
+        public function createProductView(bool $FullPage = false): string {
             $productId = $FullPage ? "product-page" : "product";
             $simpleName = $this->getSimpleName();
 
@@ -71,8 +55,8 @@
 
             return "
                 <div id='$productId'>
-                    " . ($FullPage === false ? "<a href='product.php?product=$simpleName'>" : "") . "
-                        " . ($FullPage === true ? "<a href='producten.php' class='back-button'>Terug</a>" : "") . "
+                    " . ($FullPage === false ? "<a href='?view=product&product=$simpleName'>" : "") . "
+                        " . ($FullPage === true ? "<a href='?view=producten' class='back-button'>Terug</a>" : "") . "
                         <h2 id='ProductTitle'>$this->Name</h2>
                         <img id='ProductImage' src='$this->ImagePath' alt='$this->Name'>
                         <span class='ProductPrice'>€" . number_format($this->Price, 2, ',', '.') . "</span>
@@ -81,7 +65,7 @@
                             $extraDescription
                         </div>
                     " . ($FullPage === false ? "</a>" : "") . "
-                    <button class='ProductButton' onclick='window.location.href=\"bestellen.php?product=$simpleName\"'>Huur Nu</button>
+                    <button class='ProductButton' onclick='window.location.href=\"?view=bestellen&product=$simpleName\"'>" . __('product_button') . "</button>
                 </div>
             ";
         }

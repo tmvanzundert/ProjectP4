@@ -18,7 +18,7 @@ class Producten extends View
             <div class="search">
                 <input required type="search" name="search" placeholder="Search..." oninput="setErrorEmptyInputbox('search')">
                 <button type="reset"></button>
-                <a href="producten.php" class="reset-button"
+                <a href="?view=producten" class="reset-button"
                     onclick="document.getElementsByName('search')[0].value = '';">Reset</a>
             </div>
             <button type="submit">Search</button>

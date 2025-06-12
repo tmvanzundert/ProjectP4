@@ -63,7 +63,7 @@
         // Sets the POST array to null to prevent resubmission on page refresh
         public function setPostToNull() {
             if ($this->isSubmitted()) {
-                header("Location: " . $_SERVER['PHP_SELF']);
+                header("Location: ?view=contact");
                 exit;
             }
         }

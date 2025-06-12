@@ -1,6 +1,6 @@
 <?php
 
-class Product extends View
+class ProductPage extends View
 {
     public function show()
     {
@@ -14,4 +14,4 @@ class Product extends View
     }
 }
 
-new Product();
+new ProductPage();

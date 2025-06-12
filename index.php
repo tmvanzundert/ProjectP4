@@ -5,7 +5,8 @@ require_once 'framework/controller.php';
 require_once 'framework/connector.php';
 require_once 'framework/view.php';
 
-$view = filter_input(INPUT_GET, 'view') ?? 'Home';
+$view = filter_input(INPUT_GET, 'view') ?? 'home';
+$_SESSION['view'] = $view;
 
 ?>
 
@@ -18,12 +19,11 @@ $view = filter_input(INPUT_GET, 'view') ?? 'Home';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Huur een powerbank bij de populairste events in Nederland. Altijd Opgeladen, Altijd Onderweg.">
+    <title><?= ucfirst(strtolower($view)); ?> - Plug & Play</title>
 
     <!-- Import the Style and JavaScript functions -->
     <link rel="stylesheet" href="css/main.css">
 
-    <!-- Set the title of the page automatically -->
-    <script>setMainTitle(" - Plug & Play");</script>
     <script src="scripts/js/info.js"></script>
 </head>
 
@@ -31,7 +31,9 @@ $view = filter_input(INPUT_GET, 'view') ?? 'Home';
 
     <header>
         <!-- Display the logo and the navbar at the top of the website -->
-        <img src="./images/header/logo.png" alt="Logo Plug & Play">
+         <a href="?view=home" aria-label="Home">
+            <img src="images/header/logo.png" alt="Logo Plug & Play" class="logo">
+        </a>
         <nav>
             <ul>
                 <?php
@@ -41,7 +43,7 @@ $view = filter_input(INPUT_GET, 'view') ?? 'Home';
                     __('nav_about') => 'over-ons',
                     __('nav_products') => 'producten',
                     __('nav_contact') => 'contact',
-                    __('nav_Admin') => 'admin-pagina',
+                    __('nav_admin') => 'admin-pagina',
                     __('nav_login') => 'login'
                 ];
 

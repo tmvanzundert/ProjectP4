@@ -5,6 +5,9 @@ $translations = [
     'nav_about' => 'Over Ons',
     'nav_products' => 'Producten en Diensten',
     'nav_contact' => 'Contact',
+
+    'nav_admin' => 'Admin',
+    'nav_login' => 'Login',
     
     // Common elements
     'copyright' => 'Alle rechten voorbehouden',
@@ -75,6 +78,8 @@ $translations = [
     'playgreen3_kenmerken' => 'USB-C, Formaat kan wijzigen, Gaat meerdere dagen mee, 27.000 mAh',
     'playgreen3_kosten' => 'Te huren voor 8 euro! De powerbank mag je vier dagen houden voor deze prijs. Hierna geldt een bedrag van 2 euro per dag dat je extra moet betalen. Is je powerbank leeg en wil je een volle? Dit kan, dit kost 2 euro extra. Inleveren na maximaal 30 dagen!! Hierna moet de powerbank overgekocht worden.',
 
+    'product_button' => 'Huur Nu',
+
     // Diensten
     'diensten_heading' => 'Onze Diensten',
     'diensten_text1' => 'Organiseer jij een evenement of heb jij een ruimte in jou kantoor waar je graag powerbanks aan wilt bieden?',
@@ -92,7 +97,7 @@ $translations = [
     'contact_map' => 'Bekijk ons op de kaart',
     'contact_send' => 'Verstuur',
 
-    'contactvalidations_success' => 'Je bericht is met succes verzonden!',
+    'contactvalidations_success' => 'Je bericht is verzonden!',
     'contactvalidations_empty' => 'Niet alle velden zijn ingevuld',
     'contactvalidations_invalidemail' => 'Je e-mailadres is ongeldig',
     'contactvalidations_invalidfirstname' => 'Voer een geldige voornaam in',
