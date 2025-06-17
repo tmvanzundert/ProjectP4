@@ -7,6 +7,7 @@ $translations = [
     'nav_contact' => 'Contact',
     'nav_admin' => 'Admin',
     'nav_login' => 'Login',
+    'nav_logout' => 'Logout',
     
     // Common elements
     'copyright' => 'Alle rechten voorbehouden',

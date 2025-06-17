@@ -7,4 +7,6 @@ abstract class Controller
         header('location: ?' . $this->run());
         exit;
     }
+
+    abstract protected function run();
 }

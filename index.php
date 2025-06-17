@@ -43,9 +43,10 @@ $_SESSION['view'] = $view;
                     __('nav_about') => 'over-ons',
                     __('nav_products') => 'producten',
                     __('nav_contact') => 'contact',
-                    __('nav_admin') => 'admin-pagina',
-                    __('nav_login') => 'login'
                 ];
+                if (isset($_SESSION['loggedin'])) {
+                    $navLinks[__('nav_admin')] = 'admin-pagina';
+                }
 
                 // Render navigation links
                 foreach ($navLinks as $navLabel => $navItem): ?>
@@ -64,8 +65,13 @@ $_SESSION['view'] = $view;
                     <?= $code ?>
                 </a>
             <?php endforeach; ?>
+            <?php if (isset($_SESSION['username'])): ?>
+                <a class="log-btn" href="?view=logout"><?php echo __('nav_logout'); ?></a>
+            <?php else: ?>
+                <a class="log-btn" href="?view=login"><?php echo __('nav_login'); ?></a>
+            <?php endif; ?>
         </div>
-    </header>
+        </header>
 
     <main>
 

@@ -1,5 +1,10 @@
 <?php
-require_once 'scripts/php/checklogin.php';
+require_once './scripts/php/User.php';
+
+$username = isset($_POST['username']) ? $_POST['username'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
+$login = new User($username, $password, null, null);
+$login->login();
 
 class LoginPage extends View
 {
@@ -12,7 +17,7 @@ class LoginPage extends View
         </section>
 
         <section class="login-form">
-            <form action="scripts/php/checklogin.php" method="post" onsubmit="return checkLogin()">
+            <form action="" method="post">
                 <label for="username"><?= __('username_label'); ?></label>
                 <input type="text" id="username" name="username" required>
 
@@ -24,10 +29,6 @@ class LoginPage extends View
             <p><?= __('no_account_text'); ?> <a href="registratie.php"><?= __('register_link'); ?></a></p>
         </section>
         <?php
-    }
-    function checkLogin()
-    {
-        return true;
     }
 }
 
