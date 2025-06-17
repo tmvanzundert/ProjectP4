@@ -1,18 +1,10 @@
-<?php require 'website-components/handlers.php';
+<?php require './scripts/php/User.php';
+$username = isset($_POST['username']) ? $_POST['username'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
+$email = isset($_POST['email']) ? $_POST['email'] : null;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once 'scripts/php/User.php';
-    $register = new User($_POST['username'], $_POST['password'], $_POST['email'], $_POST['address']);
-    if ($register->registerAccount()) {
-        $message = "Account is succesvol aangemaakt. Ga terug naar het login scherm om in te loggen";
-        echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"login.php\" </script>";
-    } else {
-    $message = "Server Error, Probeer het later nog eens";
-    echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"registratie.php\" </script>";
-    }
-
-}
-?>
+$register = new User($username, $password, $email);
+$register->registerAccount();
 
 class Registratie extends View
 {
@@ -35,12 +27,9 @@ class Registratie extends View
                 <label for="password"><?php echo __('password_label'); ?></label>
                 <input type="password" id="password" name="password" required>
 
-                <label for="address">Address</label>
-                <input type="address" id="address" name="address" required>
-
                 <button type="submit"><?php echo __('register_button'); ?></button>
             </form>
-            <p><?php echo __('already_have_account_text'); ?> <a href="login.php"><?php echo __('login_link'); ?></a>
+            <p><?php echo __('already_have_account_text'); ?> <a href="?view=login"><?php echo __('login_link'); ?></a>
             </p>
         </section>
         <?php

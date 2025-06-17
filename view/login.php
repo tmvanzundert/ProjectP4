@@ -3,7 +3,7 @@ require_once './scripts/php/User.php';
 
 $username = isset($_POST['username']) ? $_POST['username'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
-$login = new User($username, $password, null, null);
+$login = new User($username, $password, null);
 $login->login();
 
 class LoginPage extends View
@@ -26,7 +26,7 @@ class LoginPage extends View
 
                 <button type="submit"><?= __('login_button'); ?></button>
             </form>
-            <p><?= __('no_account_text'); ?> <a href="registratie.php"><?= __('register_link'); ?></a></p>
+            <p><?= __('no_account_text'); ?> <a href="?view=registratie"><?= __('register_link'); ?></a></p>
         </section>
         <?php
     }

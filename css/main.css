@@ -1140,6 +1140,107 @@ img.fade-out {
     flex-direction: column;
 }
 
+/*
+    ///////////////>
+    //>
+    //> SECTION 8.1:    Login & Registration Forms - Modern Styling
+    //> DESCRIPTION:    Stylish, modern forms for login and registration
+    //> CONTENTS:       Applies to .login-form, .registration-form, and their children
+    //>
+    ///////////////>
+*/
+
+.login-form, .registration-form {
+    background: rgba(82, 81, 81, 0.85);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    padding: 40px 30px 30px 30px;
+    max-width: 400px;
+    margin: 40px auto 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding-left: 5%;
+    padding-right: 5%;
+    /* box-sizing: border-box; */
+}
+
+@media (max-width: 500px) {
+    .login-form, .registration-form {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+
+.login-form h1, .registration-form h1 {
+    color: #D4AF37;
+    font-size: 2.2rem;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.login-form label, .registration-form label {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 6px;
+    align-self: flex-start;
+}
+
+.login-form input, .registration-form input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #D4AF37;
+    border-radius: 7px;
+    background: #f7f7f7;
+    color: #525151;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    transition: border 0.2s;
+}
+
+.login-form input:focus, .registration-form input:focus {
+    border: 1.5px solid #177AFF;
+    outline: none;
+}
+
+.login-form button, .registration-form button {
+    width: 100%;
+    padding: 12px 0;
+    background: #D4AF37;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(31, 38, 135, 0.10);
+    transition: background 0.3s, color 0.3s;
+    margin-top: 10px;
+}
+
+.login-form button:hover, .registration-form button:hover {
+    background: #177AFF;
+    color: #525151;
+}
+
+.login-form p, .registration-form p {
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.login-form a, .registration-form a {
+    color: #D4AF37;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.login-form a:hover, .registration-form a:hover {
+    color: #177AFF;
+}
 
 /*
     ///////////////>

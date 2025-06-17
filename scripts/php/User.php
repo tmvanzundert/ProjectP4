@@ -7,14 +7,12 @@ class User Extends connector
     private $username;
     private $password;
     private $email;
-    private $address;
-    public function __construct($username, $password, $email, $address = '')
+    public function __construct($username, $password, $email)
     {
         parent::__construct();
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
-        $this->address = $address;
     }
 
     public function checkLogin(): bool
@@ -33,15 +31,17 @@ class User Extends connector
     public function login(): bool
     {
         $checkLogin = $this->checkLogin();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $checkLogin) {
-            $this->setloggedin();
-            $message = "Logged in";
-            echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"login.php\"</script>";
-            header("Location: index.php");
-            exit;
-        } else if ($checkLogin) {
-            $message = "Server Error, Probeer het later nog eens";
-            echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"login.php\"</script>";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if ($checkLogin) {
+                $this->setloggedin();
+                $message = "Successfully logged in.";
+                echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"?view=admin-pagina\";</script>";
+                exit;
+            } else {
+                $message = "Wrong credentials.";
+                echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"?view=login\";</script>";
+                exit;
+            }
         }
         return false;
     }
@@ -56,13 +56,28 @@ class User Extends connector
         return false;
     }
 
-    public function registerAccount(): bool
+    // Renamed to createAccount to better reflect its purpose
+    public function createAccount(): bool
     {
-
-        $sql = "INSERT INTO User (Username, Password, EmailAddress, Address) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO User (Username, Password, EmailAddress) VALUES (?, ?, ?)";
         $stmt = $this->prepare($sql);
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
-        $stmt->execute([$this->username, $hashedPassword, $this->email, $this->address]);
-        return True;
+        $stmt->execute([$this->username, $hashedPassword, $this->email]);
+        return true;
+    }
+
+    public function registerAccount(): void
+    {  
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if ($this->createAccount()) {
+                $message = "Account is succesvol aangemaakt. Ga terug naar het login scherm om in te loggen";
+                echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"?view=login\" </script>";
+                exit;
+            } else {
+                $message = "Server Error, Probeer het later nog eens";
+                echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"?view=registratie\" </script>";
+                exit;
+            }
+        }
     }
 }
