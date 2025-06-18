@@ -78,6 +78,10 @@ $translations = [
     'playgreen3_kenmerken' => 'USB-C, Formaat kan wijzigen, Gaat meerdere dagen mee, 27.000 mAh',
     'playgreen3_kosten' => 'Te huren voor 8 euro! De powerbank mag je vier dagen houden voor deze prijs. Hierna geldt een bedrag van 2 euro per dag dat je extra moet betalen. Is je powerbank leeg en wil je een volle? Dit kan, dit kost 2 euro extra. Inleveren na maximaal 30 dagen!! Hierna moet de powerbank overgekocht worden.',
 
+    'productUsage' => 'Gebruik',
+    'productSpecifications' => 'Specificaties',
+    'productCosts' => 'Kosten',
+
     'product_button' => 'Huur Nu',
 
     // Diensten
