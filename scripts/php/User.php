@@ -59,7 +59,7 @@ class User Extends connector
     // Renamed to createAccount to better reflect its purpose
     public function createAccount(): bool
     {
-        $sql = "INSERT INTO User (Username, Password, EmailAddress) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO User (Username, Password, EmailAddress, Address, DateOfBirth, FirstName, LastName, PhoneNumber, Role) VALUES (?, ?, ?, '', '1999-01-01', '', '', '', 'user')";
         $stmt = $this->prepare($sql);
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
         $stmt->execute([$this->username, $hashedPassword, $this->email]);
