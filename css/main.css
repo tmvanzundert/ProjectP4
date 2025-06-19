@@ -568,6 +568,11 @@ img.fade-out {
     text-shadow:  #535353 0px 0px 10px;    
 }
 
+.search input[type="search"]:hover:not(:focus) {
+    background-color: #e0e0e0;
+    transition: background-color 0.3s ease;
+}
+
 .search button[type="submit"] {
     width: 80px;
     border-radius: 4px;

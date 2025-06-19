@@ -14,7 +14,7 @@ class Producten extends View
 
         ?>
         
-        <form class="search-form" action="" method="post">
+        <form action="" method="post">
             <div class="search">
                 <input required type="search" name="search" placeholder="Search..." oninput="setErrorEmptyInputbox('search')">
                 <button type="reset"></button>
