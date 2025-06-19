@@ -80,6 +80,7 @@
 
             if ($count === 0) {
                 $this->logMissingProduct($Search);
+                echo "<p class='error-message'>" . __('productNotFound') . "</p>";
             }
         }
     }

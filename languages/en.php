@@ -85,6 +85,8 @@ $translations = [
 
     'product_button' => 'Rent Now',
 
+    'productNotFound' => 'Product not found',
+
     // Services
     'diensten_heading' => 'Our Services',
     'diensten_text1' => 'Are you organizing an event or do you have a space in your office where you would like to offer powerbanks?',
