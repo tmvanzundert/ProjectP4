@@ -112,7 +112,9 @@ $translations = [
     'contactvalidations_invalidmessage' => 'Please more information to your message so your message contains more than 20 characters',
     
     // Admin page
-    
+    'csv_import_btn' => 'CSV Import',
+    'search_management_btn' => 'Search Management',
+
     // Login page
     'login_heading' => 'Login to your account',
     'username_label' => 'Username',
