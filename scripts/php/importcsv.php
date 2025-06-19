@@ -1,7 +1,7 @@
 <?php
 require_once 'framework/connector.php';
 
-class importcsv extends Connector
+class importcsv
 {
 
 
@@ -11,12 +11,12 @@ class importcsv extends Connector
 
         // Get a secure database connection
         // Set database connection parameters before connecting
-        // try {
-        //     $conn = $this->connect();
-        // } 
-        // catch (Exception $e) {
-        //     return "Connection failed";
-        // }
+        try {
+            $conn = new Connector();
+        } 
+        catch (Exception $e) {
+            return "Connection failed";
+        }
 
 
         // Open the CSV file and skip the first line
@@ -25,7 +25,7 @@ class importcsv extends Connector
 
         // Prepare the SQL query
         $sql = "UPDATE Product SET Availability = Availability + 1 WHERE ProductName = ?";
-        $stmt = $this->prepare($sql);
+        $stmt = $conn->prepare($sql);
 
         // Loop through each row in the CSV and execute the statement
         while (($row = fgetcsv($file, 10000, ",")) !== false) {
