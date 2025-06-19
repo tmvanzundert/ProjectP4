@@ -29,7 +29,7 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #9c9c9c;
+    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
     color: #ffffff;
     font-size: larger;
     min-height: 100vh;
@@ -449,7 +449,7 @@ img.fade-out {
     gap: 20px;
     padding: 100px;
     margin-bottom: 1rem;
-    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
+    background: linear-gradient(to bottom, #b6d6c1 0%, #03882f 200%);
 }
 
 .duurzaamheid-box {
@@ -505,7 +505,6 @@ img.fade-out {
     gap: 1vw;
     padding: 10vh 10vh;
     margin-bottom: 1rem;
-    background: linear-gradient(to top, #b3b3b3 0%, #D4AF37 200%);
 }
 
 .oprichters-box {
@@ -569,13 +568,6 @@ img.fade-out {
     text-shadow:  #535353 0px 0px 10px;    
 }
 
-.section-producten {
-    gap: 20px;
-    padding: 10%;
-    margin-bottom: 1rem;
-    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
-}
-
 .search button[type="submit"] {
     width: 80px;
     border-radius: 4px;
@@ -584,7 +576,6 @@ img.fade-out {
     background-color: #d4af37;
     padding: 12px 0px 12px 0px;
     cursor: pointer;
-    /* Default margin for empty search */
     margin-left: 10px;
 }
 
@@ -632,7 +623,8 @@ img.fade-out {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: start;
-    padding: 1%;
+    padding: 11%;
+    gap: 20px;
 }
 
 #product {
@@ -728,7 +720,6 @@ img.fade-out {
     gap: 20px;
     padding: 10px 10%;
     margin-bottom: 1rem;
-    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
 }
 
 #product-page h1 {
@@ -926,7 +917,6 @@ img.fade-out {
     gap: 20px;
     padding: 10vh;
     margin-bottom: 1rem;
-    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
 }
 
 .contact-info h2,
@@ -1141,7 +1131,6 @@ img.fade-out {
     gap: 20px;
     padding: 10vh;
     margin-bottom: 1rem;
-    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
 }
 
 .inlog-info-form {
@@ -1177,7 +1166,6 @@ img.fade-out {
     gap: 20px;
     padding: 10vh;
     margin-bottom: 1rem;
-    background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
 }
 
 .registration-info-form {
