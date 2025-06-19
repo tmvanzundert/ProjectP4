@@ -43,6 +43,8 @@ class Beheerder extends View
                     data-target="content1"><?php echo __('csv_import_btn'); ?></button>
                 <button class="logout-button content-btn"
                     data-target="content2"><?php echo __('search_management_btn'); ?></button>
+                <button class="logout-button content-btn"
+                    data-target="content3"><?php echo __('upload_image_btn'); ?></button>
             </div>
 
             <div id="content1" class="content-block active">
@@ -72,6 +74,10 @@ class Beheerder extends View
 
             <div id="content2" class="content-block">
                 <h2>Content Block 2</h2>
+            </div>
+
+            <div id="content3" class="content-block">
+                <h2>Content Block 3</h2>
             </div>
 
             <script>

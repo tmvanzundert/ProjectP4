@@ -116,6 +116,7 @@ $translations = [
     // Admin page
     'csv_import_btn' => 'CSV Import',
     'search_management_btn' => 'Search Management',
+    'upload_image_btn' => 'Upload Image',
 
     // Login page
     'login_heading' => 'Login to your account',
