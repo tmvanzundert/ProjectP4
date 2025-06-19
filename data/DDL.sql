@@ -97,6 +97,13 @@ CREATE TABLE
         `Quantity` INT,
         PRIMARY KEY (`ProductName`, `ReferenceNumber`)
     );
+
+-- Log not existing products
+CREATE TABLE
+    IF NOT EXISTS `LogProduct` (
+        `ProductName` VARCHAR(50) PRIMARY KEY,
+        `Timestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
     
 
 -- Because of error, these constraints are added to the tables after the CREATE: (errno: 150 "Foreign key constraint is incorrectly formed")

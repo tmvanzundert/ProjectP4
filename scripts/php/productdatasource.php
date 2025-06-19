@@ -42,12 +42,24 @@
             }
         }
 
+        private function logMissingProduct(string $productName): void {
+            $db = new Connector();
+            $string = "INSERT INTO LogProduct (ProductName) VALUES ('$productName')";
+            $db->execute($string);
+        }
+
         public function searchProducts(string $Search): void {
             $products = self::defineProducts();
+            $count = 0;
             foreach ($products as $product) {
                 if (strpos($product->getSearchableName(), strtolower($Search)) !== false) {
                     echo $product->createProductView();
+                    $count++;
                 }
+            }
+
+            if ($count === 0) {
+                $this->logMissingProduct($Search);
             }
         }
     }
