@@ -1101,6 +1101,33 @@ img.fade-out {
 	margin-bottom: 20px;
 }
 
+.button-container {
+    padding: 10px;
+}
+
+.button-container button {
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: rgba(82, 81, 81, 0.5);
+    font-size: 16px;
+    cursor: pointer;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.button-container button.active {
+    background-color: #D4AF37;
+    color: #525151;
+    cursor: default;
+}
+
+.button-container button:hover:not(.active) {
+    background-color: rgba(212, 175, 55, 0.7);
+    color: #ffffff;
+}
+
 /*
     ///////////////>
     //>
