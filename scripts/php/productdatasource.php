@@ -42,8 +42,28 @@
             }
         }
 
-        private function logMissingProduct(string $productName): void {
+        private function getProductLog() {
             $db = new Connector();
+            $string = "SELECT ProductName, Count FROM LogProduct";
+            $result = $db->fetchAll($string);
+            return $result;
+        }
+
+        private function logMissingProduct(string $productName): void {
+
+            $db = new Connector();
+            $loggedProducts = $this->getProductLog();
+            if (is_iterable($loggedProducts)) {
+                foreach ($loggedProducts as $loggedProduct) {
+                    if ($loggedProduct['ProductName'] === $productName) {
+                        // If the product is already logged, increment the count
+                        $string = "UPDATE LogProduct SET Count = Count + 1 WHERE ProductName = '$productName'";
+                        $db->execute($string);
+                        return;
+                    }
+                }
+            }
+
             $string = "INSERT INTO LogProduct (ProductName) VALUES ('$productName')";
             $db->execute($string);
         }

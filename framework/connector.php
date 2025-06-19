@@ -53,4 +53,10 @@ class Connector
         return $stmt->execute($args);
     }
 
+    public function fetchAll($sql, $args = []) {
+        $stmt = $this->prepare($sql);
+        $stmt->execute($args);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
