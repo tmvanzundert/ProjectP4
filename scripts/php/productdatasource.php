@@ -36,7 +36,7 @@
 
         public function getProducts(bool $FullPage = false): void {
 
-            $products = self::defineProducts();
+            $products = $this->defineProducts();
             foreach ($products as $product) {
                 echo $product->createProductView($FullPage);
             }
@@ -69,7 +69,7 @@
         }
 
         public function searchProducts(string $Search): void {
-            $products = self::defineProducts();
+            $products = $this->defineProducts();
             $count = 0;
             foreach ($products as $product) {
                 if (strpos($product->getSearchableName(), strtolower($Search)) !== false) {
