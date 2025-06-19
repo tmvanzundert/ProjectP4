@@ -115,7 +115,8 @@ $translations = [
 
     // Admin page
     'csv_import_btn' => 'CSV Import',
-    'search_management_btn' => 'Zoekbeheer',
+    'search_management_btn' => 'Zoekterm Beheer',
+    'upload_image_btn' => 'Afbeelding Uploaden',
 
     // Login page
     'login_heading' => 'Log in op je account',
