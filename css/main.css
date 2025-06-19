@@ -61,7 +61,7 @@ footer {
     width: 40px;
     max-width: 400px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
+    border: none;
     border-radius: 4px;
     font-size: 16px;
     background-color: white;
@@ -105,6 +105,7 @@ footer {
 	font-size: 11px;
 	cursor: pointer;
 }
+
 .search input[type="search"]:not(:valid) ~ button[type="reset"] {
     display: none;
 }
@@ -231,6 +232,7 @@ nav a:hover {
 .lang-option.active {
     background-color: #D4AF37;
     color: #525151;
+    cursor: default;
 }
 
 /* 
@@ -572,6 +574,47 @@ img.fade-out {
     padding: 10%;
     margin-bottom: 1rem;
     background: linear-gradient(to bottom, #b3b3b3 0%, #D4AF37 200%);
+}
+
+.search button[type="submit"] {
+    width: 80px;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    background-color: #d4af37;
+    padding: 12px 0px 12px 0px;
+    cursor: pointer;
+    /* Default margin for empty search */
+    margin-left: 10px;
+}
+
+/* When the search input is not empty, adjust margin-left */
+.search input[type="search"]:not(:placeholder-shown):not(:invalid) ~ button[type="submit"] {
+    margin-left: -17px;
+}
+
+/* Hide reset button when searchbox is not focused */
+.search input[type="search"]:not(:focus) ~ button[type="reset"] {
+    opacity: 0;
+}
+
+.search button[type="submit"]:hover {
+    background-color: rgba(212, 175, 55, 0.7);
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.search a {
+    text-decoration: none;
+    color: #D4AF37;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.search a:hover {
+    color: #177AFF;
 }
 
 /*

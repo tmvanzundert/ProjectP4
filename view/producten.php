@@ -18,10 +18,10 @@ class Producten extends View
             <div class="search">
                 <input required type="search" name="search" placeholder="Search..." oninput="setErrorEmptyInputbox('search')">
                 <button type="reset"></button>
+                <button type="submit">Search</button>
                 <a href="?view=producten" class="reset-button"
                     onclick="document.getElementsByName('search')[0].value = '';">Reset</a>
             </div>
-            <button type="submit">Search</button>
         </form>
         <section class="section-producten">
             <div class="product-container">
