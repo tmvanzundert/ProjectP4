@@ -101,7 +101,8 @@ CREATE TABLE
 -- Log not existing products
 CREATE TABLE
     IF NOT EXISTS `LogProduct` (
-        `ProductName` VARCHAR(50) PRIMARY KEY,
+        `LogID` INT AUTO_INCREMENT PRIMARY KEY,
+        `ProductName` VARCHAR(50),
         `Timestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
     
