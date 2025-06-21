@@ -33,7 +33,7 @@ $translations = [
     'salespitch_text4' => 'Ben je onderweg of op een evenement, met Plug & Play heb je altijd een oplossing binnen handbereik om je mobiele apparaten op te laden.',
 
     // Over Ons
-    'visie_heading' => 'Onzie Visie',
+    'visie_heading' => 'Onze Visie',
     'visie_text1' => 'Plug & Play streeft naar een toekomst waarin het opladen van een mobiele apparaat net zo vanzelfsprekend en toegankelijk is als het tanken voor je auto. In een wereld die steeds sneller en digitaler wordt ben je afhankelijk van mobiele technologie. Plug & Play zorgt ervoor dat iedereen altijd verbonden en onderweg kan blijven, waar je ook bent. Door innovatieve oplossingen te bieden voor zowel persoonlijke als zakelijke gebruikers, streven we ernaar om een betrouwbare partner te worden voor het opladen van apparaten in uiteenlopende omgevingen, van evenementen tot publieke ruimtes. Onze visie is om technologie, duurzaamheid en gemak te combineren, zodat iedereen in de snel veranderende wereld zorgeloos bereikbaar en onderweg kan blijven. Zonder de zorg voor het milieu.',
 
     'duurzaamheid_heading' => 'Duurzaamheid',
