@@ -43,8 +43,7 @@ class Beheerder extends View
                     data-target="content1"><?php echo __('csv_import_btn'); ?></button>
                 <button class="logout-button content-btn"
                     data-target="content2"><?php echo __('search_management_btn'); ?></button>
-                <button class="logout-button content-btn"
-                    data-target="content3"><?php echo __('upload_image_btn'); ?></button>
+                <button class="logout-button content-btn" data-target="content3"><?php echo __('upload_image_btn'); ?></button>
             </div>
 
             <div id="content1" class="content-block active">
@@ -60,12 +59,10 @@ class Beheerder extends View
                     <form action="" method="post" name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data"
                         onsubmit="return validateFile()">
                         <div Class="input-row">
-                            <label>Choose your file. <a href="website-components/import-template.csv" download>Download
-                                    template</a></label>
+                            <label><?php echo __('select_csv_label'); ?><a href="website-components/import-template.csv" download><?php echo __('select_csv_label_download'); ?></a></label>
                             <input type="file" name="file" id="file" class="file" accept=".csv,.xls,.xlsx">
                             <div class="import">
-                                <button type="submit" id="submit" name="import" class="btn-submit">Import
-                                    CSV and Save Data</button>
+                                <button type="submit" id="submit" name="import" class="btn-submit"><?php echo __('csv_upload_button'); ?></button>
                             </div>
                         </div>
                     </form>
@@ -77,7 +74,36 @@ class Beheerder extends View
             </div>
 
             <div id="content3" class="content-block">
-                <h2>Content Block 3</h2>
+                <?php
+                require_once 'scripts/php/imageupload.php';
+                $imageUpload = new ImageUpload();
+                $imageUpload->formSubmission();
+                $folders = $imageUpload->getImageFolders();
+                ?>
+
+                <div class="csv-upload">
+                    <form action="" method="post" name="frmImageUpload" id="frmImageUpload" enctype="multipart/form-data">
+                        <div class="input-row">
+                            <label><?php echo __('select_image_label'); ?></label>
+                            <input type="file" name="imageFile" id="imageFile" class="file" accept=".jpg,.jpeg,.png,.gif">
+                        </div>
+
+                        <div class="input-row">
+                            <label><?php echo __('select_folder_label'); ?></label>
+                            <select name="targetFolder" class="textbox">
+                                <?php foreach ($folders as $folder): ?>
+                                    <option value="<?php echo $folder; ?>"><?php echo $folder; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="import">
+                            <button type="submit" id="upload" name="upload" class="btn-submit">
+                                <?php echo __('upload_button'); ?>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <script>

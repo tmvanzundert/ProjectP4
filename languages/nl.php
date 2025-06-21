@@ -8,10 +8,10 @@ $translations = [
     'nav_admin' => 'Admin',
     'nav_login' => 'Login',
     'nav_logout' => 'Logout',
-    
+
     // Common elements
     'copyright' => 'Alle rechten voorbehouden',
-    
+
     // Home page
     'welcome' => 'Welkom bij Plug & Play',
 
@@ -112,11 +112,18 @@ $translations = [
     'contactvalidations_invalidsubject' => 'Voer een onderwerp van 3 karakters of meer in',
     'contactvalidations_invalidmessage' => 'Voeg meer informatie toe aan je bericht zodat je bericht meer dan 20 karakters lang is',
 
-
     // Admin page
     'csv_import_btn' => 'CSV Import',
     'search_management_btn' => 'Zoekterm Beheer',
     'upload_image_btn' => 'Afbeelding Uploaden',
+
+    'select_csv_label' => 'Selecteer een CSV-bestand om te uploaden: ',
+    'select_csv_label_download' => 'download template',
+    'csv_upload_button' => 'CSV Uploaden',
+
+    'select_image_label' => 'Selecteer een afbeelding om te uploaden:',
+    'select_folder_label' => 'Selecteer doelmap:',
+    'upload_button' => 'Afbeelding Uploaden',
 
     // Login page
     'login_heading' => 'Log in op je account',

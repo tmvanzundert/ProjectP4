@@ -8,13 +8,13 @@ $translations = [
     'nav_admin' => 'Admin',
     'nav_login' => 'Login',
     'nav_logout' => 'Logout',
-    
+
     // Common elements
     'copyright' => 'All rights reserved',
-    
+
     // Home page
     'welcome' => 'Welcome to Plug & Play',
-    
+
     'introduction_heading' => 'Always Charged, Always On The Go',
     'introduction_text1' => 'Today we live in a world where mobile devices are essential for our daily routines. You want to be reachable at all times, at work, at events and of course in your free time.',
     'introduction_text2' => 'But what if your battery dies? Exactly at the moment when you need your mobile device the most!',
@@ -112,11 +112,19 @@ $translations = [
     'contactvalidations_invalidphonenumber' => 'Your phone number is invalid',
     'contactvalidations_invalidsubject' => 'Please enter a subject of 3 characters or more',
     'contactvalidations_invalidmessage' => 'Please more information to your message so your message contains more than 20 characters',
-    
+
     // Admin page
     'csv_import_btn' => 'CSV Import',
     'search_management_btn' => 'Search Management',
     'upload_image_btn' => 'Upload Image',
+
+    'select_csv_label' => 'Choose your file. ',
+    'select_csv_label_download' => 'download template',
+    'csv_upload_button' => 'Upload CSV',
+
+    'select_image_label' => 'Select an image to upload:',
+    'select_folder_label' => 'Select destination folder:',
+    'upload_button' => 'Upload Image',
 
     // Login page
     'login_heading' => 'Login to your account',
