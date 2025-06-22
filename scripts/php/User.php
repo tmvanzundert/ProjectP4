@@ -129,4 +129,12 @@ class User Extends connector
         }
         return [];
     }
+
+    public function getName(): string {
+        $userDetails = $this->getUserDetails();
+        if (!empty($userDetails)) {
+            return $userDetails['FirstName'] . ' ' . $userDetails['LastName'];
+        }
+        return '';
+    }
 }

@@ -34,6 +34,11 @@
             ];
         }
 
+        public function getName(string $productName): string {
+            $products = $this->defineProducts();
+            return $products[$productName]->getName() ?? '';
+        }
+
         public function getProducts(bool $FullPage = false): void {
 
             $products = $this->defineProducts();

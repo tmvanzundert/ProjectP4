@@ -148,6 +148,17 @@ $translations = [
     'register_button' => 'Register',
 
     'empty_fields_error' => 'Please fill in all fields',
-    'wrong_credentials_error' => 'Wrong credentials, please try again'
+    'wrong_credentials_error' => 'Wrong credentials, please try again',
+
+    // Basket
+    'bk_title' => 'Basket',
+    'bk_order_success' => 'Your order has been send to us. You will receive an email from us with instructions on how to pay for your order.',
+    'bk_order_failed' => 'An error has occurred while placing your order. Please try again.',
+    'bk_checkout' => 'Checkout',
+    'bk_empty' => 'Your basket is empty',
+    'bk_delete' => 'Delete',
+    'bk_product' => 'Product',
+    'bk_quantity' => 'Quantity',
+    'bk_action' => 'Action',
 ];
 ?>

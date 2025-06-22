@@ -148,6 +148,17 @@ $translations = [
     'register_button' => 'Registreren',
 
     'empty_fields_error' => 'Vul alle velden in',
-    'wrong_credentials_error' => 'Foutieve referenties, probeer het opnieuw'
+    'wrong_credentials_error' => 'Foutieve referenties, probeer het opnieuw',
+
+    // Basket
+    'bk_title' => 'Winkelwagen',
+    'bk_order_success' => 'Uw bestelling is verzonden naar ons. U krijgt van ons een mail met instructies voor het betalen van je bestelling.',
+    'bk_order_failed' => 'Er is een fout opgetreden bij het plaatsen van uw bestelling. Probeer het opnieuw.',
+    'bk_checkout' => 'Afrekenen',
+    'bk_empty' => 'Je winkelwagen is leeg',
+    'bk_delete' => 'Delete',
+    'bk_product' => 'Product',
+    'bk_quantity' => 'Aantal',
+    'bk_actions' => 'Acties',
 ];
 ?>

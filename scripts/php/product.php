@@ -19,6 +19,10 @@
             $this->Costs = $Costs;
         }
 
+        public function getName(): string {
+            return $this->Name;
+        }
+
         private function getSimpleName(): string {
             return strtolower(str_replace(' ', '_', $this->Name));
         }
