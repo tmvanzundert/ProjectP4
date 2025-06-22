@@ -72,7 +72,7 @@
             $products = $this->defineProducts();
             $count = 0;
             foreach ($products as $product) {
-                if (strpos($product->getSearchableName(), strtolower($Search)) !== false) {
+                if (strpos($product->getSearchableName(), strtolower($Search)) !== false || strpos($product->getDescription(), strtolower($Search)) !== false) {
                     echo $product->createProductView();
                     $count++;
                 }

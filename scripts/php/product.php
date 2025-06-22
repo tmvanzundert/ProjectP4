@@ -27,6 +27,10 @@
             return strtolower($this->Name);
         }
 
+        public function getDescription(): string {
+            return $this->Description;
+        }
+
         public function createProductView(bool $FullPage = false): string {
             $productId = $FullPage ? "product-page" : "product";
             $simpleName = $this->getSimpleName();
