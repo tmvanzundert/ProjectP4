@@ -7,6 +7,7 @@ class Contact extends View
     {
 
         require_once 'scripts/php/contactinfo.php';
+        require_once 'scripts/php/mail.php';
 
         // Create the ContactInfo object
         $contactInfo = new ContactInfo(
@@ -23,7 +24,27 @@ class Contact extends View
             $contactFieldsValid = $contactInfo->validateContactInfoFields();
 
             if ($contactFieldsValid === true) {
-                $_SESSION['sendSuccessfully'] = true;
+
+                $message = "
+                <table>
+                    <tr><td><strong>" . __('contact_firstname') . ":</strong></td><td>" . htmlspecialchars($contactInfo->getFirstName()) . "</td></tr>
+                    <tr><td><strong>" . __('contact_lastname') . ":</strong></td><td>" . htmlspecialchars($contactInfo->getLastName()) . "</td></tr>
+                    <tr><td><strong>Email:</strong></td><td><a href='mailto:" . htmlspecialchars($contactInfo->getEmail()) . "'>" . htmlspecialchars($contactInfo->getEmail()) . "</a></td></tr>
+                    <tr><td><strong>" . __('contact_phonenumber') . ":</strong></td><td><a href='tel:" . htmlspecialchars($contactInfo->getPhonenumber()) . "'>" . htmlspecialchars($contactInfo->getPhonenumber()) . "</a></td></tr>
+                </table>
+                <h1>" . __('contact_message') . "</h1>
+                <p>" . nl2br(htmlspecialchars($contactInfo->getMessage())) . "</p>
+                ";
+                
+                $mail = new Mail($contactInfo->getFirstName() . ' ' . $contactInfo->getLastName(),
+                    $contactInfo->getSubject(),
+                    $message);
+                if ($mail->SendMail()) {
+                    $_SESSION['sendSuccessfully'] = true;
+                } else {
+                    $_SESSION['sendSuccessfully'] = false;
+                }
+
                 $contactInfo->setPostToNull();
             }
         } catch (Exception $e) {
