@@ -16,7 +16,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 __('nav_products') => 'producten.php',
                 __('nav_contact') => 'contact.php',
             ];
-            if (isset($_SESSION['username'])) {
+            if (isset($_SESSION['loggedin'])) {
                 $navLinks[__('nav_admin')] = 'admin-pagina.php';
             }
             foreach ($navLinks as $label => $url): ?>
