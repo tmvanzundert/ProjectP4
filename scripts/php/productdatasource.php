@@ -57,15 +57,15 @@
                 foreach ($loggedProducts as $loggedProduct) {
                     if ($loggedProduct['ProductName'] === $productName) {
                         // If the product is already logged, increment the count
-                        $string = "UPDATE LogProduct SET Count = Count + 1 WHERE ProductName = '$productName'";
-                        $db->execute($string);
+                        $string = "UPDATE LogProduct SET Count = Count + 1 WHERE ProductName = ?";
+                        $db->execute($string, [$productName]);
                         return;
                     }
                 }
             }
 
-            $string = "INSERT INTO LogProduct (ProductName) VALUES ('$productName')";
-            $db->execute($string);
+            $string = "INSERT INTO LogProduct (ProductName) VALUES (?)";
+            $db->execute($string, [$productName]);
         }
 
         public function searchProducts(string $Search): void {
