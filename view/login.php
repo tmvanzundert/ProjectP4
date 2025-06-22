@@ -24,6 +24,10 @@ class LoginPage extends View
             }
             
             $_SESSION['isSwitched'] = true;
+
+            // Redirect to avoid resubmission
+            header("Location: " . $_SERVER['REQUEST_URI']);
+            exit;
         }
         else {
             $_SESSION['isSwitched'] = false;
