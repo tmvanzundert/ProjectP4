@@ -110,13 +110,23 @@ class User Extends connector
     }
 
     public function isAdmin(): bool {
-        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+        if (isset($this->username) && $this->username === true) {
             $sql = "SELECT Role FROM User WHERE Username = ?";
             $stmt = $this->prepare($sql);
-            $stmt->execute([$_SESSION['username']]);
+            $stmt->execute([$this->username]);
             $role = $stmt->fetchColumn();
             return $role === 'Super Admin' || $role === 'Administrator';
         }
         return false;
+    }
+
+    public function getUserDetails(): array {
+        if (isset($this->username) && !empty($this->username)) {
+            $sql = "SELECT * FROM User WHERE Username = ?";
+            $stmt = $this->prepare($sql);
+            $stmt->execute([$this->username]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        return [];
     }
 }
