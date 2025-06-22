@@ -75,11 +75,9 @@ class Contact extends View
                 <p>
                     <!-- Display an error message if an error has been returned -->
                     <?php if (isset($errorMessage)): ?>
-                    <div class="error-message">
-                        <p><?= $errorMessage; ?></p>
-                    </div>
+                        <p class="error-message"><?= $errorMessage; ?></p>
                     <!-- Display a success message if all the checks passed -->
-                <?php elseif (isset($_SESSION['sendSuccessfully']) && $_SESSION['sendSuccessfully']): ?>
+                    <?php elseif (isset($_SESSION['sendSuccessfully']) && $_SESSION['sendSuccessfully']): ?>
                     <div class="success-message">
                         <p><?= __('contactvalidations_success'); ?></p>
                     </div>

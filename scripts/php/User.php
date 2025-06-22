@@ -17,6 +17,11 @@ class User Extends connector
 
     public function checkLogin(): bool
     {
+
+        if ($this->isEmptyLogin()) {
+            return false;
+        }
+
         $sql = "SELECT password FROM User WHERE username = ?";
         $stmt = $this->prepare($sql);
         $stmt->execute([$this->username]);
@@ -31,16 +36,10 @@ class User Extends connector
     public function login(): bool
     {
         $checkLogin = $this->checkLogin();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($this->isSubmitted()) {
             if ($checkLogin) {
                 $this->setloggedin();
-                $message = "Successfully logged in.";
-                echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"?view=admin-pagina\";</script>";
-                exit;
-            } else {
-                $message = "Wrong credentials.";
-                echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"?view=login\";</script>";
-                exit;
+                return true;
             }
         }
         return false;
@@ -59,6 +58,11 @@ class User Extends connector
     // Renamed to createAccount to better reflect its purpose
     public function createAccount(): bool
     {
+
+        if ($this->isEmptyRegister()) {
+            return false;
+        }
+
         $sql = "INSERT INTO User (Username, Password, EmailAddress, Address, DateOfBirth, FirstName, LastName, PhoneNumber, Role) VALUES (?, ?, ?, '', '1999-01-01', '', '', '', 'user')";
         $stmt = $this->prepare($sql);
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
@@ -66,18 +70,35 @@ class User Extends connector
         return true;
     }
 
-    public function registerAccount(): void
+    public function registerAccount(): bool
     {  
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($this->isSubmitted()) {
             if ($this->createAccount()) {
-                $message = "Account is succesvol aangemaakt. Ga terug naar het login scherm om in te loggen";
-                echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"?view=login\" </script>";
-                exit;
-            } else {
-                $message = "Server Error, Probeer het later nog eens";
-                echo "<script type=\"text/javascript\">alert(\"$message\");window.location = \"?view=registratie\" </script>";
-                exit;
+                return true;
             }
+        }
+
+        return false;
+    }
+
+    // Checks if the form is submitted
+    public function isSubmitted(): bool {
+        return $_SERVER['REQUEST_METHOD'] === 'POST';
+    }
+
+    public function isEmptyLogin(): bool {
+        return empty($this->username) || empty($this->password);
+    }
+
+    public function isEmptyRegister(): bool {
+        return empty($this->username) || empty($this->password) || empty($this->email);
+    }
+
+    // Sets the POST array to null to prevent resubmission on page refresh
+    public function setPostToNull() {
+        if ($this->isSubmitted()) {
+            header("Location: ?view=login");
+            exit;
         }
     }
 }
