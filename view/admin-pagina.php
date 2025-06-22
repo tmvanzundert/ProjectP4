@@ -8,7 +8,7 @@ class Beheerder extends View
     public function show()
     {
 
-        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true/*  && !isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] !== true */) {
+        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true && !isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] !== true) {
             header('Location: ?view=login');
             exit;
         }

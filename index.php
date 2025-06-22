@@ -44,7 +44,7 @@ $_SESSION['view'] = $view;
                     __('nav_products') => 'producten',
                     __('nav_contact') => 'contact',
                 ];
-                if (isset($_SESSION['loggedin'])) {
+                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
                     $navLinks[__('nav_admin')] = 'admin-pagina';
                 }
 

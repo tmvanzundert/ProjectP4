@@ -50,6 +50,13 @@ class User Extends connector
         if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $this->username;
+
+            if ($this->isAdmin()) {
+                $_SESSION['role'] = 'admin';
+            } else {
+                $_SESSION['role'] = 'user';
+            }
+
             return true;
         }
         return false;
@@ -100,5 +107,16 @@ class User Extends connector
             header("Location: ?view=login");
             exit;
         }
+    }
+
+    public function isAdmin(): bool {
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+            $sql = "SELECT Role FROM User WHERE Username = ?";
+            $stmt = $this->prepare($sql);
+            $stmt->execute([$_SESSION['username']]);
+            $role = $stmt->fetchColumn();
+            return $role === 'Super Admin' || $role === 'Administrator';
+        }
+        return false;
     }
 }
