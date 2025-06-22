@@ -18,7 +18,7 @@ if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $available_languages
     $_SESSION['language'] = $_GET['lang'];
     
     // Redirect back to the same page without the query parameter
-    $redirect_url = '?view=' . ($_SESSION['view'] ?? 'home');
+    $redirect_url = preg_replace('/[?&]lang=[^&]*/', '', $_SERVER['REQUEST_URI']);
     header("Location: $redirect_url");
     exit();
 }
