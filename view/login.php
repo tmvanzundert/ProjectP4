@@ -49,6 +49,7 @@ class LoginPage extends View
             $login->login();
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 header('Location: ?view=admin-pagina');
+                exit();
             }
             else if ($login->isEmptyLogin() && $login->isSubmitted() && $_SESSION['isSwitched'] === false) {
                 $message = __('empty_fields_error');
