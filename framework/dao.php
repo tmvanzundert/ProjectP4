@@ -1,5 +1,7 @@
 <?php
 
+// not used in our codebase, our team was not able to find the time and knowledge to implement this class
+
 require_once 'framework/connector.php';
 
 class DAO extends Connector {
