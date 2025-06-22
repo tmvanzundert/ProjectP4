@@ -25,7 +25,7 @@ VALUES ("PlayGreen1", 1, 8.00, "Available", "4.000 mAh powerbank", "UGREEN.", "A
 -- User inserts remain the same as they appear correct
 -- Keeping just a few examples for brevity
 INSERT INTO `User` (`UserName`, `Address`, `DateOfBirth`, `EmailAddress`, `FirstName`, `LastName`, `Password`, `PhoneNumber`, `Role`) 
-VALUES ('hdevries', 'Hendrick van loonlaan 4', '1994-01-17', 'hdevries@gmail.com', 'Hans', 'de Vries', '$2y$10$5BM1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-37229539', 'User'),
+VALUES ('hdevries', 'Hendrick van loonlaan 4', '1994-01-17', 'hdevries@gmail.com', 'Hans', 'de Vries', '$2y$10$5BM1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-37229539', 'Super Admin'),
 ('pjansen', 'Amsterdamseweg 23', '1990-03-25', 'pjansen@gmail.com', 'Peter', 'Jansen', '$2y$10$aBC1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-12345678', 'User'),
 ('msmith', 'Rotterdamlaan 56', '1988-07-12', 'msmith@gmail.com', 'Maria', 'Smith', '$2y$10$cDE1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-23456789', 'User'),
 ('wbakker', 'Utrechtsestraat 89', '1995-11-30', 'wbakker@gmail.com', 'Willem', 'Bakker', '$2y$10$dFG1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-34567890', 'User'),

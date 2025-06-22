@@ -42,9 +42,9 @@
             }
         }
 
-        private function getProductLog() {
+        public function getProductLog() {
             $db = new Connector();
-            $string = "SELECT ProductName, Count FROM LogProduct";
+            $string = "SELECT ProductName, Count, Timestamp FROM LogProduct";
             $result = $db->fetchAll($string);
             return $result;
         }
@@ -82,6 +82,12 @@
                 $this->logMissingProduct($Search);
                 echo "<p class='error-message'>" . __('productNotFound') . "</p>";
             }
+        }
+
+        public function deleteProductLog(string $productName): void {
+            $db = new Connector();
+            $string = "DELETE FROM LogProduct WHERE ProductName = ?";
+            $db->execute($string, [$productName]);
         }
     }
 

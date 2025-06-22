@@ -1,13 +1,23 @@
 <?php
 
+require_once 'scripts/php/productdatasource.php';
+
 class Beheerder extends View
 {
 
     public function show()
     {
 
-        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true/*  && !isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] !== true */) {
             header('Location: ?view=login');
+            exit;
+        }
+
+        if (isset($_POST['delete_product'])) {
+            $productName = $_POST['delete_product'];
+            $productDataSource = new ProductDataSource();
+            $productDataSource->deleteProductLog($productName);
+            header('Location: ?view=admin-pagina');
             exit;
         }
 
@@ -29,7 +39,7 @@ class Beheerder extends View
             $importCSV->formsubmission();
             ?>
 
-            <div Class="csv-upload">
+            <div Class="admin-pagina">
                 <form action="" method="post" name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data"
                     onsubmit="return validateFile()">
                     <div Class="input-row">
@@ -44,7 +54,36 @@ class Beheerder extends View
         </div>
 
         <div id="content2" class="content-block">
-            <h2>Content Block 2</h2>
+            
+            <?php
+
+                $productDataSource = new ProductDataSource();
+                $productLog = $productDataSource->getProductLog();
+                if (empty($productLog)) {
+                    echo "<p>" . __('no_products_found') . "</p>";
+                }
+                else {
+                    echo "<table class='product-log-table admin-pagina'>";
+                    echo "<tr><th>" . __('product_name') . "</th><th>" . __('count') . "</th><th>" . __('timestamp') . "</th></tr>";
+                    foreach ($productLog as $logEntry) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($logEntry['ProductName']) . "</td>";
+                        echo "<td>" . htmlspecialchars($logEntry['Count']) . "</td>";
+                        echo "<td>" . htmlspecialchars($logEntry['Timestamp']) . "</td>";
+                        // Add a delete form for each product
+                        echo "<td>
+                                <form method='post' action=''>
+                                    <input type='hidden' name='delete_product' value='" . htmlspecialchars($logEntry['ProductName'], ENT_QUOTES) . "'>
+                                    <button type='submit' class='btn-delete'>" . __('delete_button') . "</button>
+                                </form>
+                              </td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                }
+
+            ?>
+
         </div>
 
         <div id="content3" class="content-block">
@@ -55,7 +94,7 @@ class Beheerder extends View
             $folders = $imageUpload->getImageFolders();
             ?>
 
-            <div class="csv-upload">
+            <div class="admin-pagina">
                 <form action="" method="post" name="frmImageUpload" id="frmImageUpload" enctype="multipart/form-data">
                     <div class="input-row">
                         <label><?php echo __('select_image_label'); ?></label>

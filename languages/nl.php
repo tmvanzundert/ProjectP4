@@ -121,6 +121,12 @@ $translations = [
     'select_csv_label_download' => 'download template',
     'csv_upload_button' => 'CSV Uploaden',
 
+    'no_products_found' => 'Geen producten gevonden in de log.',
+    'delete_button' => 'Verwijder',
+    'product_name' => 'Productnaam',
+    'count' => 'Aantal',
+    'timestamp' => 'Tijdstip',
+
     'select_image_label' => 'Selecteer een afbeelding om te uploaden:',
     'select_folder_label' => 'Selecteer doelmap:',
     'upload_button' => 'Afbeelding Uploaden',
