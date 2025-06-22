@@ -6,6 +6,7 @@ $translations = [
     'nav_products' => 'Products and Services',
     'nav_contact' => 'Contact',
     'nav_admin' => 'Admin',
+    'nav_cart' => 'Cart',
     'nav_login' => 'Login',
     'nav_logout' => 'Logout',
 

@@ -44,6 +44,15 @@ $_SESSION['view'] = $view;
                     __('nav_products') => 'producten',
                     __('nav_contact') => 'contact',
                 ];
+
+                if (isset($_SESSION['basket']) && !empty($_SESSION['basket'])) {
+                    $navLinks[__('nav_cart')] = 'winkelwagen';
+                }
+
+                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+                    $navLinks[$_SESSION['username']] = 'account';
+                }
+                
                 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
                     $navLinks[__('nav_admin')] = 'admin-pagina';
                 }

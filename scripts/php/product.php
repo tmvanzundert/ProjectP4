@@ -69,7 +69,7 @@
                             $extraDescription
                         </div>
                     " . ($FullPage === false ? "</a>" : "") . "
-                    <button class='ProductButton' onclick='window.location.href=\"?view=bestellen&product=$simpleName\"'>" . __('product_button') . "</button>
+                    <button class='ProductButton' onclick='window.location.href=\"?view=winkelwagen&product=$simpleName\"'>" . __('product_button') . "</button>
                 </div>
             ";
         }
