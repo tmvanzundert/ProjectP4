@@ -132,7 +132,7 @@ $translations = [
     'select_folder_label' => 'Select destination folder:',
     'upload_button' => 'Upload Image',
 
-    // Login page
+    // Login & registration
     'login_heading' => 'Login to your account',
     'username_label' => 'Username',
     'password_label' => 'Password',
@@ -140,11 +140,13 @@ $translations = [
     'no_account_text' => 'Don\'t have an account yet?',
     'register_link' => 'Register here',
 
-    // Registration page
     'registration_heading' => 'Create an account',
     'email_label' => 'Email',
     'already_have_account_text' => 'Already have an account?',
     'login_link' => 'Login here',
     'register_button' => 'Register',
+
+    'empty_fields_error' => 'Please fill in all fields',
+    'wrong_credentials_error' => 'Wrong credentials, please try again'
 ];
 ?>

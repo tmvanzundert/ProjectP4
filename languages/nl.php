@@ -145,5 +145,8 @@ $translations = [
     'already_have_account_text' => 'Heb je al een account?',
     'login_link' => 'Log hier in',
     'register_button' => 'Registreren',
+
+    'empty_fields_error' => 'Vul alle velden in',
+    'wrong_credentials_error' => 'Foutieve referenties, probeer het opnieuw'
 ];
 ?>

@@ -32,7 +32,7 @@ class LoginPage extends View
         if (isset($_SESSION['loginType']) && $_SESSION['loginType'] == 'register') {
             $login->registerAccount();
             if ($login->isEmptyRegister() && $login->isSubmitted() && $_SESSION['isSwitched'] === false) {
-                $message = "Please fill in all fields";
+                $message = __('empty_fields_error');
             }
 
             $title = __('registration_heading');
@@ -47,10 +47,10 @@ class LoginPage extends View
                 header('Location: ?view=admin-pagina');
             }
             else if ($login->isEmptyLogin() && $login->isSubmitted() && $_SESSION['isSwitched'] === false) {
-                $message = "Please fill in all fields";
+                $message = __('empty_fields_error');
             }
             else if ($login->isSubmitted() && $_SESSION['isSwitched'] === false) {
-                $message = "Wrong credentials";
+                $message = __('wrong_credentials_error');
             }
             $title = __('login_heading');
             $accountText = __('no_account_text');
