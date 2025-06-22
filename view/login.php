@@ -47,7 +47,7 @@ class LoginPage extends View
         }
         else {
             $login->login();
-            if ($_SESSION['loggedin'] === true) {
+            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 header('Location: ?view=admin-pagina');
             }
             else if ($login->isEmptyLogin() && $login->isSubmitted() && $_SESSION['isSwitched'] === false) {
