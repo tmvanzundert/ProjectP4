@@ -1,16 +1,12 @@
-<?php
+-<?php
 require_once 'framework/connector.php';
 
 class importcsv
 {
 
-
-    // Function to handle CSV import
     public function importCSV($filename): string
     {
 
-        // Get a secure database connection
-        // Set database connection parameters before connecting
         try {
             $conn = new Connector();
         } 
