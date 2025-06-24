@@ -146,6 +146,8 @@ $translations = [
     'already_have_account_text' => 'Already have an account?',
     'login_link' => 'Login here',
     'register_button' => 'Register',
+    'email_already_registered_error' => 'This email address is already registered. Please use a different email address.',
+    'username_already_registered_error' => 'This username is already registered. Please choose a different username.',
 
     'empty_fields_error' => 'Please fill in all fields',
     'wrong_credentials_error' => 'Wrong credentials, please try again',
