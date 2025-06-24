@@ -5,8 +5,8 @@ class LoginPage extends View
 {
     public function show()
     {
-        $username = isset($_POST['username']) ? $_POST['username'] : '';
-        $password = isset($_POST['password']) ? $_POST['password'] : '';
+        $username = $_POST['username'] ?? '';
+        $password = $_POST['password'] ?? '';
         $login = new User($username, $password, null);
 
         $message = '';
