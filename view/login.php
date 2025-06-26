@@ -11,10 +11,7 @@ class LoginPage extends View
 
         $message = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
-            $usernameKey = $username ?: 'unknown_user';
-            echo $_SESSION['logintries'][$username];
-            
+                     
             if ($login->isEmptyLogin() && $login->isSubmitted()) {
                 $message = __('empty_fields_error');
             }
@@ -27,21 +24,23 @@ class LoginPage extends View
                 $message = __('account_blocked_error');
             }
 
-            $login->login();
-            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+            if (empty($message)) {
+                $login->login();
+                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 
-                if ($login->isAdmin()) {
-                    header('Location: ?view=admin-pagina');
-                }
-                else {
-                    header('Location: ?view=home');
-                }
-                
-                exit();
+                    if ($login->isAdmin()) {
+                        header('Location: ?view=admin-pagina');
+                    }
+                    else {
+                        header('Location: ?view=home');
+                    }
+                    
+                    exit();
 
-            }
-            else if ($login->isSubmitted() && empty($message)) {
-                $message = __('wrong_credentials_error');
+                }
+                else if ($login->isSubmitted() && empty($message)) {
+                    $message = __('wrong_credentials_error');
+                }
             }
 
         }
