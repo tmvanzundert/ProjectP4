@@ -13,7 +13,8 @@ class Importcsvtest extends TestCase {
         file_put_contents($tmpFile, $csvContent);
 
         // 2. Instantiate importcsv and call importCSV
-        $importCSV = new importcsv();
+        $this->assertFileExists('testdata/importcsvtestdata.csv',"given filename doesn't exists"); 
+        $importCSV = new importcsv('testdata/importcsvtestdata.csv');
         $result = $importCSV->importCSV($tmpFile);
 
         // 3. Assert the result

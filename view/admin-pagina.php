@@ -34,8 +34,10 @@ class Beheerder extends View
             <?php
             // ImportCSV
             require_once 'scripts/php/importcsv.php';
-            $importCSV = new importcsv($_POST['file']);
-            $importCSV->formsubmission();
+            if (isset($_POST['file'])) {
+                $importCSV = new importcsv($_POST['file']);
+                $importCSV->formsubmission();
+            }
             ?>
 
             <div Class="admin-pagina">
