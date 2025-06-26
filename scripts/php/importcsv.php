@@ -44,13 +44,11 @@ class importcsv
         if ($this->isSubmitted() && isset($_POST["import"])) {
             if (isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
                 $filename = $_FILES["file"]["tmp_name"];
-                $importCSV = $this->importCSV($filename);
-                
+                $importCSV = $this->importCSV($filename);    
             } 
             else {
                 $importCSV = "Please upload a valid CSV file.";
             }
-
             echo "<script type=\"text/javascript\">
                         alert(\"$importCSV\");
                         window.location = \"?view=admin-pagina\"
@@ -60,7 +58,7 @@ class importcsv
     }
 
     // Checks if the form is submitted
-    public function isSubmitted(): bool
+    private function isSubmitted(): bool
     {
         return $_SERVER['REQUEST_METHOD'] === 'POST';
     }

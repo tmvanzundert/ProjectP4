@@ -30,11 +30,11 @@ class Beheerder extends View
             <button class="logout-button content-btn" data-target="content3"><?php echo __('upload_image_btn'); ?></button>
         </div>
         <div id="content1" class="content-block active">
+
             <?php
             // ImportCSV
             require_once 'scripts/php/importcsv.php';
-            $env = parse_ini_file('.env');
-            $importCSV = new importcsv($env['db_servername'], $env['db_username'], $env['db_password'], $env['db_name']);
+            $importCSV = new importcsv($_POST['file']);
             $importCSV->formsubmission();
             ?>
 
