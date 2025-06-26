@@ -132,7 +132,7 @@ $translations = [
     'select_folder_label' => 'Selecteer doelmap:',
     'upload_button' => 'Afbeelding Uploaden',
 
-    // Login page
+    // Login & registration
     'login_heading' => 'Log in op je account',
     'username_label' => 'Gebruikersnaam',
     'password_label' => 'Wachtwoord',
@@ -140,12 +140,13 @@ $translations = [
     'no_account_text' => 'Heb je nog geen account?',
     'register_link' => 'Registreer hier',
 
-    // Registration page
     'registration_heading' => 'Maak een account aan',
     'email_label' => 'E-mailadres',
     'already_have_account_text' => 'Heb je al een account?',
     'login_link' => 'Log hier in',
     'register_button' => 'Registreren',
+    'email_already_registered_error' => 'Dit e-mailadres is al geregistreerd. Probeer een ander e-mailadres.',
+    'username_already_registered_error' => 'Deze gebruikersnaam is al in gebruik. Probeer een andere gebruikersnaam.',
 
     'empty_fields_error' => 'Vul alle velden in',
     'wrong_credentials_error' => 'Foutieve referenties, probeer het opnieuw',

@@ -137,4 +137,18 @@ class User Extends connector
         }
         return '';
     }
+
+    public function isEmailAlreadyRegistered(): bool {
+        $sql = "SELECT COUNT(*) FROM User WHERE EmailAddress = ?";
+        $stmt = $this->prepare($sql);
+        $stmt->execute([$this->email]);
+        return $stmt->fetchColumn() > 0;
+    }
+
+    public function isUsernameAlreadyRegistered(): bool {
+        $sql = "SELECT COUNT(*) FROM User WHERE Username = ?";
+        $stmt = $this->prepare($sql);
+        $stmt->execute([$this->username]);
+        return $stmt->fetchColumn() > 0;
+    }
 }
