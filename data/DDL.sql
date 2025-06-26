@@ -52,6 +52,12 @@ CREATE TABLE
     IF NOT EXISTS `User` (
         `UserName` VARCHAR(30),
         `Address` VARCHAR(80),
+        `AccountStatus` ENUM (
+            "Active",
+            "Inactive",
+            "Suspended",
+            "Blocked"
+        ) DEFAULT "Active",
         `DateOfBirth` DATE,
         `EmailAddress` VARCHAR(30),
         `FirstName` VARCHAR(30),

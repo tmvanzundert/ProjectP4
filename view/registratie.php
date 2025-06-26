@@ -22,12 +22,13 @@ class Registratie extends View
             else if ($user->isUsernameAlreadyRegistered()) {
                 $message = __('username_already_registered_error');
             }
-            else if ($user->isSubmitted()) {
-                header('Location: ?view=login');
-                exit();
-            }
             else {
                 $user->registerAccount();
+            }
+
+            if ($user->isSubmitted()) {
+                header('Location: ?view=login');
+                exit();
             }
 
         }

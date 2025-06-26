@@ -11,25 +11,36 @@ class LoginPage extends View
 
         $message = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            $login->login();
-            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-
-                if ($login->isAdmin()) {
-                    header('Location: ?view=admin-pagina');
-                }
-                else {
-                    header('Location: ?view=home');
-                }
-                
-                exit();
-
-            }
-            else if ($login->isEmptyLogin() && $login->isSubmitted()) {
+                     
+            if ($login->isEmptyLogin() && $login->isSubmitted()) {
                 $message = __('empty_fields_error');
             }
-            else if ($login->isSubmitted()) {
-                $message = __('wrong_credentials_error');
+            else if ($login->isBlockedAccount()) {
+                $message = __('account_blocked_error');
+            }
+            else if ($_SESSION['logintries'][$username] >= 10) {
+                $_SESSION['logintries'][$username] = 0; // Reset the login attempts after blocking
+                $login->setBlockedAccount();
+                $message = __('account_blocked_error');
+            }
+
+            if (empty($message)) {
+                $login->login();
+                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+
+                    if ($login->isAdmin()) {
+                        header('Location: ?view=admin-pagina');
+                    }
+                    else {
+                        header('Location: ?view=home');
+                    }
+                    
+                    exit();
+
+                }
+                else if ($login->isSubmitted() && empty($message)) {
+                    $message = __('wrong_credentials_error');
+                }
             }
 
         }
@@ -56,6 +67,12 @@ class LoginPage extends View
             </form>
 
             <?php if (!empty($message)): ?>
+                <?php
+                if (!isset($_SESSION['logintries']) || !is_array($_SESSION['logintries'])) {
+                    $_SESSION['logintries'] = [];
+                }
+                $_SESSION['logintries'][$username] = ($_SESSION['logintries'][$username] ?? 0) + 1;
+                ?>
                 <span class="error-message"><?= $message ?></span>
             <?php endif; ?>
         </section>
