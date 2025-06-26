@@ -150,6 +150,7 @@ $translations = [
 
     'empty_fields_error' => 'Vul alle velden in',
     'wrong_credentials_error' => 'Foutieve referenties, probeer het opnieuw',
+    'account_blocked_error' => 'Je account is geblokkeerd door te veel mislukte inlogpogingen. Neem contact op met support om je account te deblokkeren.',
 
     // Basket
     'bk_title' => 'Winkelwagen',

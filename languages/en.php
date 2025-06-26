@@ -151,6 +151,7 @@ $translations = [
 
     'empty_fields_error' => 'Please fill in all fields',
     'wrong_credentials_error' => 'Wrong credentials, please try again',
+    'account_blocked_error' => 'Your account has been blocked due to too many failed login attempts. Please contact support to unblock your account.',
 
     // Basket
     'bk_title' => 'Basket',

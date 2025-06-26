@@ -11,6 +11,21 @@ class LoginPage extends View
 
         $message = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            $usernameKey = $username ?: 'unknown_user';
+            echo $_SESSION['logintries'][$username];
+            
+            if ($login->isEmptyLogin() && $login->isSubmitted()) {
+                $message = __('empty_fields_error');
+            }
+            else if ($login->isBlockedAccount()) {
+                $message = __('account_blocked_error');
+            }
+            else if ($_SESSION['logintries'][$username] >= 10) {
+                $_SESSION['logintries'][$username] = 0; // Reset the login attempts after blocking
+                $login->setBlockedAccount();
+                $message = __('account_blocked_error');
+            }
 
             $login->login();
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
@@ -25,10 +40,7 @@ class LoginPage extends View
                 exit();
 
             }
-            else if ($login->isEmptyLogin() && $login->isSubmitted()) {
-                $message = __('empty_fields_error');
-            }
-            else if ($login->isSubmitted()) {
+            else if ($login->isSubmitted() && empty($message)) {
                 $message = __('wrong_credentials_error');
             }
 
@@ -56,6 +68,12 @@ class LoginPage extends View
             </form>
 
             <?php if (!empty($message)): ?>
+                <?php
+                if (!isset($_SESSION['logintries']) || !is_array($_SESSION['logintries'])) {
+                    $_SESSION['logintries'] = [];
+                }
+                $_SESSION['logintries'][$username] = ($_SESSION['logintries'][$username] ?? 0) + 1;
+                ?>
                 <span class="error-message"><?= $message ?></span>
             <?php endif; ?>
         </section>

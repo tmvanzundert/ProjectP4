@@ -110,7 +110,7 @@ class User Extends connector
     }
 
     public function isAdmin(): bool {
-        if (isset($this->username) && $this->username === true) {
+        if (isset($this->username)) {
             $sql = "SELECT Role FROM User WHERE Username = ?";
             $stmt = $this->prepare($sql);
             $stmt->execute([$this->username]);
@@ -150,5 +150,19 @@ class User Extends connector
         $stmt = $this->prepare($sql);
         $stmt->execute([$this->username]);
         return $stmt->fetchColumn() > 0;
+    }
+
+    public function setBlockedAccount(): bool {
+        $sql = "UPDATE User SET AccountStatus = 'Blocked' WHERE Username = ?";
+        $stmt = $this->prepare($sql);
+        return $stmt->execute([$this->username]);
+    }
+
+    public function isBlockedAccount(): bool {
+        $sql = "SELECT AccountStatus FROM User WHERE Username = ?";
+        $stmt = $this->prepare($sql);
+        $stmt->execute([$this->username]);
+        $status = $stmt->fetchColumn();
+        return $status === 'Blocked';
     }
 }
