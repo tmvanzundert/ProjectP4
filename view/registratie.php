@@ -26,7 +26,7 @@ class Registratie extends View
                 $user->registerAccount();
             }
 
-            if ($user->isSubmitted()) {
+            if ($user->isSubmitted() && empty($message)) {
                 header('Location: ?view=login');
                 exit();
             }
