@@ -4,7 +4,7 @@ require_once './scripts/php/User.php';
 
 use PHPUnit\Framework\TestCase;
 
-class Loginaccounttest extends TestCase {
+class CheckLoginTest extends TestCase {
     public function testlogin(): void {
 
         $email = $_POST['email'] ?? null;
