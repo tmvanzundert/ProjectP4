@@ -18,7 +18,7 @@ class LoginPage extends View
             else if ($login->isBlockedAccount()) {
                 $message = __('account_blocked_error');
             }
-            else if ($_SESSION['logintries'][$username] >= 10) {
+            else if (isset($_SESSION['logintries'][$username]) && $_SESSION['logintries'][$username] >= 10) {
                 $_SESSION['logintries'][$username] = 0; // Reset the login attempts after blocking
                 $login->setBlockedAccount();
                 $message = __('account_blocked_error');
