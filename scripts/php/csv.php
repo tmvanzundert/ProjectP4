@@ -1,10 +1,17 @@
 -<?php
 require_once 'framework/connector.php';
 
-class importcsv
+class CSV
 {
 
-    public function importCSV($filename): string
+    private array $filename;
+
+    public function __construct($filename)
+    {
+        $this->filename = $filename;
+    }
+
+    public function Import($filename): string
     {
 
         try {
@@ -42,9 +49,9 @@ class importcsv
     {
 
         if ($this->isSubmitted() && isset($_POST["import"])) {
-            if (isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
-                $filename = $_FILES["file"]["tmp_name"];
-                $importCSV = $this->importCSV($filename);    
+            if (isset($this->filename) && $this->filename["error"] == 0) {
+                $filename = $this->filename["tmp_name"];
+                $importCSV = $this->Import($filename);
             } 
             else {
                 $importCSV = "Please upload a valid CSV file.";
