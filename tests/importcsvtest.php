@@ -7,20 +7,17 @@ use PHPUnit\Framework\TestCase;
 class Importcsvtest extends TestCase {
     
     public function testimportcsv()  {
-        // 1. Create a temporary CSV file
-        $csvContent = "ProductName\nTestProduct";
-        $tmpFile = tempnam(sys_get_temp_dir(), 'csv');
-        file_put_contents($tmpFile, $csvContent);
+        
+        // 1. Instantiate importcsv and call importCSV
+        $file = 'tests/testdata/importcsvtestdata.csv';
+        $this->assertFileExists($file,"given filename doesn't exists"); 
+        $importCSV = new importcsv($file);
+        $result = $importCSV->importCSV($file);
 
-        // 2. Instantiate importcsv and call importCSV
-        $this->assertFileExists('tests/testdata/importcsvtestdata.csv',"given filename doesn't exists"); 
-        $importCSV = new importcsv('tests/testdata/importcsvtestdata.csv');
-        $result = $importCSV->importCSV($tmpFile);
-
-        // 3. Assert the result
+        // 2. Assert the result
         $this->assertEquals('CSV File has been successfully Imported.', $result);
 
-        // 4. Clean up
-        unlink($tmpFile);
+        // 3. Clean up
+        unlink($file);
     }
 }
