@@ -23,10 +23,8 @@ class Beheerder extends View
 
         ?>
         <div class="button-container">
-            <button class="logout-button content-btn active"
-                data-target="content1"><?php echo __('csv_import_btn'); ?></button>
-            <button class="logout-button content-btn"
-                data-target="content2"><?php echo __('search_management_btn'); ?></button>
+            <button class="logout-button content-btn active" data-target="content1"><?php echo __('csv_import_btn'); ?></button>
+            <button class="logout-button content-btn" data-target="content2"><?php echo __('search_management_btn'); ?></button>
             <button class="logout-button content-btn" data-target="content3"><?php echo __('upload_image_btn'); ?></button>
         </div>
         <div id="content1" class="content-block active">
@@ -35,8 +33,8 @@ class Beheerder extends View
             // ImportCSV
             require_once 'scripts/php/csv.php';
             if (isset($_FILES['file'])) {
-            $importCSV = new CSV($_FILES['file']);
-            $importCSV->formsubmission();
+                $importCSV = new CSV($_FILES['file']);
+                $importCSV->formsubmission();
             }
             ?>
 
@@ -44,10 +42,12 @@ class Beheerder extends View
                 <form action="" method="post" name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data"
                     onsubmit="return validateFile()">
                     <div Class="input-row">
-                        <label><?php echo __('select_csv_label'); ?><a href="website-components/import-template.csv" download><?php echo __('select_csv_label_download'); ?></a></label>
+                        <label><?php echo __('select_csv_label'); ?><a href="website-components/import-template.csv"
+                                download><?php echo __('select_csv_label_download'); ?></a></label>
                         <input type="file" name="file" id="file" class="file" accept=".csv,.xls,.xlsx">
                         <div class="import">
-                            <button type="submit" id="submit" name="import" class="btn-submit"><?php echo __('csv_upload_button'); ?></button>
+                            <button type="submit" id="submit" name="import"
+                                class="btn-submit"><?php echo __('csv_upload_button'); ?></button>
                         </div>
                     </div>
                 </form>
@@ -55,33 +55,32 @@ class Beheerder extends View
         </div>
 
         <div id="content2" class="content-block">
-            
+
             <?php
 
-                $productDataSource = new ProductDataSource();
-                $productLog = $productDataSource->getProductLog();
-                if (empty($productLog)) {
-                    echo "<p>" . __('no_products_found') . "</p>";
-                }
-                else {
-                    echo "<table class='product-log-table admin-pagina'>";
-                    echo "<tr><th>" . __('product_name') . "</th><th>" . __('count') . "</th><th>" . __('timestamp') . "</th></tr>";
-                    foreach ($productLog as $logEntry) {
-                        echo "<tr>";
-                        echo "<td>" . htmlspecialchars($logEntry['ProductName']) . "</td>";
-                        echo "<td>" . htmlspecialchars($logEntry['Count']) . "</td>";
-                        echo "<td>" . htmlspecialchars($logEntry['Timestamp']) . "</td>";
-                        // Add a delete form for each product
-                        echo "<td>
+            $productDataSource = new ProductDataSource();
+            $productLog = $productDataSource->getProductLog();
+            if (empty($productLog)) {
+                echo "<p>" . __('no_products_found') . "</p>";
+            } else {
+                echo "<table class='product-log-table admin-pagina'>";
+                echo "<tr><th>" . __('product_name') . "</th><th>" . __('count') . "</th><th>" . __('timestamp') . "</th></tr>";
+                foreach ($productLog as $logEntry) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($logEntry['ProductName']) . "</td>";
+                    echo "<td>" . htmlspecialchars($logEntry['Count']) . "</td>";
+                    echo "<td>" . htmlspecialchars($logEntry['Timestamp']) . "</td>";
+                    // Add a delete form for each product
+                    echo "<td>
                                 <form method='post' action=''>
                                     <input type='hidden' name='delete_product' value='" . htmlspecialchars($logEntry['ProductName'], ENT_QUOTES) . "'>
                                     <button type='submit' class='btn-delete'>" . __('delete_button') . "</button>
                                 </form>
-                              </td>";
-                        echo "</tr>";
-                    }
-                    echo "</table>";
+                                </td>";
+                    echo "</tr>";
                 }
+                echo "</table>";
+            }
 
             ?>
 
@@ -121,12 +120,12 @@ class Beheerder extends View
         </div>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 const buttons = document.querySelectorAll('.content-btn');
                 const contentBlocks = document.querySelectorAll('.content-block');
 
                 buttons.forEach(button => {
-                    button.addEventListener('click', function() {
+                    button.addEventListener('click', function () {
                         // Remove active class from all buttons
                         buttons.forEach(btn => btn.classList.remove('active'));
 

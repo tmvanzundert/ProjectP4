@@ -35,10 +35,12 @@ class Contact extends View
                 <h1>" . __('contact_message') . "</h1>
                 <p>" . nl2br(htmlspecialchars($contactInfo->getMessage())) . "</p>
                 ";
-                
-                $mail = new Mail($contactInfo->getFirstName() . ' ' . $contactInfo->getLastName(),
+
+                $mail = new Mail(
+                    $contactInfo->getFirstName() . ' ' . $contactInfo->getLastName(),
                     $contactInfo->getSubject(),
-                    $message);
+                    $message
+                );
                 if ($mail->SendMail()) {
                     $_SESSION['sendSuccessfully'] = true;
                 } else {
@@ -63,18 +65,17 @@ class Contact extends View
 
                 <!-- First name textbox -->
                 <input id="firstname" class="<?= $contactInfo->getTextboxClass('firstname'); ?>" type="text"
-                    placeholder="<?= __('contact_firstname'); ?>" name="firstname"
-                    value="<?= $contactInfo->getFirstName(); ?>" oninput="setErrorEmptyInputbox('firstname')">
+                    placeholder="<?= __('contact_firstname'); ?>" name="firstname" value="<?= $contactInfo->getFirstName(); ?>"
+                    oninput="setErrorEmptyInputbox('firstname')">
 
                 <!-- Last name textbox -->
                 <input id="lastname" class="<?= $contactInfo->getTextboxClass('lastname'); ?>" type="text"
-                    placeholder="<?= __('contact_lastname'); ?>" name="lastname"
-                    value="<?= $contactInfo->getLastName(); ?>" oninput="setErrorEmptyInputbox('lastname')">
+                    placeholder="<?= __('contact_lastname'); ?>" name="lastname" value="<?= $contactInfo->getLastName(); ?>"
+                    oninput="setErrorEmptyInputbox('lastname')">
 
                 <!-- Email textbox -->
-                <input id="email" class="<?= $contactInfo->getTextboxClass('email'); ?>" type="email"
-                    placeholder="E-mail" name="email" value="<?= $contactInfo->getEmail(); ?>"
-                    oninput="setErrorEmptyInputbox('email')">
+                <input id="email" class="<?= $contactInfo->getTextboxClass('email'); ?>" type="email" placeholder="E-mail"
+                    name="email" value="<?= $contactInfo->getEmail(); ?>" oninput="setErrorEmptyInputbox('email')">
 
                 <!-- Phonenumber textbox -->
                 <input id="phonenumber" class="<?= $contactInfo->getTextboxClass('phonenumber'); ?>" type="text"
@@ -83,8 +84,8 @@ class Contact extends View
 
                 <!-- Subject textbox -->
                 <input id="subject" class="<?= $contactInfo->getTextboxClass('subject'); ?>" type="text"
-                    placeholder="<?= __('contact_subject'); ?>" name="subject"
-                    value="<?= $contactInfo->getSubject(); ?>" oninput="setErrorEmptyInputbox('subject')">
+                    placeholder="<?= __('contact_subject'); ?>" name="subject" value="<?= $contactInfo->getSubject(); ?>"
+                    oninput="setErrorEmptyInputbox('subject')">
 
                 <!-- Message textbox -->
                 <textarea id="message" class="<?= $contactInfo->getTextboxClass('message'); ?>"
@@ -96,9 +97,9 @@ class Contact extends View
                 <p>
                     <!-- Display an error message if an error has been returned -->
                     <?php if (isset($errorMessage)): ?>
-                        <p class="error-message"><?= $errorMessage; ?></p>
+                    <p class="error-message"><?= $errorMessage; ?></p>
                     <!-- Display a success message if all the checks passed -->
-                    <?php elseif (isset($_SESSION['sendSuccessfully']) && $_SESSION['sendSuccessfully']): ?>
+                <?php elseif (isset($_SESSION['sendSuccessfully']) && $_SESSION['sendSuccessfully']): ?>
                     <div class="success-message">
                         <p><?= __('contactvalidations_success'); ?></p>
                     </div>

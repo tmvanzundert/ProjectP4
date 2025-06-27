@@ -4,13 +4,15 @@ require_once './scripts/php/importcsv.php';
 
 use PHPUnit\Framework\TestCase;
 
-class Importcsvtest extends TestCase {
-    
-    public function testimportcsv()  {
-        
+class Importcsvtest extends TestCase
+{
+
+    public function testimportcsv()
+    {
+
         // 1. Instantiate importcsv and call importCSV
         $file = 'tests/testdata/importcsvtestdata.csv';
-        $this->assertFileExists($file,"given filename doesn't exists"); 
+        $this->assertFileExists($file, "given filename doesn't exists");
         $importCSV = new importcsv($file);
         $result = $importCSV->importCSV($file);
 

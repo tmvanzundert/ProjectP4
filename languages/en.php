@@ -125,7 +125,7 @@ $translations = [
 
     'no_products_found' => 'No products found in the database.',
     'delete_button' => 'Delete',
-    'product_name' =>  'Product Name',
+    'product_name' => 'Product Name',
     'count' => 'Count',
     'timestamp' => 'Timestamp',
 

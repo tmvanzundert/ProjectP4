@@ -31,7 +31,7 @@ $_SESSION['view'] = $view;
 
     <header>
         <!-- Display the logo and the navbar at the top of the website -->
-         <a href="?view=home" aria-label="Home">
+        <a href="?view=home" aria-label="Home">
             <img src="images/header/logo.png" alt="Logo Plug & Play" class="logo">
         </a>
         <nav>
@@ -52,16 +52,16 @@ $_SESSION['view'] = $view;
                 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                     $navLinks[$_SESSION['username']] = 'account';
                 }
-                
+
                 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
                     $navLinks[__('nav_admin')] = 'admin-pagina';
                 }
 
                 // Render navigation links
                 foreach ($navLinks as $navLabel => $navItem): ?>
-                    <li>
-                        <a href="?view=<?= $navItem ?>" aria-label="<?= strtolower($navLabel) ?>"><?= $navLabel ?></a>
-                    </li>
+                        <li>
+                            <a href="?view=<?= $navItem ?>" aria-label="<?= strtolower($navLabel) ?>"><?= $navLabel ?></a>
+                        </li>
                 <?php endforeach; ?>
             </ul>
         </nav>
@@ -69,15 +69,15 @@ $_SESSION['view'] = $view;
         <!-- Language switcher -->
         <div id="language-switcher">
             <?php foreach ($available_languages as $code => $name): ?>
-                <a href="?lang=<?= $code ?>" class="lang-option <?= $current_language === $code ? 'active' : '' ?>"
-                    title="<?= $name ?>">
-                    <?= $code ?>
-                </a>
+                    <a href="?lang=<?= $code ?>" class="lang-option <?= $current_language === $code ? 'active' : '' ?>"
+                        title="<?= $name ?>">
+                        <?= $code ?>
+                    </a>
             <?php endforeach; ?>
             <?php if (isset($_SESSION['username'])): ?>
-                <a class="log-btn" href="?view=logout"><?php echo __('nav_logout'); ?></a>
+                    <a class="log-btn" href="?view=logout"><?php echo __('nav_logout'); ?></a>
             <?php else: ?>
-                <a class="log-btn" href="?view=login"><?php echo __('nav_login'); ?></a>
+                    <a class="log-btn" href="?view=login"><?php echo __('nav_login'); ?></a>
             <?php endif; ?>
         </div>
         </header>
@@ -106,9 +106,9 @@ $_SESSION['view'] = $view;
                 'linkedin' => 'https://www.linkedin.com'
             ];
             foreach ($socialLinks as $platform => $url): ?>
-                <a href="<?= $url ?>" target="_blank" aria-label="<?= ucfirst($platform) ?>">
-                    <img src="images/footer/<?= $platform ?>-icon.png" alt="<?= ucfirst($platform) ?>" class="social-icon">
-                </a>
+                    <a href="<?= $url ?>" target="_blank" aria-label="<?= ucfirst($platform) ?>">
+                        <img src="images/footer/<?= $platform ?>-icon.png" alt="<?= ucfirst($platform) ?>" class="social-icon">
+                    </a>
             <?php endforeach; ?>
         </div>
     </footer>

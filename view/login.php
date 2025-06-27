@@ -11,14 +11,12 @@ class LoginPage extends View
 
         $message = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                     
+
             if ($login->isEmptyLogin() && $login->isSubmitted()) {
                 $message = __('empty_fields_error');
-            }
-            else if ($login->isBlockedAccount()) {
+            } else if ($login->isBlockedAccount()) {
                 $message = __('account_blocked_error');
-            }
-            else if (isset($_SESSION['logintries'][$username]) && $_SESSION['logintries'][$username] >= 10) {
+            } else if (isset($_SESSION['logintries'][$username]) && $_SESSION['logintries'][$username] >= 10) {
                 $_SESSION['logintries'][$username] = 0; // Reset the login attempts after blocking
                 $login->setBlockedAccount();
                 $message = __('account_blocked_error');
@@ -30,21 +28,19 @@ class LoginPage extends View
 
                     if ($login->isAdmin()) {
                         header('Location: ?view=admin-pagina');
-                    }
-                    else {
+                    } else {
                         header('Location: ?view=home');
                     }
-                    
+
                     exit();
 
-                }
-                else if ($login->isSubmitted() && empty($message)) {
+                } else if ($login->isSubmitted() && empty($message)) {
                     $message = __('wrong_credentials_error');
                 }
             }
 
         }
-        
+
         ?>
 
         <section class="inloggen-banner">
@@ -60,7 +56,7 @@ class LoginPage extends View
                 <input type="password" id="password" name="password" required>
 
                 <button type="submit"><?= __('login_button') ?></button>
-                
+
                 <p><?= __('no_account_text'); ?>
                     <a href="?view=registratie"><?= __('register_link'); ?></a>
                 </p>

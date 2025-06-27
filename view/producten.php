@@ -13,7 +13,7 @@ class Producten extends View
         }
 
         ?>
-        
+
         <form action="" method="post">
             <div class="search">
                 <input required type="search" name="search" placeholder="Search..." oninput="setErrorEmptyInputbox('search')">
@@ -25,16 +25,15 @@ class Producten extends View
         </form>
         <div class="product-container">
             <?php
-                require_once 'scripts/php/product.php';
-                require_once 'scripts/php/productdatasource.php';
+            require_once 'scripts/php/product.php';
+            require_once 'scripts/php/productdatasource.php';
 
-                $products = new ProductDataSource();
-                if (isset($_POST['search'])) {
-                    $products->searchProducts($_POST['search']);
-                }
-                else {
-                    $products->getProducts();
-                }
+            $products = new ProductDataSource();
+            if (isset($_POST['search'])) {
+                $products->searchProducts($_POST['search']);
+            } else {
+                $products->getProducts();
+            }
             ?>
         </div>
 

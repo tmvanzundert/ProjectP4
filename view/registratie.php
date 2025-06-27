@@ -15,14 +15,11 @@ class Registratie extends View
 
             if ($user->isEmptyRegister()) {
                 $message = __('empty_fields_error');
-            }
-            else if ($user->isEmailAlreadyRegistered()) {
+            } else if ($user->isEmailAlreadyRegistered()) {
                 $message = __('email_already_registered_error');
-            }
-            else if ($user->isUsernameAlreadyRegistered()) {
+            } else if ($user->isUsernameAlreadyRegistered()) {
                 $message = __('username_already_registered_error');
-            }
-            else {
+            } else {
                 $user->registerAccount();
             }
 
@@ -43,20 +40,20 @@ class Registratie extends View
             <form id="register" action="" method="post">
                 <label for="username"><?= __('username_label'); ?></label>
                 <input type="text" id="username" name="username" required>
-                
+
                 <label for="password"><?= __('password_label'); ?></label>
                 <input type="password" id="password" name="password" required>
-                
+
                 <label for="email"><?= __('email_label'); ?></label>
                 <input type="email" name="email" required>
-                
+
                 <button type="submit"><?= __('register_button') ?></button>
             </form>
 
             <p><?php echo __('already_have_account_text'); ?>
                 <a href="?view=login"><?php echo __('login_link'); ?></a>
             </p>
-            
+
             <?php if (!empty($message)): ?>
                 <span class="error-message"><?= $message ?></span>
             <?php endif; ?>

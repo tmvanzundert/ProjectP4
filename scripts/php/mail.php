@@ -13,7 +13,8 @@ class Mail
     private PHPMailer $mail;
     private array $env;
 
-    public function __construct(string $name, string $subject, string $body) {
+    public function __construct(string $name, string $subject, string $body)
+    {
         $this->Name = $name;
         $this->Subject = $subject;
         $this->Body = $body;
@@ -29,45 +30,45 @@ class Mail
 
     }
 
-    public function Connect(): object {
+    public function Connect(): object
+    {
 
         try {
-            
+
             $mail = new PHPMailer(true);
             /* $mail->SMTPDebug = SMTP::DEBUG_SERVER; */
-            $mail->isSMTP();       
-            $mail->SMTPAuth   = true;                  
-            $mail->Host       = 'smtp.gmail.com';
-            $mail->SMTPAuth   = true;
-            $mail->Username   = $this->env['mail_username'];
-            $mail->Password   = $this->env['mail_password'];
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = $this->env['mail_username'];
+            $mail->Password = $this->env['mail_password'];
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port       = 587;
-            $mail->CharSet    = 'UTF-8';
+            $mail->Port = 587;
+            $mail->CharSet = 'UTF-8';
             $mail->isHTML(true);
             return $mail;
 
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             die('Failed to connect to mail server: ' . $e->getMessage());
         }
 
     }
 
-    public function SendMail(): bool {
+    public function SendMail(): bool
+    {
         try {
             $this->mail->setFrom($this->env['mail_username'], $this->Name);
             $this->mail->addAddress($this->env['mail_username'], 'Contact Website');
             $this->mail->Subject = $this->Subject;
-            $this->mail->Body    = $this->Body;
+            $this->mail->Body = $this->Body;
             $this->mail->send();
-            
+
             return true;
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             error_log('Mail could not be sent. Error: ' . $e->getMessage());
             return false;
         }
     }
-    
+
 }

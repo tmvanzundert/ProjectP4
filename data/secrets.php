@@ -1,17 +1,18 @@
 <?php
 
-class Secrets {
+class Secrets
+{
     public static $Username;
     public static $Password;
     public static $DBName;
     public static $ServerName;
 
-    public function __construct() {
+    public function __construct()
+    {
 
         try {
             $env = parse_ini_file('.env');
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             die('Failed to load .env file: ' . $e->getMessage());
         }
 

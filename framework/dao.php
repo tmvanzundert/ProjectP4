@@ -4,34 +4,40 @@
 
 require_once 'framework/connector.php';
 
-class DAO extends Connector {
+class DAO extends Connector
+{
 
     private $class;
     private $object;
     private $stmt;
 
-    function __construct($class) {
+    function __construct($class)
+    {
         parent::__construct();
         $this->class = $class;
     }
 
-    protected function startListSql($sql, $args = []): void {
+    protected function startListSql($sql, $args = []): void
+    {
         $this->stmt = $this->prepare($sql);
         $this->stmt->execute($args);
         $this->object = $this->stmt->fetchObject($this->class) ?: null;
     }
 
-    protected function getObjectSql($sql, $args = []): ?Model {
+    protected function getObjectSql($sql, $args = []): ?Model
+    {
         $this->stmt = $this->prepare($sql);
         $this->stmt->execute($args);
         return $this->stmt->fetchObject($this->class) ?: null;
     }
 
-    function hasNext(): bool {
+    function hasNext(): bool
+    {
         return $this->object !== null;
     }
 
-    function getNext(): Model {
+    function getNext(): Model
+    {
         $result = $this->object;
         $this->object = $this->stmt->fetchObject($this->class) ?: null;
         return $result;

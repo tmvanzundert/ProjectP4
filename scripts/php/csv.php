@@ -16,8 +16,7 @@ class CSV
 
         try {
             $conn = new Connector();
-        } 
-        catch (Exception $e) {
+        } catch (Exception $e) {
             return "Connection failed";
         }
 
@@ -35,7 +34,7 @@ class CSV
             $productName = $row[0];
             if (!$stmt->execute([$productName])) {
                 fclose($file);
-                return "Error importing data: "  . addslashes($stmt->errorInfo()[2]);
+                return "Error importing data: " . addslashes($stmt->errorInfo()[2]);
             }
         }
 
@@ -43,7 +42,7 @@ class CSV
         fclose($file);
         return "CSV File has been successfully Imported.";
     }
-    
+
     // Handle the form submission
     public function formsubmission(): void
     {
@@ -52,8 +51,7 @@ class CSV
             if (isset($this->filename) && $this->filename["error"] == 0) {
                 $filename = $this->filename["tmp_name"];
                 $importCSV = $this->Import($filename);
-            } 
-            else {
+            } else {
                 $importCSV = "Please upload a valid CSV file.";
             }
             echo "<script type=\"text/javascript\">

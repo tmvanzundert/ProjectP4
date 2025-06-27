@@ -37,7 +37,8 @@ class Connector
      * @param string $sql SQL query to prepare
      * @return PDOStatement Prepared statement ready for execution
      */
-    public function prepare($sql) {
+    public function prepare($sql)
+    {
         return self::$connection->prepare($sql);
     }
 
@@ -48,12 +49,14 @@ class Connector
      * @param array $args Array of parameters to bind to the query
      * @return bool True on success, false on failure
      */
-    public function execute($sql, $args = []) {
+    public function execute($sql, $args = [])
+    {
         $stmt = $this->prepare($sql);
         return $stmt->execute($args);
     }
 
-    public function fetchAll($sql, $args = []) {
+    public function fetchAll($sql, $args = [])
+    {
         $stmt = $this->prepare($sql);
         $stmt->execute($args);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

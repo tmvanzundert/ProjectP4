@@ -1,7 +1,7 @@
 <?php
 require_once 'framework/connector.php';
 
-class User Extends connector
+class User extends connector
 {
     // Checks the credentials against the database
     private $username;
@@ -32,7 +32,7 @@ class User Extends connector
         }
         return false;
     }
-    
+
     public function login(): bool
     {
         $checkLogin = $this->checkLogin();
@@ -78,7 +78,7 @@ class User Extends connector
     }
 
     public function registerAccount(): bool
-    {  
+    {
         if ($this->isSubmitted()) {
             if ($this->createAccount()) {
                 return true;
@@ -89,27 +89,32 @@ class User Extends connector
     }
 
     // Checks if the form is submitted
-    public function isSubmitted(): bool {
+    public function isSubmitted(): bool
+    {
         return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 
-    public function isEmptyLogin(): bool {
+    public function isEmptyLogin(): bool
+    {
         return empty($this->username) || empty($this->password);
     }
 
-    public function isEmptyRegister(): bool {
+    public function isEmptyRegister(): bool
+    {
         return empty($this->username) || empty($this->password) || empty($this->email);
     }
 
     // Sets the POST array to null to prevent resubmission on page refresh
-    public function setPostToNull() {
+    public function setPostToNull()
+    {
         if ($this->isSubmitted()) {
             header("Location: ?view=login");
             exit;
         }
     }
 
-    public function isAdmin(): bool {
+    public function isAdmin(): bool
+    {
         if (isset($this->username)) {
             $sql = "SELECT Role FROM User WHERE Username = ?";
             $stmt = $this->prepare($sql);
@@ -120,7 +125,8 @@ class User Extends connector
         return false;
     }
 
-    public function getUserDetails(): array {
+    public function getUserDetails(): array
+    {
         if (isset($this->username) && !empty($this->username)) {
             $sql = "SELECT * FROM User WHERE Username = ?";
             $stmt = $this->prepare($sql);
@@ -130,7 +136,8 @@ class User Extends connector
         return [];
     }
 
-    public function getName(): string {
+    public function getName(): string
+    {
         $userDetails = $this->getUserDetails();
         if (!empty($userDetails)) {
             return $userDetails['FirstName'] . ' ' . $userDetails['LastName'];
@@ -138,27 +145,31 @@ class User Extends connector
         return '';
     }
 
-    public function isEmailAlreadyRegistered(): bool {
+    public function isEmailAlreadyRegistered(): bool
+    {
         $sql = "SELECT COUNT(*) FROM User WHERE EmailAddress = ?";
         $stmt = $this->prepare($sql);
         $stmt->execute([$this->email]);
         return $stmt->fetchColumn() > 0;
     }
 
-    public function isUsernameAlreadyRegistered(): bool {
+    public function isUsernameAlreadyRegistered(): bool
+    {
         $sql = "SELECT COUNT(*) FROM User WHERE Username = ?";
         $stmt = $this->prepare($sql);
         $stmt->execute([$this->username]);
         return $stmt->fetchColumn() > 0;
     }
 
-    public function setBlockedAccount(): bool {
+    public function setBlockedAccount(): bool
+    {
         $sql = "UPDATE User SET AccountStatus = 'Blocked' WHERE Username = ?";
         $stmt = $this->prepare($sql);
         return $stmt->execute([$this->username]);
     }
 
-    public function isBlockedAccount(): bool {
+    public function isBlockedAccount(): bool
+    {
         $sql = "SELECT AccountStatus FROM User WHERE Username = ?";
         $stmt = $this->prepare($sql);
         $stmt->execute([$this->username]);

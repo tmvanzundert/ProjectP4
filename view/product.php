@@ -9,8 +9,8 @@ class ProductPage extends View
         require_once 'scripts/php/productdatasource.php';
 
         $products = new ProductDataSource();
-        
-        isset($_GET['product']) ? print($products->defineProducts()[$_GET['product']]->createProductView(true)) : header("Location: ?view=producten");
+
+        isset($_GET['product']) ? print ($products->defineProducts()[$_GET['product']]->createProductView(true)) : header("Location: ?view=producten");
 
     }
 }

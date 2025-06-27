@@ -4,8 +4,10 @@ require_once './scripts/php/contactinfo.php';
 
 use PHPUnit\Framework\TestCase;
 
-class ContactInfoTest extends TestCase {
-    public function testContactInfoObjectStoresValues() {
+class ContactInfoTest extends TestCase
+{
+    public function testContactInfoObjectStoresValues()
+    {
         $contact = new ContactInfo('John', 'Doe', 'john@example.com', '0612345678', 'Test Subject', 'This is a test message with more than twenty characters.');
         $values = $contact->setObjectValues();
         $this->assertEquals('John', $values['firstname']);
