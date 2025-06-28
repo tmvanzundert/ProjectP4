@@ -162,9 +162,14 @@ class ContactInfo
         ];
 
         // Iterate through the validations and return the error message if the check did not pass
-        foreach ($validations as $inputName => $validationCheck) {
-            if ((isset($validationCheck['minLength']) && strlen($this->setObjectValues()[$inputName]) < $validationCheck['minLength']) || (isset($validationCheck['pattern']) && !preg_match($validationCheck['pattern'], $this->setObjectValues()[$inputName]))) {
-                throw new InvalidArgumentException($validationCheck['message']);
+        
+        foreach ($validations as $input => $check) {
+            $value = $this->setObjectValues()[$input];
+            if (!empty($check['minLength']) && strlen($value) < $check['minLength']) {
+                throw new InvalidArgumentException($check['message']);
+            }
+            if (!empty($check['pattern']) && !preg_match($check['pattern'], $value)) {
+                throw new InvalidArgumentException($check['message']);
             }
         }
 
