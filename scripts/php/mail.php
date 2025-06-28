@@ -61,7 +61,6 @@ class Mail
         try {
             $this->mail->setFrom($this->env['mail_username'], $this->Name);
             $this->mail->addAddress($this->env['mail_username'], 'Contact Website');
-            $this->mail->addCC($this->env['mail_cc'], 'Leraar');
             $this->mail->Subject = $this->Subject;
             $this->mail->Body = $this->Body;
             $this->mail->send();
