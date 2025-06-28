@@ -36,7 +36,7 @@ VALUES ('hdevries', 'Hendrick van loonlaan 4', '1994-01-17', 'hdevries@gmail.com
 ('tmaas', 'Tilburgseweg 67', '1989-08-19', 'tmaas@gmail.com', 'Thomas', 'Maas', '$2y$10$iPQ1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-89012345', 'User', 'Active'),
 ('sking', 'Leidseweg 90', '1996-02-28', 'sking@gmail.com', 'Sarah', 'King', '$2y$10$jRS1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-90123456', 'User', 'Active'),
 ('dklein', 'Almerelaan 123', '1986-06-15', 'dklein@gmail.com', 'David', 'Klein', '$2y$10$kTU1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-01234567', 'User', 'Active'),
-('epost', 'Zwollestraat 456', '1994-10-11', 'epost@gmail.com', 'Emma', 'Post', '$2y$10$lVW1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-12345098', 'User', 'Active'),
+('epost', 'Zwollestraat 456', '1994-10-11', 'epost@gmail.com', 'Emma', 'Post', '$2a$12$nzw5YMZ.WLi8uoYtMgh73e5Mg6BSSo96b6oVn/A6TmJEA7D89iPGO', '06-12345098', 'User', 'Active'),
 ('hvos', 'Apeldoornweg 789', '1990-01-07', 'hvos@gmail.com', 'Henrik', 'Vos', '$2y$10$mXY1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-23450987', 'User', 'Active'),
 ('jmeer', 'Dordrechtlaan 012', '1988-05-24', 'jmeer@gmail.com', 'Julia', 'Meer', '$2y$10$nZA1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-34509876', 'User', 'Active'),
 ('bwit', 'Delftsestraat 345', '1993-09-09', 'bwit@gmail.com', 'Ben', 'Wit', '$2y$10$oBC1s.ZBEMqSltCPbIQb9erKxx5ac4xJgFg0MEderCt7XAolwW8wW', '06-45098765', 'User', 'Active'),
