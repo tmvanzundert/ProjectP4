@@ -1,56 +1,39 @@
-# ProjectP4
+# Project Setup en Configuratie
 
-This guide shows you how to clone the ProjectP4 repository and switch to your assigned branch.
+## Vereisten
 
-## Prerequisites
-- Git installed on your system
-- Command line terminal access
+Voor het uitvoeren van dit project zijn de volgende dependencies vereist:
+- **PHPMailer** - Voor e-mail functionaliteit
+- **PHPUnit** - Voor unit testing
 
-## Instructions
+## Installatie
 
-### Step 1: Clone the Repository
+Installeer de benodigde packages via Composer:
 
-```shell
-git clone https://github.com/tmvanzundert/ProjectP4.git
+```bash
+composer install
 ```
 
-### Step 2: Navigate to the Repository
+## Gebruikersaccounts
 
-```shell
-cd ProjectP4
+Het systeem bevat twee vooraf geconfigureerde accounts voor testing:
+
+### Gebruikersaccount
+- **Gebruikersnaam:** `epost`
+- **Wachtwoord:** `welkom123`
+
+### Beheerdersaccount
+- **Gebruikersnaam:** `hdevries`
+- **Wachtwoord:** `welkom123`
+
+## Tests Uitvoeren
+
+Alle tests uitvoeren:
+```bash
+./vendor/bin/phpunit tests/
 ```
 
-### Step 3: View Available Branches
-
-```shell
-git branch -r
+Specifieke test uitvoeren:
+```bash
+./vendor/bin/phpunit tests/contactinfotest.php
 ```
-
-You should see all available remote branches.
-
-### Step 4: Switch to Your Branch
-Choose the appropriate command for your assigned branch:
-
-```shell
-# For Lisette's branch
-git checkout lisette
-
-# For Stephan's branch
-git checkout stephan
-
-# For Stefan's branch
-git checkout stefan
-
-# For Tamara's branch
-git checkout tamara
-```
-
-Verify Your Current Branch
-
-```
-git branch
-```
-
-The active branch will be marked with an asterisk (*).
-
-Now you're ready to work on your assigned branch of the ProjectP4 repository!

@@ -126,7 +126,7 @@ ALTER TABLE `User`
 
 ALTER TABLE `Order`
         ADD CONSTRAINT FK_Order FOREIGN KEY (`ConsumerName`, `ConsumerAddress`) REFERENCES User (`UserName`, `Address`),
- 		ADD CONSTRAINT FK_Supplier FOREIGN KEY (`CompanyName`) REFERENCES Supplier (`SupplierName`) ON UPDATE CASCADE;
+        ADD CONSTRAINT FK_Supplier FOREIGN KEY (`CompanyName`) REFERENCES Supplier (`SupplierName`) ON UPDATE CASCADE;
         
 ALTER TABLE `Order_Product`        
         ADD CONSTRAINT FK_OrderProduct_Product FOREIGN KEY (`ProductName`) REFERENCES `Product` (`ProductName`) ON UPDATE CASCADE ON DELETE CASCADE,
