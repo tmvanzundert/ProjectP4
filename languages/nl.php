@@ -5,10 +5,14 @@ $translations = [
     'nav_about' => 'Over Ons',
     'nav_products' => 'Producten en Diensten',
     'nav_contact' => 'Contact',
-    
+    'nav_admin' => 'Admin',
+    'nav_cart' => 'Winkelwagen',
+    'nav_login' => 'Login',
+    'nav_logout' => 'Log Uit',
+
     // Common elements
     'copyright' => 'Alle rechten voorbehouden',
-    
+
     // Home page
     'welcome' => 'Welkom bij Plug & Play',
 
@@ -30,7 +34,7 @@ $translations = [
     'salespitch_text4' => 'Ben je onderweg of op een evenement, met Plug & Play heb je altijd een oplossing binnen handbereik om je mobiele apparaten op te laden.',
 
     // Over Ons
-    'visie_heading' => 'Onzie Visie',
+    'visie_heading' => 'Onze Visie',
     'visie_text1' => 'Plug & Play streeft naar een toekomst waarin het opladen van een mobiele apparaat net zo vanzelfsprekend en toegankelijk is als het tanken voor je auto. In een wereld die steeds sneller en digitaler wordt ben je afhankelijk van mobiele technologie. Plug & Play zorgt ervoor dat iedereen altijd verbonden en onderweg kan blijven, waar je ook bent. Door innovatieve oplossingen te bieden voor zowel persoonlijke als zakelijke gebruikers, streven we ernaar om een betrouwbare partner te worden voor het opladen van apparaten in uiteenlopende omgevingen, van evenementen tot publieke ruimtes. Onze visie is om technologie, duurzaamheid en gemak te combineren, zodat iedereen in de snel veranderende wereld zorgeloos bereikbaar en onderweg kan blijven. Zonder de zorg voor het milieu.',
 
     'duurzaamheid_heading' => 'Duurzaamheid',
@@ -75,6 +79,14 @@ $translations = [
     'playgreen3_kenmerken' => 'USB-C, Formaat kan wijzigen, Gaat meerdere dagen mee, 27.000 mAh',
     'playgreen3_kosten' => 'Te huren voor 8 euro! De powerbank mag je vier dagen houden voor deze prijs. Hierna geldt een bedrag van 2 euro per dag dat je extra moet betalen. Is je powerbank leeg en wil je een volle? Dit kan, dit kost 2 euro extra. Inleveren na maximaal 30 dagen!! Hierna moet de powerbank overgekocht worden.',
 
+    'productUsage' => 'Gebruik',
+    'productSpecifications' => 'Specificaties',
+    'productCosts' => 'Kosten',
+
+    'product_button' => 'Huur Nu',
+
+    'productNotFound' => 'Product niet gevonden',
+
     // Diensten
     'diensten_heading' => 'Onze Diensten',
     'diensten_text1' => 'Organiseer jij een evenement of heb jij een ruimte in jou kantoor waar je graag powerbanks aan wilt bieden?',
@@ -92,7 +104,7 @@ $translations = [
     'contact_map' => 'Bekijk ons op de kaart',
     'contact_send' => 'Verstuur',
 
-    'contactvalidations_success' => 'Je bericht is met succes verzonden!',
+    'contactvalidations_success' => 'Je bericht is verzonden!',
     'contactvalidations_empty' => 'Niet alle velden zijn ingevuld',
     'contactvalidations_invalidemail' => 'Je e-mailadres is ongeldig',
     'contactvalidations_invalidfirstname' => 'Voer een geldige voornaam in',
@@ -101,11 +113,26 @@ $translations = [
     'contactvalidations_invalidsubject' => 'Voer een onderwerp van 3 karakters of meer in',
     'contactvalidations_invalidmessage' => 'Voeg meer informatie toe aan je bericht zodat je bericht meer dan 20 karakters lang is',
 
-
     // Admin page
+    'csv_import_btn' => 'CSV Import',
+    'search_management_btn' => 'Zoekterm Beheer',
+    'upload_image_btn' => 'Afbeelding Uploaden',
 
+    'select_csv_label' => 'Selecteer een CSV-bestand om te uploaden: ',
+    'select_csv_label_download' => 'download template',
+    'csv_upload_button' => 'CSV Uploaden',
 
-    // Login page
+    'no_products_found' => 'Geen producten gevonden in de log.',
+    'delete_button' => 'Verwijder',
+    'product_name' => 'Productnaam',
+    'count' => 'Aantal',
+    'timestamp' => 'Tijdstip',
+
+    'select_image_label' => 'Selecteer een afbeelding om te uploaden:',
+    'select_folder_label' => 'Selecteer doelmap:',
+    'upload_button' => 'Afbeelding Uploaden',
+
+    // Login & registration
     'login_heading' => 'Log in op je account',
     'username_label' => 'Gebruikersnaam',
     'password_label' => 'Wachtwoord',
@@ -113,11 +140,27 @@ $translations = [
     'no_account_text' => 'Heb je nog geen account?',
     'register_link' => 'Registreer hier',
 
-    // Registration page
     'registration_heading' => 'Maak een account aan',
     'email_label' => 'E-mailadres',
     'already_have_account_text' => 'Heb je al een account?',
     'login_link' => 'Log hier in',
     'register_button' => 'Registreren',
+    'email_already_registered_error' => 'Dit e-mailadres is al geregistreerd. Probeer een ander e-mailadres.',
+    'username_already_registered_error' => 'Deze gebruikersnaam is al in gebruik. Probeer een andere gebruikersnaam.',
+
+    'empty_fields_error' => 'Vul alle velden in',
+    'wrong_credentials_error' => 'Foutieve referenties, probeer het opnieuw',
+    'account_blocked_error' => 'Je account is geblokkeerd door te veel mislukte inlogpogingen. Neem contact op met support om je account te deblokkeren.',
+
+    // Basket
+    'bk_title' => 'Winkelwagen',
+    'bk_order_success' => 'Uw bestelling is verzonden naar ons. U krijgt van ons een mail met instructies voor het betalen van je bestelling.',
+    'bk_order_failed' => 'Er is een fout opgetreden bij het plaatsen van uw bestelling. Probeer het opnieuw.',
+    'bk_checkout' => 'Afrekenen',
+    'bk_empty' => 'Je winkelwagen is leeg',
+    'bk_delete' => 'Delete',
+    'bk_product' => 'Product',
+    'bk_quantity' => 'Aantal',
+    'bk_actions' => 'Acties',
 ];
 ?>

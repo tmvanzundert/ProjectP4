@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <header>
     <!-- Display the logo and the navbar at the top of the website -->
     <img src="./images/header/logo.png" alt="Logo Plug & Play">
@@ -10,11 +15,10 @@
                 __('nav_about') => 'over-ons.php',
                 __('nav_products') => 'producten.php',
                 __('nav_contact') => 'contact.php',
-                __('nav_Admin') => 'admin-pagina.php',
-                __('nav_login') => 'login.php'
             ];
-
-            // Render navigation links
+            if (isset($_SESSION['loggedin'])) {
+                $navLinks[__('nav_admin')] = 'admin-pagina.php';
+            }
             foreach ($navLinks as $label => $url): ?>
                 <li><a href="<?= $url ?>" aria-label="<?= strtolower($label) ?>"><?= $label ?></a></li>
             <?php endforeach; ?>
@@ -28,5 +32,10 @@
                 <?= $code ?>
             </a>
         <?php endforeach; ?>
+        <?php if (isset($_SESSION['username'])): ?>
+            <a class="log-btn" href="logout.php">Logout</a>
+        <?php else: ?>
+            <a class="log-btn" href="login.php"><?php echo __('nav_login'); ?></a>
+        <?php endif; ?>
     </div>
 </header>

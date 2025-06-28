@@ -1,15 +1,10 @@
-<?php require_once 'website-components/handlers.php'; ?>
+<?php
 
-<!DOCTYPE html>
-<html>
-
-<?php include_once 'website-components/head.php'; ?>
-
-<body>
-
-    <?php include_once 'website-components/header.php'; ?>
-
-    <main>
+class OverOns extends View
+{
+    public function show()
+    {
+        ?>
 
         <!-- Describe our mission (SECTION 4) -->
         <section class="visie-banner">
@@ -59,10 +54,8 @@
             </div>
         </section>
 
-    </main>
+        <?php
+    }
+}
 
-    <?php include_once 'website-components/footer.php'; ?>
-
-</body>
-
-</html>
+new OverOns();

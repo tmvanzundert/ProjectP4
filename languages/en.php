@@ -5,13 +5,17 @@ $translations = [
     'nav_about' => 'About Us',
     'nav_products' => 'Products and Services',
     'nav_contact' => 'Contact',
-    
+    'nav_admin' => 'Admin',
+    'nav_cart' => 'Cart',
+    'nav_login' => 'Login',
+    'nav_logout' => 'Logout',
+
     // Common elements
     'copyright' => 'All rights reserved',
-    
+
     // Home page
     'welcome' => 'Welcome to Plug & Play',
-    
+
     'introduction_heading' => 'Always Charged, Always On The Go',
     'introduction_text1' => 'Today we live in a world where mobile devices are essential for our daily routines. You want to be reachable at all times, at work, at events and of course in your free time.',
     'introduction_text2' => 'But what if your battery dies? Exactly at the moment when you need your mobile device the most!',
@@ -76,6 +80,14 @@ $translations = [
     'playgreen3_kenmerken' => 'USB-C, Adjustable size, Lasts multiple days, 27,000 mAh',
     'playgreen3_kosten' => 'Available for rent at 8 euros! You can keep the powerbank for four days at this price. After this, a fee of 2 euros per day applies for extra time. Is your powerbank empty and you want a full one? This is possible for an extra 2 euros. Return within a maximum of 30 days!! After this, the powerbank must be purchased.',
 
+    'productUsage' => 'Usage',
+    'productSpecifications' => 'Specifications',
+    'productCosts' => 'Costs',
+
+    'product_button' => 'Rent Now',
+
+    'productNotFound' => 'Product not found',
+
     // Services
     'diensten_heading' => 'Our Services',
     'diensten_text1' => 'Are you organizing an event or do you have a space in your office where you would like to offer powerbanks?',
@@ -93,7 +105,7 @@ $translations = [
     'contact_map' => 'View us on the map',
     'contact_send' => 'Send',
 
-    'contactvalidations_success' => 'Your message has been sent successfully!',
+    'contactvalidations_success' => 'Your message has been sent!',
     'contactvalidations_empty' => 'Not all fields are filled in',
     'contactvalidations_invalidemail' => 'Your email address is invalid',
     'contactvalidations_invalidfirstname' => 'Please enter a valid first name',
@@ -101,10 +113,27 @@ $translations = [
     'contactvalidations_invalidphonenumber' => 'Your phone number is invalid',
     'contactvalidations_invalidsubject' => 'Please enter a subject of 3 characters or more',
     'contactvalidations_invalidmessage' => 'Please more information to your message so your message contains more than 20 characters',
-    
+
     // Admin page
-    
-    // Login page
+    'csv_import_btn' => 'CSV Import',
+    'search_management_btn' => 'Search Management',
+    'upload_image_btn' => 'Upload Image',
+
+    'select_csv_label' => 'Choose your file. ',
+    'select_csv_label_download' => 'download template',
+    'csv_upload_button' => 'Upload CSV',
+
+    'no_products_found' => 'No products found in the database.',
+    'delete_button' => 'Delete',
+    'product_name' => 'Product Name',
+    'count' => 'Count',
+    'timestamp' => 'Timestamp',
+
+    'select_image_label' => 'Select an image to upload:',
+    'select_folder_label' => 'Select destination folder:',
+    'upload_button' => 'Upload Image',
+
+    // Login & registration
     'login_heading' => 'Login to your account',
     'username_label' => 'Username',
     'password_label' => 'Password',
@@ -112,11 +141,27 @@ $translations = [
     'no_account_text' => 'Don\'t have an account yet?',
     'register_link' => 'Register here',
 
-    // Registration page
     'registration_heading' => 'Create an account',
     'email_label' => 'Email',
     'already_have_account_text' => 'Already have an account?',
     'login_link' => 'Login here',
     'register_button' => 'Register',
+    'email_already_registered_error' => 'This email address is already registered. Please use a different email address.',
+    'username_already_registered_error' => 'This username is already registered. Please choose a different username.',
+
+    'empty_fields_error' => 'Please fill in all fields',
+    'wrong_credentials_error' => 'Wrong credentials, please try again',
+    'account_blocked_error' => 'Your account has been blocked due to too many failed login attempts. Please contact support to unblock your account.',
+
+    // Basket
+    'bk_title' => 'Basket',
+    'bk_order_success' => 'Your order has been send to us. You will receive an email from us with instructions on how to pay for your order.',
+    'bk_order_failed' => 'An error has occurred while placing your order. Please try again.',
+    'bk_checkout' => 'Checkout',
+    'bk_empty' => 'Your basket is empty',
+    'bk_delete' => 'Delete',
+    'bk_product' => 'Product',
+    'bk_quantity' => 'Quantity',
+    'bk_action' => 'Action',
 ];
 ?>

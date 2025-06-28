@@ -1,86 +1,109 @@
 <?php
 
-    class ProductDataSource {
+class ProductDataSource
+{
 
-        public function defineProducts(): array {
-            return [
-                'playgreen_1' => new Product(
-                    'PlayGreen 1',
-                    'De PlayGreen 1, is een kleine powerbank die zijn kenmerken heeft in het snel laden en het zijn van een licht gewicht. Met deze powerbank laat jij snel je telefoon op als je die snel nodig heb! Is jouw telefoon bijna leeg? Huur dan snel de PlayGreen 1.',
-                    8,
-                    'images/producten/PlayGreen-1.jpg',
-                    ['Smartphone'],
-                    [
-                        'Snellader',
-                        'Licht in gewicht',
-                        'Zakformaat',
-                        '5.000 mAh'
-                    ],
-                    "Te huren voor 8 euro!
-                     De powerbank mag je vier dagen houden voor deze prijs.
-                     Hierna geldt een bedrag van 2 euro per dag dat je extra moet betalen.
-                     Is je powerbank leeg en wil je een volle? Dit kan, dit kost 2 euro extra.
-                     Inleveren na maximaal 30 dagen!! Hierna moet de powerbank overgekocht worden."
-                ),
-                'playgreen_2' => new Product(
-                    'PlayGreen 2',
-                    'De PlayGreen 2, is een powerbank die zijn kenmerken heeft in het snel en draadloos laden en kan een dag mee.
-                     Met deze powerbank laat jij snel je telefoon, tablet of andere mobiele apparaat op als je die snel nodig heb!<br>
-                     Is jouw mobiele apparaat bijna leeg? Huur dan snel de PlayGreen 2.',
-                    8,
-                    'images/producten/PlayGreen-2.jpg',
-                    ['Smartphone', 'Tablet', 'Ander mobiel apparaat'],
-                    [
-                        'Snel en draadloos laden',
-                        'Past in een broekzak of kleine tas',
-                        'Gaat een dag mee',
-                        '10.000 mAh'
-                    ],
-                    "Te huren voor 8 euro!
-                     De powerbank mag je vier dagen houden voor deze prijs.
-                     Hierna geldt een bedrag van 2 euro per dag dat je extra moet betalen.
-                     Is je powerbank leeg en wil je een volle? Dit kan, dit kost 2 euro extra.
-                     Inleveren na maximaal 30 dagen!! Hierna moet de powerbank overgekocht worden."
-                ),
-                'playgreen_3' => new Product(
-                    'PlayGreen 3',
-                    'De PlayGreen 3, is een powerbank die zijn kenmerken heeft in het snel en draadloos laden en kan een dag mee.
-                     Met deze powerbank laat jij snel je telefoon, tablet of andere mobiele apparaat op als je die snel nodig heb!<br>
-                     Is jouw mobiele apparaat bijna leeg? Huur dan snel de PlayGreen 3.',
-                    8,
-                    'images/producten/PlayGreen-3.jpg',
-                    ['Smartphone', 'Tablet', 'Ander mobiel apparaat', 'Jump start voor auto of scooter'],
-                    [
-                        'USB-C',
-                        'Formaat kan wijzigen',
-                        'Gaat meerdere dagen mee',
-                        '27.000 mAh'
-                    ],
-                    "Te huren voor 8 euro!
-                     De powerbank mag je vier dagen houden voor deze prijs.
-                     Hierna geldt een bedrag van 2 euro per dag dat je extra moet betalen.
-                     Is je powerbank leeg en wil je een volle? Dit kan, dit kost 2 euro extra.
-                     Inleveren na maximaal 30 dagen!! Hierna moet de powerbank overgekocht worden."
-                ),
-            ];
-        }
-        
-        public function getProducts(bool $FullPage = false): void {
-        
-            $products = self::defineProducts();
-            foreach ($products as $product) {
-                echo $product->createProduct($FullPage);
-            }
-        }
+    public function defineProducts(): array
+    {
+        return [
+            'playgreen_1' => new Product(
+                __('playgreen1_heading'),
+                __('playgreen1_intro'),
+                8,
+                'images/producten/PlayGreen-1.jpg',
+                explode(', ', __('playgreen1_gebruik')),
+                explode(', ', __('playgreen1_kenmerken')),
+                __('playgreen1_kosten')
+            ),
+            'playgreen_2' => new Product(
+                __('playgreen2_heading'),
+                __('playgreen2_intro'),
+                8,
+                'images/producten/PlayGreen-2.jpg',
+                explode(', ', __('playgreen2_gebruik')),
+                explode(', ', __('playgreen2_kenmerken')),
+                __('playgreen2_kosten')
+            ),
+            'playgreen_3' => new Product(
+                __('playgreen3_heading'),
+                __('playgreen3_intro'),
+                8,
+                'images/producten/PlayGreen-3.jpg',
+                explode(', ', __('playgreen3_gebruik')),
+                explode(', ', __('playgreen3_kenmerken')),
+                __('playgreen3_kosten')
+            ),
+        ];
+    }
 
-        public function searchProducts(string $Search): void {
-            $products = self::defineProducts();
-            foreach ($products as $product) {
-                if (strpos($product->getSearchableName(), strtolower($Search)) !== false) {
-                    echo $product->createProduct();
+    public function getName(string $productName): string
+    {
+        $products = $this->defineProducts();
+        return $products[$productName]->getName() ?? '';
+    }
+
+    public function getProducts(bool $FullPage = false): void
+    {
+
+        $products = $this->defineProducts();
+        foreach ($products as $product) {
+            echo $product->createProductView($FullPage);
+        }
+    }
+
+    public function getProductLog()
+    {
+        $db = new Connector();
+        $string = "SELECT ProductName, Count, Timestamp FROM LogProduct";
+        $result = $db->fetchAll($string);
+        return $result;
+    }
+
+    private function logMissingProduct(string $productName): void
+    {
+
+        $db = new Connector();
+        $loggedProducts = $this->getProductLog();
+        if (is_iterable($loggedProducts)) {
+            foreach ($loggedProducts as $loggedProduct) {
+                if ($loggedProduct['ProductName'] === $productName) {
+                    // If the product is already logged, increment the count
+                    $string = "UPDATE LogProduct SET Count = Count + 1 WHERE ProductName = ?";
+                    $db->execute($string, [$productName]);
+                    return;
                 }
             }
         }
+
+        // Create new log entry
+        $string = "INSERT INTO LogProduct (ProductName) VALUES (?)";
+        $db->execute($string, [$productName]);
     }
+
+    public function searchProducts(string $Search): void
+    {
+        $products = $this->defineProducts();
+        $count = 0;
+        foreach ($products as $product) {
+            if (strpos($product->getSearchableName(), strtolower($Search)) !== false || strpos($product->getDescription(), strtolower($Search)) !== false) {
+                echo $product->createProductView();
+                $count++;
+            }
+        }
+
+        // Log search if no products found
+        if ($count === 0) {
+            $this->logMissingProduct($Search);
+            echo "<p class='error-message'>" . __('productNotFound') . "</p>";
+        }
+    }
+
+    public function deleteProductLog(string $productName): void
+    {
+        $db = new Connector();
+        $string = "DELETE FROM LogProduct WHERE ProductName = ?";
+        $db->execute($string, [$productName]);
+    }
+}
 
 ?>

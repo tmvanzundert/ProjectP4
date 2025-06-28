@@ -8,5 +8,5 @@ function setErrorEmptyInputbox(ElementName) {
     else {
         input.style.border = "none";
     }
-    
+
 }
