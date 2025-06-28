@@ -11,12 +11,22 @@ class Connector
     {
         // Constructor automatically establishes database connection
         // by calling connect() method with credentials from Secrets class
-        $this->connect(
-            Secrets::$ServerName,
-            Secrets::$Username,
-            Secrets::$Password,
-            Secrets::$DBName
-        );
+        try {
+            
+            $this->connect(
+                Secrets::$ServerName,
+                Secrets::$Username,
+                Secrets::$Password,
+                Secrets::$DBName
+            );
+            
+        }
+        catch (Exception $e) {
+            echo "The server is currently down. Please try again later.";
+            sleep(5);
+            header('Location: index.php');
+            exit;
+        }
     }
 
     public function connect($ServerName, $Username, $Password, $DBName)

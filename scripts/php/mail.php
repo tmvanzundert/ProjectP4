@@ -3,7 +3,6 @@
 require_once 'vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 
 class Mail
 {
@@ -22,7 +21,10 @@ class Mail
         $envPath = dirname(__DIR__, 2) . '/.env';
         $env = parse_ini_file($envPath);
         if ($env === false) {
-            die('Failed to load .env file at ' . $envPath);
+            echo 'Failed to load .env file at ' . $envPath;
+            sleep(5);
+            header('Location: index.php');
+            exit;
         }
         $this->env = $env;
 
@@ -36,7 +38,6 @@ class Mail
         try {
 
             $mail = new PHPMailer(true);
-            /* $mail->SMTPDebug = SMTP::DEBUG_SERVER; */
             $mail->isSMTP();
             $mail->SMTPAuth = true;
             $mail->Host = 'smtp.gmail.com';
@@ -60,6 +61,7 @@ class Mail
         try {
             $this->mail->setFrom($this->env['mail_username'], $this->Name);
             $this->mail->addAddress($this->env['mail_username'], 'Contact Website');
+            $this->mail->addCC($this->env['mail_cc'], 'Leraar');
             $this->mail->Subject = $this->Subject;
             $this->mail->Body = $this->Body;
             $this->mail->send();
