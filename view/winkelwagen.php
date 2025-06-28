@@ -5,12 +5,15 @@ require_once 'scripts/php/product.php';
 require_once 'scripts/php/mail.php';
 require_once 'scripts/php/User.php';
 
+/**
+ * Winkelwagen (Shopping Cart) class - Handles shopping cart operations
+ * Manages cart items, quantities, and order processing with email notifications
+ */
 class Winkelwagen extends View
 {
-
     public function show()
     {
-
+        // Security check: Ensure user is logged in before accessing cart
         if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             header('Location: ?view=login');
             exit;
@@ -18,22 +21,23 @@ class Winkelwagen extends View
 
         ?>
         <?php
-        // Initialize basket if not set
+        // Initialize shopping cart session if not already set
         if (!isset($_SESSION['basket'])) {
             $_SESSION['basket'] = [];
         }
 
-        // Handle add, subtract, and delete actions
+        // Handle cart item quantity modifications and deletions
         if (isset($_GET['action']) && isset($_GET['product'])) {
             $product = $_GET['product'];
             switch ($_GET['action']) {
                 case 'add':
-                    // Only allow increment via plus button
+                    // Increment quantity via plus button
                     if (isset($_SESSION['basket'][$product])) {
                         $_SESSION['basket'][$product]++;
                     }
                     break;
                 case 'subtract':
+                    // Decrement quantity, remove if reaches zero
                     if (isset($_SESSION['basket'][$product])) {
                         $_SESSION['basket'][$product]--;
                         if ($_SESSION['basket'][$product] <= 0) {
@@ -42,6 +46,7 @@ class Winkelwagen extends View
                     }
                     break;
                 case 'delete':
+                    // Remove item completely from cart
                     unset($_SESSION['basket'][$product]);
                     break;
             }
@@ -50,6 +55,7 @@ class Winkelwagen extends View
         // Add product immediately if "product" param is present and not already in basket
         if (isset($_GET['product']) && $_GET['product'] !== '' && !isset($_GET['action'])) {
             $product = $_GET['product'];
+            // Only add if not already in cart to prevent duplicates
             if (!isset($_SESSION['basket'][$product])) {
                 $_SESSION['basket'][$product] = 1;
             }
@@ -83,6 +89,7 @@ class Winkelwagen extends View
                                 <td><?= $productDataSource->getName($product) ?></td>
                                 <td><?= $aantal ?></td>
                                 <td>
+                                    <!-- Quantity control buttons -->
                                     <a href="?view=winkelwagen&action=add&product=<?= urlencode($product) ?>">+</a>
                                     <a href="?view=winkelwagen&action=subtract&product=<?= urlencode($product) ?>">-</a>
                                     <a href="?view=winkelwagen&action=delete&product=<?= urlencode($product) ?>"><?= __('bk_delete') ?></a>
@@ -107,6 +114,8 @@ class Winkelwagen extends View
                                 <th>Product</th>
                                 <th>Aantal</th>
                             </tr>";
+                
+                // Add each cart item to email
                 foreach ($_SESSION['basket'] as $product => $aantal) {
                     $message .= "
                             <tr>
@@ -117,6 +126,8 @@ class Winkelwagen extends View
                 $message .= "
                         </table>
                     ";
+                
+                // Send order confirmation email
                 $mail = new Mail($name, "New order from " . $_SESSION['username'], $message);
                 if ($mail->SendMail()) {
                     $_SESSION['orderSuccess'] = true;

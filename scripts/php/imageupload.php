@@ -3,7 +3,7 @@ class ImageUpload
 {
     private $targetDir;
     private $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-    private $maxFileSize = 5242880; // 5MB
+    private $maxFileSize = 5242880; // 5MB limit to prevent server overload
 
     public function __construct($targetDir = 'images/')
     {
@@ -14,6 +14,7 @@ class ImageUpload
     {
         if ($this->isSubmitted() && isset($_POST["upload"])) {
             $message = $this->uploadImage();
+            // Show result message and redirect
             echo "<script type=\"text/javascript\">
                     alert(\"$message\");
                     window.location = \"?view=admin-pagina\"
@@ -29,11 +30,11 @@ class ImageUpload
         }
 
         $file = $_FILES["imageFile"];
-        $fileName = basename($file["name"]);
+        $fileName = basename($file["name"]); // Prevent directory traversal
         $targetSubDir = $_POST["targetFolder"] ?? '';
         $targetPath = $this->targetDir . $targetSubDir . '/' . $fileName;
 
-        // Check file size
+        // Security check: Validate file size
         if ($file["size"] > $this->maxFileSize) {
             return "Error: File is too large (max 5MB).";
         }
@@ -44,7 +45,7 @@ class ImageUpload
             return "Error: Only JPG, JPEG, PNG & GIF files are allowed.";
         }
 
-        // Check if folder exists
+        // Create upload directory if it doesn't exist
         $uploadDir = $this->targetDir . $targetSubDir;
         if (!is_dir($uploadDir)) {
             if (!mkdir($uploadDir, 0755, true)) {
@@ -52,7 +53,7 @@ class ImageUpload
             }
         }
 
-        // Upload the file
+        // Move uploaded file to final destination
         if (move_uploaded_file($file["tmp_name"], $targetPath)) {
             return "The file " . htmlspecialchars($fileName) . " has been uploaded.";
         } else {
@@ -94,6 +95,7 @@ class ImageUpload
         if (is_dir($baseDir)) {
             $dirs = scandir($baseDir);
             foreach ($dirs as $dir) {
+                // Skip current and parent directory references
                 if ($dir != '.' && $dir != '..' && is_dir($baseDir . $dir)) {
                     $folders[] = $dir;
                 }

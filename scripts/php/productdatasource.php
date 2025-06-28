@@ -75,6 +75,7 @@ class ProductDataSource
             }
         }
 
+        // Create new log entry
         $string = "INSERT INTO LogProduct (ProductName) VALUES (?)";
         $db->execute($string, [$productName]);
     }
@@ -90,6 +91,7 @@ class ProductDataSource
             }
         }
 
+        // Log search if no products found
         if ($count === 0) {
             $this->logMissingProduct($Search);
             echo "<p class='error-message'>" . __('productNotFound') . "</p>";

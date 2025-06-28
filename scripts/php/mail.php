@@ -12,12 +12,19 @@ class Mail
     private PHPMailer $mail;
     private array $env;
 
+    /**
+     * Constructor - Initialize mail object and SMTP connection
+     * @param string $name Sender name
+     * @param string $subject Email subject
+     * @param string $body Email body content
+     */
     public function __construct(string $name, string $subject, string $body)
     {
         $this->Name = $name;
         $this->Subject = $subject;
         $this->Body = $body;
 
+        // Load environment variables from .env file
         $envPath = dirname(__DIR__, 2) . '/.env';
         $env = parse_ini_file($envPath);
         if ($env === false) {
@@ -28,16 +35,20 @@ class Mail
         }
         $this->env = $env;
 
+        // Initialize PHPMailer connection
         $this->mail = $this->Connect();
-
     }
 
+    /**
+     * Establishes SMTP connection using Gmail configuration
+     * @return PHPMailer Configured PHPMailer object
+     */
     public function Connect(): object
     {
-
         try {
-
             $mail = new PHPMailer(true);
+            
+            // Configure SMTP settings for Gmail
             $mail->isSMTP();
             $mail->SMTPAuth = true;
             $mail->Host = 'smtp.gmail.com';
@@ -53,9 +64,12 @@ class Mail
         } catch (Exception $e) {
             die('Failed to connect to mail server: ' . $e->getMessage());
         }
-
     }
 
+    /**
+     * Sends email using configured SMTP settings
+     * @return bool True if email sent successfully, false otherwise
+     */
     public function SendMail(): bool
     {
         try {
@@ -71,5 +85,4 @@ class Mail
             return false;
         }
     }
-
 }

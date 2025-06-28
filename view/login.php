@@ -38,7 +38,6 @@ class LoginPage extends View
                     $message = __('wrong_credentials_error');
                 }
             }
-
         }
 
         ?>

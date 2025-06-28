@@ -10,6 +10,15 @@ class ContactInfo
     private string $subject;
     private string $message;
 
+    /**
+     * Constructor - Initialize contact information
+     * @param string $firstname First name
+     * @param string $lastname Last name
+     * @param string $email Email address
+     * @param string $phonenumber Phone number
+     * @param string $subject Message subject
+     * @param string $message Message content
+     */
     public function __construct(string $firstname, string $lastname, string $email, string $phonenumber, string $subject, string $message)
     {
         $this->firstname = $firstname;
@@ -20,7 +29,10 @@ class ContactInfo
         $this->message = $message;
     }
 
-    // Returns an array with the object values
+    /**
+     * Returns sanitized object values as associative array
+     * @return array Sanitized contact information
+     */
     public function setObjectValues(): array
     {
         return [
@@ -77,13 +89,17 @@ class ContactInfo
                 header("Location: ?view=contact");
                 exit;
             } else {
+                // Fallback if headers already sent
                 echo "<script>window.location.href='?view=contact';</script>";
                 exit;
             }
         }
     }
 
-    // Checks if the form is submitted
+    /**
+     * Checks if form was submitted via POST
+     * @return bool True if POST request
+     */
     public function isSubmitted(): bool
     {
         return $_SERVER['REQUEST_METHOD'] === 'POST';
@@ -92,8 +108,16 @@ class ContactInfo
     // Checks if any of the required fields are empty
     public function isVariableEmpty(): bool
     {
-
-        $requiredFields = [$this->getFirstName(), $this->getLastName(), $this->getEmail(), $this->getPhonenumber(), $this->getSubject(), $this->getMessage()];
+        $requiredFields = [
+            $this->getFirstName(),
+            $this->getLastName(),
+            $this->getEmail(),
+            $this->getPhonenumber(),
+            $this->getSubject(),
+            $this->getMessage()
+        ];
+        
+        // Check each required field
         foreach ($requiredFields as $field) {
             if (empty($field)) {
                 return false;
@@ -101,10 +125,13 @@ class ContactInfo
         }
 
         return true;
-
     }
 
-    // Returns the class for the textbox based on whether the field is empty or not
+    /**
+     * Returns CSS class for form inputs based on validation state
+     * @param string $fieldName Name of the field to check
+     * @return string CSS class name
+     */
     public function getTextboxClass(string $fieldName): string
     {
 
@@ -113,16 +140,14 @@ class ContactInfo
             return "textbox textbox-error";
         }
 
-        // Return the default class
+        // Return default styling
         return "textbox";
-
     }
 
     // Validates the contact info fields
     function validateContactInfoFields(): bool
     {
-
-        // Prevent the function running at first load
+        // Skip validation on initial page load
         if ($this->isSubmitted() === false) {
             return false;
         }
@@ -132,7 +157,7 @@ class ContactInfo
             throw new LengthException(__('contactvalidations_empty'));
         }
 
-        // Validate if the email is valid
+        // Validate email format using PHP filter
         if (!filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) {
             throw new InvalidArgumentException(__('contactvalidations_invalidemail'));
         }
@@ -140,23 +165,23 @@ class ContactInfo
         // Checks and the error messages if the check did not pass
         $validations = [
             'firstname' => [
-                'pattern' => "/^[a-zA-Z0-9\s]+$/",
+                'pattern' => "/^[a-zA-Z0-9\s]+$/", // Alphanumeric and spaces only
                 'message' => __('contactvalidations_invalidfirstname')
             ],
             'lastname' => [
-                'pattern' => "/^[a-zA-Z0-9\s]+$/",
+                'pattern' => "/^[a-zA-Z0-9\s]+$/", // Alphanumeric and spaces only
                 'message' => __('contactvalidations_invalidlastname')
             ],
             'phonenumber' => [
-                'pattern' => "/^[\d\s\-\+]{6,18}$/",
+                'pattern' => "/^[\d\s\-\+]{6,18}$/", // Digits, spaces, hyphens, plus (6-18 chars)
                 'message' => __('contactvalidations_invalidphonenumber')
             ],
             'subject' => [
-                'minLength' => 3,
+                'minLength' => 3, // Minimum 3 characters
                 'message' => __('contactvalidations_invalidsubject')
             ],
             'message' => [
-                'minLength' => 20,
+                'minLength' => 20, // Minimum 20 characters for meaningful message
                 'message' => __('contactvalidations_invalidmessage')
             ]
         ];
@@ -168,9 +193,8 @@ class ContactInfo
             }
         }
 
-        // Return true if all checks passed
+        // All validations passed
         return true;
-
     }
 }
 

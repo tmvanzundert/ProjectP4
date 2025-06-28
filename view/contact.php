@@ -2,10 +2,8 @@
 
 class Contact extends View
 {
-
     public function show()
     {
-
         require_once 'scripts/php/contactinfo.php';
         require_once 'scripts/php/mail.php';
 
@@ -41,6 +39,8 @@ class Contact extends View
                     $contactInfo->getSubject(),
                     $message
                 );
+                
+                // Set session variable based on email send result
                 if ($mail->SendMail()) {
                     $_SESSION['sendSuccessfully'] = true;
                 } else {
@@ -94,6 +94,7 @@ class Contact extends View
 
                 <!-- Send the form -->
                 <button type="submit"><?= __('contact_send'); ?></button>
+                
                 <p>
                     <!-- Display an error message if an error has been returned -->
                     <?php if (isset($errorMessage)): ?>
@@ -109,7 +110,6 @@ class Contact extends View
             </form>
 
             <div class="info-text">
-
                 <h2><?= __('contact_invitingmessage'); ?></h2>
                 <p><?= __('contact_possibilities'); ?></p>
                 <h3><?= __('contact_credentialstitle'); ?></h3>
@@ -120,9 +120,9 @@ class Contact extends View
 
                 <P><?= __('contact_phonenumber'); ?>: <a href="tel:0031850073030">088 525 7500</a></p>
                 <p>E-mail: <a href="mailto:info@plugplay.pro">info@plugplay.pro</a></p>
-
             </div>
 
+            <!-- Embedded map for location display -->
             <div class="info-map">
                 <h3><?= __('contact_map'); ?></h3>
 
@@ -134,9 +134,7 @@ class Contact extends View
 
         </section>
         <?php
-
     }
-
 }
 
 new Contact();

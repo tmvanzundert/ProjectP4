@@ -1,4 +1,4 @@
--<?php
+<?php
 require_once 'framework/connector.php';
 
 class CSV
@@ -11,17 +11,21 @@ class CSV
         $this->filename = $filename;
     }
 
+    /**
+     * Imports CSV data and updates product availability
+     * @param string $filename Path to uploaded CSV file
+     * @return string Success or error message
+     */
     public function Import($filename): string
     {
-
+        // Establish database connection
         try {
             $conn = new Connector();
         } catch (Exception $e) {
             return "Connection failed";
         }
 
-
-        // Open the CSV file and skip the first line
+        // Open CSV file and skip header row
         $file = fopen($filename, "r");
         fgetcsv($file, 10000, ",");
 
@@ -31,7 +35,9 @@ class CSV
 
         // Loop through each row in the CSV and execute the statement
         while (($row = fgetcsv($file, 10000, ",")) !== false) {
-            $productName = $row[0];
+            $productName = $row[0]; // Assuming first column contains product name
+            
+            // Execute update for each product
             if (!$stmt->execute([$productName])) {
                 fclose($file);
                 return "Error importing data: " . addslashes($stmt->errorInfo()[2]);
@@ -54,15 +60,19 @@ class CSV
             } else {
                 $importCSV = "Please upload a valid CSV file.";
             }
+            
+            // Display result and redirect
             echo "<script type=\"text/javascript\">
                         alert(\"$importCSV\");
                         window.location = \"?view=admin-pagina\"
                     </script>";
         }
-
     }
 
-    // Checks if the form is submitted
+    /**
+     * Checks if form was submitted via POST method
+     * @return bool True if POST request
+     */
     private function isSubmitted(): bool
     {
         return $_SERVER['REQUEST_METHOD'] === 'POST';

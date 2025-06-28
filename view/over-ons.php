@@ -4,7 +4,6 @@ class OverOns extends View
 {
     public function show()
     {
-
         ?>
 
         <!-- Describe our mission (SECTION 4) -->
@@ -56,7 +55,6 @@ class OverOns extends View
         </section>
 
         <?php
-
     }
 }
 

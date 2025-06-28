@@ -4,7 +4,6 @@ class Producten extends View
 {
     public function show()
     {
-
         require_once 'website-components/handlers.php';
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['search'] == "")) {
