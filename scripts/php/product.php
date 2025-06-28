@@ -26,7 +26,7 @@ class Product
         return $this->Name;
     }
 
-    private function getSimpleName(): string
+    public function getSimpleName(): string
     {
         return strtolower(str_replace(' ', '_', $this->Name));
     }
