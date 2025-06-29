@@ -75,6 +75,7 @@ class Winkelwagen extends View
             <p><?= __('bk_order_success') ?></p>
             <?php $_SESSION['orderSuccess'] = null; ?>
         <?php elseif ($_SESSION['orderSuccess'] === false): ?>
+            <?php $_SESSION['orderSuccess'] = null; ?>
             <p><?= __('bk_order_failed') ?></p>
         <?php elseif (empty($_SESSION['basket'])): ?>
             <p><?= __('bk_empty') ?></p>
