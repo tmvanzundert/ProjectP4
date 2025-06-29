@@ -7,8 +7,8 @@ $translations = [
     'nav_contact' => 'Contact',
     'nav_admin' => 'Admin',
     'nav_cart' => 'Winkelwagen',
-    'nav_login' => 'Login',
-    'nav_logout' => 'Log Uit',
+    'nav_login' => 'Inloggen',
+    'nav_logout' => 'Uitloggen',
 
     // Common elements
     'copyright' => 'Alle rechten voorbehouden',
