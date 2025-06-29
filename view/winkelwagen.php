@@ -13,6 +13,11 @@ class Winkelwagen extends View
 {
     public function show()
     {
+
+        if (!isset($_SESSION['orderSuccess'])) {
+            $_SESSION['orderSuccess'] = null; // Initialize order success status
+        }
+
         // Security check: Ensure user is logged in before accessing cart
         if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             header('Location: ?view=login');
